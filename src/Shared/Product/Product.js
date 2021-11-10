@@ -15,7 +15,7 @@ const Product = ({ product }) => {
 	return (
 		<Grid item xs={4}>
 
-			<Card sx={{ maxWidth: 345 }}>
+			<Card variant="outlined">
 				<CardMedia
 					component="img"
 					image={image}
@@ -48,7 +48,7 @@ const Product = ({ product }) => {
 					<Button size="small">Share</Button>
 					<Button size="small">Learn More</Button>
 				</CardActions> */}
-				
+
 			</Card>
 		</Grid>
 
