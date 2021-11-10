@@ -11,14 +11,14 @@ import { typography } from '@mui/system';
 const About = () => {
 
 	const aboutBtn = {
-		backgroundColor: '#5A3733',
+		backgroundColor: '#EB6D2F',
 		px: 5,
 		py: 2,
 		fontWeight: 700,
 		borderRadius: '50px',
 		fontFamily: "'Signika', sans-serif",
 		'&:hover': {
-			backgroundColor: '#EB6D2F',
+			backgroundColor: '#5A3733',
 			boxShadow: 'none',
 		}
 	}

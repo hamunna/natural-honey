@@ -23,7 +23,7 @@ const Products = () => {
 	return (
 
 		<Box sx={{ my: 14 }}>
-			<Box sx={{ textAlign: 'center'}}>
+			<Box sx={{ textAlign: 'center', mb: -6}}>
 				<Typography variant="h6" sx={{ fontFamily: "'Raleway', sans-serif", color: '#EB6D2F', fontWeight: 700 }}>
 					Products
 				</Typography>

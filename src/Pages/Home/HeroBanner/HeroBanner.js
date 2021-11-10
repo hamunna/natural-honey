@@ -77,7 +77,7 @@ class HeroBanner extends Component {
 
 					{/* Slider-3 */}
 					<div>
-						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '550px' }}>
+						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '500px' }}>
 
 
 							<div style={{ fontFamily: "'Signika', sans-serif" }}>
