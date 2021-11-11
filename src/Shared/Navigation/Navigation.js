@@ -117,7 +117,7 @@ const Navigation = () => {
 						</Box>
 
 						<Box sx={{ ml: 'auto' }}>
-							<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/login"><Button color="inherit">Login</Button></NavLink>
+							<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/signup"><Button color="inherit">Signup</Button></NavLink>
 
 							<IconButton
 								size="large"

@@ -14,13 +14,14 @@ import googleLogin from '../../images/login-systems/google.png';
 import fbLogin from '../../images/login-systems/facebook.png';
 import bee1 from '../../images/bee-1.gif';
 import bee2 from '../../images/bee-2.gif';
+import { NavLink } from 'react-router-dom';
 
 
 const Login = () => {
 
 
 	// Signup Button Style
-	const signupBtn = {
+	const loginBtn = {
 		backgroundColor: '#EB6D2F',
 		px: 5,
 		py: 1,
@@ -37,7 +38,7 @@ const Login = () => {
 	}
 
 	// Login Button Style
-	const loginBtn = {
+	const signupBtn = {
 		backgroundColor: '#5A3733',
 		px: 5,
 		py: 1,
@@ -58,59 +59,39 @@ const Login = () => {
 		backgroundSize: 'cover',
 		height: '700px'
 	}
-	
+
 	// Left Bee
 	const leftBee = {
 		mt: 25,
 		textAlign: 'center',
 		height: '100px',
-		backgroundImage: `url(${bee1})`,
+		backgroundImage: `url(${bee2})`,
 		backgroundSize: '80px',
 		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'left center'
-		
+		backgroundPosition: 'right center'
+
 	}
 
-	
-		// Right Side bg
-		const rightBg = {
-			backgroundImage: `url('https://i.pinimg.com/1200x/f2/97/28/f297286a3a4cc0a8010ae1cbfa9a079d.jpg')`,
-			backgroundSize: 'cover',
-			height: '700px'
-		}
-	
+
+	// Right Side bg
+	const rightBg = {
+		backgroundImage: `url('https://i.pinimg.com/1200x/f2/97/28/f297286a3a4cc0a8010ae1cbfa9a079d.jpg')`,
+		backgroundSize: 'cover',
+		height: '700px'
+	}
+
 	return (
 		<>
 
 			<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif" }}>
 
 				{/* Left Side */}
-				<Grid item xs={6} md={5} sx={leftBg}>
-
-					<Box sx={leftBee}>
-						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h3" gutterBottom component="div">
-							Welcome Back!
-						</Typography>
-
-						<Typography variant="body" gutterBottom component="div">
-							To keep connected with us
-							<br />
-							please login with your personal information
-						</Typography>
-
-						<Button sx={loginBtn} variant="contained">Log in</Button>
-
-					</Box>
-
-				</Grid>
-
-				{/* Right Side */}
 				<Grid item xs={6} md={7} sx={rightBg}>
 
 					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
 
-						<Typography sx={{ fontWeight: 800, color: '#EB6D2F' }} variant="h3" gutterBottom component="div">
-							Create Account
+						<Typography sx={{ fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
+							Login to Your Account
 						</Typography>
 
 						<Box>
@@ -125,26 +106,12 @@ const Login = () => {
 						</Box>
 
 						<Typography variant="body" gutterBottom component="div">
-							or use your email for registration
+							or use your email to login
 						</Typography>
 
 						<form sx={{ textAlign: 'center' }}>
 
 							<Box sx={{ '& > :not(style)': { m: 1, px: 8 } }}>
-
-								{/* Name Field */}
-								<Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
-									<AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-									<TextField
-										id="name"
-										name="name"
-										type="text"
-										label="Full Name"
-										variant="standard"
-										sx={{ width: '100%' }}
-									/>
-								</Box>
-
 
 								{/* Email Field */}
 								<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -173,26 +140,34 @@ const Login = () => {
 									/>
 								</Box>
 
-
-								{/* Confirm Password Field */}
-								<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-									<LockRoundedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-									<TextField
-										id="confirmPassword"
-										name="confirmPassword"
-										type="password"
-										label="Confirm Password"
-										variant="standard"
-										sx={{ width: '100%' }}
-									/>
-								</Box>
-
 							</Box>
 
-							<Button sx={signupBtn} variant="contained">Sign up</Button>
+							<Button sx={loginBtn} variant="contained">Log in</Button>
 
 
 						</form>
+					</Box>
+
+				</Grid>
+
+				{/* Right Side */}
+				<Grid item xs={6} md={5} sx={leftBg}>
+
+					<Box sx={leftBee}>
+						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
+							Welcome Back!
+						</Typography>
+
+						<Typography variant="body" gutterBottom component="div">
+							New user in this website?
+							<br />
+							doesn't matter, Sign Up from the button below.
+						</Typography>
+
+						<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/signup">
+							<Button sx={signupBtn} variant="contained">Sign Up</Button>
+						</NavLink>
+
 					</Box>
 
 				</Grid>

@@ -14,6 +14,7 @@ import googleLogin from '../../images/login-systems/google.png';
 import fbLogin from '../../images/login-systems/facebook.png';
 import bee1 from '../../images/bee-1.gif';
 import bee2 from '../../images/bee-2.gif';
+import { NavLink } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -138,17 +139,20 @@ const Signup = () => {
 				<Grid item xs={6} md={5} sx={leftBg}>
 
 					<Box sx={leftBee}>
-						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h3" gutterBottom component="div">
+						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 							Welcome Back!
 						</Typography>
 
 						<Typography variant="body" gutterBottom component="div">
-							To keep connected with us
+							Already have an account?
 							<br />
-							please login with your personal information
+							please login from the button below.
 						</Typography>
 
+						<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/login">
+						
 						<Button sx={loginBtn} variant="contained">Log in</Button>
+						</NavLink>
 
 					</Box>
 
@@ -159,8 +163,8 @@ const Signup = () => {
 
 					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
 
-						<Typography sx={{ fontWeight: 800, color: '#EB6D2F' }} variant="h3" gutterBottom component="div">
-							Create Account
+						<Typography sx={{ fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
+							Create New Account
 						</Typography>
 
 						<Box>
