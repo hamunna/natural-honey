@@ -33,7 +33,7 @@ const Testimonials = () => {
 	}
 
 	return (
-		<Box sx={testimonialBg}>
+		<Box sx={testimonialBg} id="testimonials">
 
 			<Container>
 				<Box sx={testimonialBgBee}>

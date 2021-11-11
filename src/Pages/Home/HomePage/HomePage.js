@@ -8,7 +8,6 @@ import Testimonials from '../Testimonials/Testimonials';
 const HomePage = () => {
 	return (
 		<div>
-			<Navigation />
 
 			<HeroBanner />
 
