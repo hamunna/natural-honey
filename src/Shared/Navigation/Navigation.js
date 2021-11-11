@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Container } from '@mui/material';
@@ -19,14 +18,14 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 import HomeIcon from '@mui/icons-material/Home';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LoginIcon from '@mui/icons-material/Login';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import useAuth from '../../hooks/useAuth';
+import useFirebase from '../../hooks/useFirebase';
 
 //==================================================================================
 const drawerWidth = 240;
@@ -42,6 +41,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 //=================================================================================================
 
 const Navigation = () => {
+
+	const { user, logOut } = useAuth();
 
 	//======================================================
 	const theme = useTheme();
@@ -126,6 +127,13 @@ const Navigation = () => {
 					<IconButton onClick={handleDrawerClose}>
 						{theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 					</IconButton>
+
+					
+				{user?.email &&
+					<p>{user?.displayName}</p>
+					// <img style={{ width: '40px', borderRadius: '50%' }} src={user.image} alt="" />
+				}
+
 				</DrawerHeader>
 
 				<Divider />
@@ -173,28 +181,43 @@ const Navigation = () => {
 
 				<Divider />
 
-				<List>
+				{
+					!user?.email ?
+						<List>
 
-					<NavLink style={navLinkStyle} to="/login">
-						<ListItem button>
-							<ListItemIcon>
-								<LoginIcon />
-							</ListItemIcon>
+							<NavLink style={navLinkStyle} to="/login">
+								<ListItem button>
+									<ListItemIcon>
+										<LoginIcon />
+									</ListItemIcon>
 
-							<ListItemText>Login</ListItemText>
-						</ListItem>
-					</NavLink>
+									<ListItemText>Login</ListItemText>
+								</ListItem>
+							</NavLink>
 
-					<NavLink style={navLinkStyle} to="/signup">
-						<ListItem button>
-							<ListItemIcon>
-								<AssignmentIcon />
-							</ListItemIcon>
-							<ListItemText>Register</ListItemText>
-						</ListItem>
-					</NavLink>
+							<NavLink style={navLinkStyle} to="/signup">
+								<ListItem button>
+									<ListItemIcon>
+										<AssignmentIcon />
+									</ListItemIcon>
+									<ListItemText>Register</ListItemText>
+								</ListItem>
+							</NavLink>
+						</List>
+						:
+						<List>
+							<NavLink style={navLinkStyle} to="/login">
+								<ListItem button>
+									<ListItemIcon>
+										<LoginIcon />
+									</ListItemIcon>
 
-				</List>
+									<ListItemText onClick={logOut}>LogOut</ListItemText>
+								</ListItem>
+							</NavLink>
+
+						</List>
+				}
 
 			</Drawer>
 			//================================================================

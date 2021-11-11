@@ -12,55 +12,58 @@ import Footer from './Shared/Footer/Footer';
 import NotFound from './Pages/NotFound/NotFound';
 import Blogs from './Pages/BlogPage/Blogs/Blogs';
 import Shop from './Pages/Shop/Shop';
+import AuthProvider from './context/AuthProvider';
 
 
 
 function App() {
   return (
 
-    <Router>
-      <Navigation />
-      <Switch>
+    <AuthProvider>
+      <Router>
+        <Navigation />
+        <Switch>
 
-        {/* Default Home Page */}
-        <Route exact path="/">
-          <HomePage />
-        </Route>
+          {/* Default Home Page */}
+          <Route exact path="/">
+            <HomePage />
+          </Route>
 
-        {/* Home Page */}
-        <Route path="/home">
-          <HomePage />
-        </Route>
+          {/* Home Page */}
+          <Route path="/home">
+            <HomePage />
+          </Route>
 
-        {/* Sign Up Page */}
-        <Route path="/signup">
-          <Signup />
-        </Route>
+          {/* Sign Up Page */}
+          <Route path="/signup">
+            <Signup />
+          </Route>
 
-        {/* Login Page */}
-        <Route path="/login">
-          <Login />
-        </Route>
+          {/* Login Page */}
+          <Route path="/login">
+            <Login />
+          </Route>
 
-        {/* Shop Page */}
-       <Route path="/shop">
-         <Shop />
-       </Route>
+          {/* Shop Page */}
+          <Route path="/shop">
+            <Shop />
+          </Route>
 
-        {/* Blog Page */}
-        <Route path="/blog">
-          <Blogs />
-        </Route>
+          {/* Blog Page */}
+          <Route path="/blog">
+            <Blogs />
+          </Route>
 
-        {/* 404 */}
-        <Route path="*">
-          <NotFound />
-        </Route>
+          {/* 404 */}
+          <Route path="*">
+            <NotFound />
+          </Route>
 
 
-      </Switch>
-      <Footer />
-    </Router>
+        </Switch>
+        <Footer />
+      </Router>
+    </AuthProvider>
 
   );
 }

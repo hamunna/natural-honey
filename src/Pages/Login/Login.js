@@ -1,24 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
-import { SocialIcon } from 'react-social-icons';
 
 import googleLogin from '../../images/login-systems/google.png';
 import fbLogin from '../../images/login-systems/facebook.png';
 import bee1 from '../../images/bee-1.gif';
 import bee2 from '../../images/bee-2.gif';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
 
 
 const Login = () => {
 
+	const [loginData, setLoginData] = useState([]);
+	const { user, loginUser, isLoading, signInWithGoogle, error } = useAuth();
+	// const { user, loginUser, isLoading, signInWithGoogle, error } = useFirebase();
+
+	const location = useLocation();
+	const history = useHistory();
+
+	const handleOnBlur = e => {
+		const field = e.target.name;
+		const value = e.target.value;
+
+		const newLoginData = { ...loginData };
+		newLoginData[field] = value;
+		setLoginData(newLoginData);
+
+	}
+
+	const handleLoginSubmit = e => {
+		e.preventDefault();
+		// setSuccessMsg('Logged In Successfully!')
+
+		alert('Login Successfully!');
+		loginUser(loginData.email, loginData.password, location, history);
+
+		e.target.reset();
+	}
+
+	// Google SignIn
+	const handleGoogleSignIn = () => {
+		signInWithGoogle(location, history);
+	}
 
 	// Signup Button Style
 	const loginBtn = {
@@ -64,9 +91,9 @@ const Login = () => {
 	const leftBee = {
 		mt: 25,
 		textAlign: 'center',
-		height: '100px',
+		height: '150px',
 		backgroundImage: `url(${bee2})`,
-		backgroundSize: '80px',
+		backgroundSize: '120px',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'right center'
 
@@ -95,7 +122,7 @@ const Login = () => {
 						</Typography>
 
 						<Box>
-							<Button>
+							<Button onClick={handleGoogleSignIn}>
 								<img style={{ height: '30px' }} src={googleLogin} alt="" />
 							</Button>
 
@@ -109,7 +136,7 @@ const Login = () => {
 							or use your email to login
 						</Typography>
 
-						<form sx={{ textAlign: 'center' }}>
+						<form onSubmit={handleLoginSubmit} sx={{ textAlign: 'center' }}>
 
 							<Box sx={{ '& > :not(style)': { m: 1, px: 8 } }}>
 
@@ -123,9 +150,9 @@ const Login = () => {
 										label="Your Email"
 										variant="standard"
 										sx={{ width: '100%' }}
+										onBlue={handleOnBlur}
 									/>
 								</Box>
-
 
 								{/* Password Field */}
 								<Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -137,13 +164,13 @@ const Login = () => {
 										label="Password"
 										variant="standard"
 										sx={{ width: '100%' }}
+										onBlue={handleOnBlur}
 									/>
 								</Box>
 
 							</Box>
 
-							<Button sx={loginBtn} variant="contained">Log in</Button>
-
+							<Button type="submit" sx={loginBtn} variant="contained">Log in</Button>
 
 						</form>
 					</Box>

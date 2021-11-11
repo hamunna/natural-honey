@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
-import { SocialIcon } from 'react-social-icons';
 
 import googleLogin from '../../images/login-systems/google.png';
 import fbLogin from '../../images/login-systems/facebook.png';
 import bee1 from '../../images/bee-1.gif';
 import bee2 from '../../images/bee-2.gif';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import useFirebase from '../../hooks/useFirebase';
 
 
 const Signup = () => {
+
+	const [loginData, setLoginData] = useState([]);
+	const { registerUser, isLoading, signInWithGoogle, error } = useAuth();
+
+	const location = useLocation();
+	const history = useHistory();
+
+	const handleOnBlur = e => {
+		const field = e.target.name;
+		const value = e.target.value;
+
+		const newLoginData = { ...loginData };
+		newLoginData[field] = value;
+
+		console.log(newLoginData);
+		setLoginData(newLoginData);
+
+	}
+
+	const handleSignUpSubmit = e => {
+		e.preventDefault();
+		// if (loginData.password !== loginData.password2) {
+		// 	// setErrorMsg('Password doesn\'t match!');
+		// 	return
+		// }
+		alert('Sign Up Successfully!');
+		registerUser(loginData.email, loginData.password, loginData.name, history, location);
+		e.target.reset();
+	}
+
+	// Handle Google Sign In
+	const handleGoogleSignIn = () => {
+		signInWithGoogle(location, history);
+	}
 
 	//=============================================================
 	// Password Show-Hide Functions
@@ -114,9 +145,9 @@ const Signup = () => {
 	const leftBee = {
 		mt: 25,
 		textAlign: 'center',
-		height: '100px',
+		height: '150px',
 		backgroundImage: `url(${bee1})`,
-		backgroundSize: '80px',
+		backgroundSize: '120px',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'left center'
 		
@@ -168,7 +199,7 @@ const Signup = () => {
 						</Typography>
 
 						<Box>
-							<Button>
+							<Button onClick={handleGoogleSignIn}>
 								<img style={{ height: '30px' }} src={googleLogin} alt="" />
 							</Button>
 
@@ -182,7 +213,7 @@ const Signup = () => {
 							or use your email for registration
 						</Typography>
 
-						<form sx={{ textAlign: 'center' }}>
+						<form onSubmit={handleSignUpSubmit} sx={{ textAlign: 'center' }}>
 
 							<Box sx={{ '& > :not(style)': { m: 1, px: 8 } }}>
 
@@ -196,6 +227,7 @@ const Signup = () => {
 										label="Full Name"
 										variant="standard"
 										sx={{ width: '100%' }}
+										onBlur={handleOnBlur}
 									/>
 								</Box>
 
@@ -210,6 +242,7 @@ const Signup = () => {
 										label="Your Email"
 										variant="standard"
 										sx={{ width: '100%' }}
+										onBlur={handleOnBlur}
 									/>
 								</Box>
 
@@ -224,6 +257,7 @@ const Signup = () => {
 										label="Password"
 										variant="standard"
 										sx={{ width: '100%' }}
+										onBlur={handleOnBlur}
 									/>
 								</Box>
 
@@ -238,12 +272,13 @@ const Signup = () => {
 										label="Confirm Password"
 										variant="standard"
 										sx={{ width: '100%' }}
+										onBlur={handleOnBlur}
 									/>
 								</Box>
 
 							</Box>
 
-							<Button sx={signupBtn} variant="contained">Sign up</Button>
+							<Button type="submit" sx={signupBtn} variant="contained">Sign up</Button>
 
 
 						</form>
