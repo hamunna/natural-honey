@@ -23,7 +23,7 @@ export default class Testimonial extends Component {
       dots: true,
       infinite: true,
       speed: 500,
-      reviewsToShow: 2,
+      reviewsToShow: 1,
       reviewsToScroll: 1
     };
     return (
@@ -32,39 +32,37 @@ export default class Testimonial extends Component {
           {this.state.reviews.map(function (review) {
             return (
               <Container>
-                <Grid sx={{ mx: 'auto' }} item xs={2} sm={4} md={4}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '550px' }}>
 
-                  <Card sx={{ width: 600, p: 5 }}>
-                    <CardContent>
+                  <div style={{ width: 600, padding: '20px', backgroundColor: 'white' }}>
 
-                      <Box sx={{ display: 'flex', gap: 3, alignItems: 'center' }}>
+                      <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
 
-                        <Box style={{ width: '60px' }}>
+                        <div style={{ width: '60px' }}>
                           <img style={{ width: '100%', borderRadius: '50%', border: '3px solid #EB6D2F' }} src={review.image} alt="" />
-                        </Box>
+                        </div>
 
-                        <Box>
+                        <div>
                           <Typography>Rating: {review.rating}</Typography>
 
-                          <Typography variant="h6" gutterBottom component="div">
+                          <Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733'}} variant="h5" component="div">
                             {review.name}
                           </Typography>
 
-                          <Typography variant="subtitle1" gutterBottom component="div">
+                          <Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 600, color: '#EB6D2F'}} variant="h6" component="div">
                             {review.profession}
                           </Typography>
-                        </Box>
+                        </div>
 
-                      </Box>
+                      </div>
                       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         {review.comment}
                       </Typography>
 
 
-                    </CardContent>
-                  </Card>
+                  </div>
 
-                </Grid>
+                </div>
               </Container>
             );
           })}

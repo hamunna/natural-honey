@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
+import { Box as div } from '@mui/system';
 import Testimonial from '../Testimonial/Testimonial';
 import bg from '../../../images/testimonials-bg.jpg';
 import bgBee from '../../../images/bee-1.gif';
@@ -28,20 +28,18 @@ const Testimonials = () => {
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: '160px',
 		height: '500px',
-		my: 10,
-		pt: 10
 	}
 
 	return (
-		<Box sx={testimonialBg} id="testimonials">
+		<div style={testimonialBg} id="testimonials">
 
 			<Container>
-				<Box sx={testimonialBgBee}>
+				<div style={testimonialBgBee}>
 					<Testimonial reviews={reviews} />
-				</Box>
+				</div>
 			</Container>
 
-		</Box>
+		</div>
 	);
 };
 
