@@ -12,7 +12,7 @@
 		"name": "Toney Stark",
 		"profession": "Mechanic",
 		"comment": "Ratargul Swamp Forest is a freshwater swamp forest located in Gowain River, Fatehpur Union, Gowainghat, Sylhet, Bangladesh. It is the only swamp forest located in Bangladesh and one of the few freshwater swamp forests in the world.",
-		"ratings": "5",
+		"rating": "5",
 		"image": "https://i.ibb.co/yBn1Rhn/2prmium.jpg"
 	},
 	{
@@ -20,7 +20,7 @@
 		"name": "Arya Stark",
 		"profession": "Swords Fighter",
 		"comment": "Khadim Nagar National Park is a major national park and nature reserve in Bangladesh. The park is located at Sylhet Sadar Upazila, Sylhet District in the North-East region of the country. It is located mainly on the Hills and is surrounded by Kalagool, Bhurjan and Goolni tea estates.",
-		"ratings": "4",
+		"rating": "4",
 		"image": "https://i.ibb.co/93PKW3t/3organic.jpg"
 	},
 	{
@@ -28,7 +28,7 @@
 		"name": "John Snow",
 		"profession": "Knights watch",
 		"comment": "Madhabkunda waterfall is one of the highest waterfalls in Bangladesh. It is situated in Barlekha Upazila in Moulvibazar District. The waterfall is a popular tourist spot in Bangladesh. Big boulders, surrounding forest, and the adjoining streams attracts many tourists for picnic parties and day trips.",
-		"ratings": "5",
+		"rating": "5",
 		"image": "https://i.ibb.co/YyKsYJW/4eucalyptus.jpg"
 	}
 ]

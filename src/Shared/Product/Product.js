@@ -43,7 +43,7 @@ const Product = ({ product }) => {
 					</Typography>
 
 					<Typography variant="body2" color="text.secondary" sx={{ fontFamily: "'Signika', sans-serif", my: 2 }}>
-						{description.slice(0, 40)}...
+						{description.split(' ').slice(0, 6).toString().replace(/,/g,' ')}...
 					</Typography>
 
 					<Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', my: -2 }}>

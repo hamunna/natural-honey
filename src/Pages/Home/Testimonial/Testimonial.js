@@ -1,42 +1,6 @@
-// import React, { Component } from 'react';
-// import Slider from 'react-slick';
-
-
-// class Testimonial extends Component {
-// 	render() {
-// 		const { image, name, comment } = this.props.review;
-
-// 		const settings = {
-// 			dots: true,
-// 			infinite: true,
-// 			speed: 500,
-// 			reviewsToShow: 1,
-// 			reviewsToScroll: 1
-// 		}
-
-// 		return (
-// 			<Slider {...settings}>
-// 				<div>
-// 					<img src={image} alt="" />
-// 				</div>
-
-// 			</Slider>
-// 		);
-// 	}
-// };
-
-// export default Testimonial;
-
-
-
-
-
-
-
-
+import React, { Component } from "react";
 import { Card, CardContent, Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { Component } from "react";
 import Slider from "react-slick";
 
 export default class Testimonial extends Component {
@@ -45,15 +9,15 @@ export default class Testimonial extends Component {
     this.state = {
       reviews: this.props.reviews
     };
-    this.click = this.click.bind(this);
+    // this.click = this.click.bind(this);
   }
-  click() {
-    const { reviews } = this.state;
-    this.setState({
-      reviews:
-        reviews.length === 6 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1, 2, 3, 4, 5, 6]
-    });
-  }
+  // click() {
+  //   const { reviews } = this.state;
+  //   this.setState({
+  //     reviews:
+  //       reviews.length === 6 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1, 2, 3, 4, 5, 6]
+  //   });
+  // }
   render() {
     const settings = {
       dots: true,
@@ -70,11 +34,11 @@ export default class Testimonial extends Component {
               <Container>
                 <Grid sx={{ mx: 'auto' }} item xs={2} sm={4} md={4}>
 
-                  <Card sx={{width: 600, p: 5}}>
+                  <Card sx={{ width: 600, p: 5 }}>
                     <CardContent>
 
                       <Box sx={{ display: 'flex', gap: 3, alignItems: 'center' }}>
-                        
+
                         <Box style={{ width: '60px' }}>
                           <img style={{ width: '100%', borderRadius: '50%', border: '3px solid #EB6D2F' }} src={review.image} alt="" />
                         </Box>
