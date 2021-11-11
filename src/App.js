@@ -9,6 +9,9 @@ import Signup from './Pages/Signup/Signup';
 import Login from './Pages/Login/Login';
 import Navigation from './Shared/Navigation/Navigation';
 import Footer from './Shared/Footer/Footer';
+import NotFound from './Pages/NotFound/NotFound';
+import Blogs from './Pages/BlogPage/Blogs/Blogs';
+import Shop from './Pages/Shop/Shop';
 
 
 
@@ -25,23 +28,34 @@ function App() {
         </Route>
 
         {/* Home Page */}
-        <Route exact path="/home">
+        <Route path="/home">
           <HomePage />
         </Route>
 
         {/* Sign Up Page */}
-        <Route exact path="/signUp">
+        <Route path="/signup">
           <Signup />
         </Route>
 
         {/* Login Page */}
-        <Route exact path="/login">
+        <Route path="/login">
           <Login />
         </Route>
 
+        {/* Shop Page */}
+       <Route path="/shop">
+         <Shop />
+       </Route>
 
+        {/* Blog Page */}
+        <Route path="/blog">
+          <Blogs />
+        </Route>
 
-
+        {/* 404 */}
+        <Route path="*">
+          <NotFound />
+        </Route>
 
 
       </Switch>

@@ -12,8 +12,6 @@ import { HashLink } from 'react-router-hash-link';
 
 import { styled, useTheme } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -24,44 +22,14 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
+import HomeIcon from '@mui/icons-material/Home';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import LoginIcon from '@mui/icons-material/Login';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+
 //==================================================================================
 const drawerWidth = 240;
-
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-	({ theme, open }) => ({
-		flexGrow: 1,
-		padding: theme.spacing(3),
-		transition: theme.transitions.create('margin', {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.leavingScreen,
-		}),
-		marginRight: -drawerWidth,
-		...(open && {
-			transition: theme.transitions.create('margin', {
-				easing: theme.transitions.easing.easeOut,
-				duration: theme.transitions.duration.enteringScreen,
-			}),
-			marginRight: 0,
-		}),
-	}),
-);
-
-// const AppBar = styled(MuiAppBar, {
-// 	shouldForwardProp: (prop) => prop !== 'open',
-// })(({ theme, open }) => ({
-// 	transition: theme.transitions.create(['margin', 'width'], {
-// 		easing: theme.transitions.easing.sharp,
-// 		duration: theme.transitions.duration.leavingScreen,
-// 	}),
-// 	...(open && {
-// 		width: `calc(100% - ${drawerWidth}px)`,
-// 		transition: theme.transitions.create(['margin', 'width'], {
-// 			easing: theme.transitions.easing.easeOut,
-// 			duration: theme.transitions.duration.enteringScreen,
-// 		}),
-// 		marginRight: drawerWidth,
-// 	}),
-// }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
 	display: 'flex',
@@ -88,13 +56,21 @@ const Navigation = () => {
 	};
 	//=========================================================
 
-	const navLinkStyl = {
-		color: 'white',
+	// const navHashLinkStyle = {
+	// 	color: 'white',
+	// 	fontWeight: 700,
+	// 	fontFamily: "'Signika', sans-serif",
+	// 	margin: 'auto 10px',
+	// 	textDecoration: 'none'
+	// }
+
+	const navLinkStyle = {
+		color: 'gray',
 		fontWeight: 700,
 		fontFamily: "'Signika', sans-serif",
-		margin: 'auto 10px',
 		textDecoration: 'none'
 	}
+
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar sx={{ backgroundColor: '#5A3733' }} position="fixed">
@@ -108,16 +84,14 @@ const Navigation = () => {
 								</Typography>
 							</NavLink>
 						</Box>
-
-						<Box>
-							<NavLink style={navLinkStyl} as={HashLink} to="/home#banner">Home</NavLink>
-							<NavLink style={navLinkStyl} as={HashLink} to="/home#products">Products</NavLink>
-							<NavLink style={navLinkStyl} as={HashLink} to="/home#about">About</NavLink>
-							<NavLink style={navLinkStyl} as={HashLink} to="/home#testimonials">Testimonials</NavLink>
-						</Box>
+						{/* <Box>
+							<NavLink style={navHashLinkStyle} as={HashLink} to="/home#products">Products</NavLink>
+							<NavLink style={navHashLinkStyle} as={HashLink} to="/home#about">About</NavLink>
+							<NavLink style={navHashLinkStyle} as={HashLink} to="/home#testimonials">Testimonials</NavLink>
+						</Box> */}
 
 						<Box sx={{ ml: 'auto' }}>
-							<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/signup"><Button color="inherit">Signup</Button></NavLink>
+
 
 							<IconButton
 								size="large"
@@ -153,31 +127,78 @@ const Navigation = () => {
 						{theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 					</IconButton>
 				</DrawerHeader>
+
 				<Divider />
+
 				<List>
-					{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-						<ListItem button key={text}>
+					<NavLink style={navLinkStyle} to="/home">
+						<ListItem button>
+
 							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+								<HomeIcon />
 							</ListItemIcon>
-							<ListItemText primary={text} />
+
+							<ListItemText>Home</ListItemText>
 						</ListItem>
-					))}
+					</NavLink>
 				</List>
+
+				<List>
+					<NavLink style={navLinkStyle} to="/shop">
+
+						<ListItem button>
+
+							<ListItemIcon>
+								<StorefrontIcon />
+							</ListItemIcon>
+
+							<ListItemText>Shop</ListItemText>
+						</ListItem>
+					</NavLink>
+				</List>
+
+				<List>
+					<NavLink style={navLinkStyle} to="/blog">
+						<ListItem button>
+
+
+							<ListItemIcon>
+								<MenuBookIcon />
+							</ListItemIcon>
+
+							<ListItemText>Blog</ListItemText>
+						</ListItem>
+					</NavLink>
+				</List>
+
 				<Divider />
+
 				<List>
-					{['All mail', 'Trash', 'Spam'].map((text, index) => (
-						<ListItem button key={text}>
+
+					<NavLink style={navLinkStyle} to="/login">
+						<ListItem button>
 							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+								<LoginIcon />
 							</ListItemIcon>
-							<ListItemText primary={text} />
+
+							<ListItemText>Login</ListItemText>
 						</ListItem>
-					))}
+					</NavLink>
+
+					<NavLink style={navLinkStyle} to="/signup">
+						<ListItem button>
+							<ListItemIcon>
+								<AssignmentIcon />
+							</ListItemIcon>
+							<ListItemText>Register</ListItemText>
+						</ListItem>
+					</NavLink>
+
 				</List>
+
 			</Drawer>
 			//================================================================
-		</Box>
+		</Box >
 	);
 };
 
