@@ -13,6 +13,7 @@ import NotFound from './Pages/NotFound/NotFound';
 import Blogs from './Pages/BlogPage/Blogs/Blogs';
 import Shop from './Pages/Shop/Shop';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './Private/PrivateRoute';
 
 
 
@@ -45,9 +46,9 @@ function App() {
           </Route>
 
           {/* Shop Page */}
-          <Route path="/shop">
+          <PrivateRoute path="/shop">
             <Shop />
-          </Route>
+          </PrivateRoute>
 
           {/* Blog Page */}
           <Route path="/blog">

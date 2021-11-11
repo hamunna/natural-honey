@@ -150,7 +150,7 @@ const Login = () => {
 										label="Your Email"
 										variant="standard"
 										sx={{ width: '100%' }}
-										onBlue={handleOnBlur}
+										onBlur={handleOnBlur}
 									/>
 								</Box>
 
@@ -164,7 +164,7 @@ const Login = () => {
 										label="Password"
 										variant="standard"
 										sx={{ width: '100%' }}
-										onBlue={handleOnBlur}
+										onBlur={handleOnBlur}
 									/>
 								</Box>
 
