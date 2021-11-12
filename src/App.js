@@ -93,9 +93,9 @@ function App() {
           </PrivateRoute>
 
           {/* Review */}
-          <PrivateRoute path="/review">
+          <Route path="/review">
             <Review />
-          </PrivateRoute>
+          </Route>
 
           {/* Review */}
           <PrivateRoute path="/dashboard">

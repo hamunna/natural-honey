@@ -12,7 +12,7 @@ export default class Testimonial extends Component {
     // this.click = this.click.bind(this);
   }
   // click() {
-  //   const { reviews } = this.state;
+    // const { reviews } = this.state;
   //   this.setState({
   //     reviews:
   //       reviews.length === 6 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1, 2, 3, 4, 5, 6]
@@ -34,7 +34,7 @@ export default class Testimonial extends Component {
               <Container>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '550px' }}>
 
-                  <div style={{ width: 600, padding: '20px', backgroundColor: 'white' }}>
+                  <div style={{ width: 600, padding: '30px', backgroundColor: 'white', borderRadius: '20px' }}>
 
                       <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
 

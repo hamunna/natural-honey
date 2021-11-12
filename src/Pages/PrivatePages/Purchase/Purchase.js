@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-// import './PlaceOrder.css';
 
 const Purchase = () => {
 	
@@ -174,6 +173,7 @@ const Purchase = () => {
 									name="userEmail"
 									label="Email"
 									value={user?.email}
+									readOnly
 									onBlur={handleOnBlur}
 								/>
 
@@ -184,6 +184,7 @@ const Purchase = () => {
 									name="dateTime"
 									label="Date &amp; Time"
 									value={new Date()}
+									readOnly
 									onBlur={handleOnBlur}
 								/>
 
