@@ -1,4 +1,4 @@
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardMedia, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useRef, useState } from 'react';
 // import { Card } from 'react-bootstrap';
@@ -8,7 +8,8 @@ import useAuth from '../../../hooks/useAuth';
 
 const Purchase = () => {
 
-	
+	// const { image, name, description, basicPrice, discountPrice, ratings, rated } = product;
+
 	const [purchaseData, setPurchaseData] = useState([]);
 	const { user } = useAuth();
 	const [order, setOrder] = useState([]);
@@ -72,36 +73,86 @@ const Purchase = () => {
 		setSingleHoney(findOrder);
 	}, [order]);
 
+	//==========================
+	// Styles
+	//==========================
 	const inputStyle = {
-		my: 1
+		mb: 3
+	}
+
+	// Place Order Style
+	const placeOrderBtn = {
+		backgroundColor: '#5A3733',
+		px: 25,
+		py: 1,
+		mx: 'auto',
+		my: 1,
+		fontWeight: 700,
+		borderRadius: '50px',
+		fontFamily: "'Signika', sans-serif",
+		'&:hover': {
+			backgroundColor: '#EB6D2F',
+			boxShadow: 'none',
+		}
 	}
 
 	return (
-		<>
-			<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif" }}>
+		<Container sx={{ textAlign: 'center', my: 5, mx: 'auto', textAlign: 'center', boxShadow: '0 0 12px 0 #5A3733',borderRadius: '20px', py: 2 }}>
 
-				{/* Left Side */}
-				<Grid item xs={6} md={5}>
+			<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
+				Complete Purchase
+			</Typography>
 
-					<Box>
-						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
-							Welcome Back!
-						</Typography>
+			<form sx={{ textAlign: 'center' }}>
+				<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif"}}>
 
-					</Box>
 
-				</Grid>
+					{/* Left Side */}
+					<Grid item xs={6} md={6} >
 
-				{/* Right Side */}
-				<Grid item xs={6} md={7}>
+						<Box sx={{ ml: 'auto', width: '60%' }}>
 
-					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
+							<Card variant="outlined" sx={{ width: '100%' }}>
+								<CardMedia
+									sx={{ height: '300px' }}
+									component="img"
+									image={singleHoney?.image}
+									alt="green iguana"
+								/>
 
-						<Typography sx={{ fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
-							Product Purchase
-						</Typography>
+								<CardContent sx={{ textAlign: 'center' }}>
 
-						<form sx={{ textAlign: 'center' }}>
+									<Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontWeight: 700 }}>
+										{singleHoney?.name}
+									</Typography>
+
+									{/* <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "'Signika', sans-serif", my: 2 }}>
+									{singleHoney?.description}
+								</Typography> */}
+
+									<Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', my: -2 }}>
+										<Typography variant="h6" sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 700, color: 'silver', textDecoration: 'line-through' }}>
+											&#36;{singleHoney?.basicPrice}
+										</Typography>
+
+										<Typography variant="h6" sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 700, color: '#EB6D2F' }}>
+											&#36;{singleHoney?.discountPrice}
+										</Typography>
+									</Box>
+
+								</CardContent>
+
+							</Card>
+							{/* </Grid> */}
+						</Box>
+
+					</Grid>
+
+					{/* Right Side */}
+					<Grid item xs={6} md={6}>
+
+						<Box sx={{ mr: 'auto', width: '100%' }}>
+
 
 							<Box sx={{ width: 500, maxWidth: '100%' }}>
 
@@ -110,7 +161,6 @@ const Purchase = () => {
 									sx={inputStyle}
 									id="userName"
 									name="userName"
-									type="text"
 									label="Name"
 									value={user?.displayName}
 									readOnly
@@ -122,7 +172,6 @@ const Purchase = () => {
 									sx={inputStyle}
 									id="userEmail"
 									name="userEmail"
-									type="email"
 									label="Email"
 									value={user?.email}
 									onBlur={handleOnBlur}
@@ -160,15 +209,13 @@ const Purchase = () => {
 
 							</Box>
 
-							<Button type="submit" variant="contained">Sign up</Button>
+						</Box>
 
-
-						</form>
-					</Box>
-
+					</Grid>
 				</Grid>
-			</Grid>
-		</>
+				<Button sx={placeOrderBtn} type="submit" variant="contained">Place Order</Button>
+			</form>
+		</Container>
 	);
 };
 

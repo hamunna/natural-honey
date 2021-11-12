@@ -171,7 +171,7 @@ const Signup = () => {
 				<Grid item xs={6} md={5} sx={leftBg}>
 
 					<Box sx={leftBee}>
-						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 							Welcome Back!
 						</Typography>
 
@@ -195,7 +195,7 @@ const Signup = () => {
 
 					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
 
-						<Typography sx={{ fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
 							Create New Account
 						</Typography>
 

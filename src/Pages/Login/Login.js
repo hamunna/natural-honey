@@ -118,7 +118,7 @@ const Login = () => {
 
 					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
 
-						<Typography sx={{ fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
 							Login to Your Account
 						</Typography>
 
@@ -182,7 +182,7 @@ const Login = () => {
 				<Grid item xs={6} md={5} sx={rightSideBg}>
 
 					<Box sx={leftSideBee}>
-						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 							Welcome Back!
 						</Typography>
 

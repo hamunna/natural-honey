@@ -103,9 +103,9 @@ function App() {
           </PrivateRoute>
 
           {/* Dynamic Data Load to Purchase Page */}
-          <PrivateRoute path="/purchase/:productId">
+          <Route path="/purchase/:productId">
             <Purchase />
-          </PrivateRoute>
+          </Route>
 
 
 
