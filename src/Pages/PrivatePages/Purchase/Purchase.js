@@ -1,28 +1,31 @@
 import { Button, Card, CardContent, CardMedia, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import { useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 // import './PlaceOrder.css';
 
 const Purchase = () => {
-
-	// const { image, name, description, basicPrice, discountPrice, ratings, rated } = product;
-
-	const [purchaseData, setPurchaseData] = useState([]);
+	
 	const { user } = useAuth();
+
+	const initialInfo = {
+		userName: user?.displayName,
+		userEmail: user?.email,
+		dateTime: new Date(),
+		city: '',
+		street: '',
+	}
+
+	const [purchaseData, setPurchaseData] = useState(initialInfo);
 	const [order, setOrder] = useState([]);
 	const [singleHoney, setSingleHoney] = useState({});
 	const { productId } = useParams();
 
-	// const userNameRef = useRef();
-	// const userEmailRef = useRef();
-	// const address1Ref = useRef();
-	// const address2Ref = useRef();
-	// const cityRef = useRef();
-	// const districtRef = useRef();
-	// const zipRef = useRef();
+	const location = useLocation();
+	const history = useHistory();
 
 	const handleOnBlur = e => {
 		const field = e.target.name;
@@ -35,29 +38,30 @@ const Purchase = () => {
 		setPurchaseData(newOrderData);
 	}
 
-	// const handlePurchaseProduct = e => {
+	const handlePurchaseProduct = e => {
 
-	// 	const newOrder = { singleTour, serviceName, serviceEmail, address1, address2, city, zip, tourId: productId, status: { pending: "Pending", approved: " " } }
+		const newOrder = { ...purchaseData, productName: singleHoney?.name, price: singleHoney?.discountPrice, status: { pending: "Pending", approved: "Approved" } }
 
-
-	// 	fetch('http://localhost:5000/allOrders', {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			'content-type': 'application/json'
-	// 		},
-	// 		body: JSON.stringify(newOrder)
-	// 	})
-	// 		.then(res => res.json())
-	// 		.then(data => {
-	// 			if (data.insertedId) {
-	// 				alert('Order Placed Successfully!');
-	// 				e.target.reset();
-	// 			}
-	// 			const addedService = data;
-	// 			setSingleTour(addedService);
-	// 		})
-	// 	e.preventDefault();
-	// }
+		fetch('http://localhost:5000/allOrders', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(newOrder)
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (data.insertedId) {
+					alert('Order Placed Successfully!');
+					e.target.reset();
+					const destination = location?.state?.from || '/';
+					history.replace(destination);
+				}
+				const addedService = data;
+				setSingleHoney(addedService);
+			})
+		e.preventDefault();
+	}
 
 	useEffect(() => {
 		const url = `http://localhost:5000/products`;
@@ -97,14 +101,14 @@ const Purchase = () => {
 	}
 
 	return (
-		<Container sx={{ textAlign: 'center', my: 5, mx: 'auto', textAlign: 'center', boxShadow: '0 0 12px 0 #5A3733',borderRadius: '20px', py: 2 }}>
+		<Container sx={{ textAlign: 'center', my: 5, mx: 'auto', textAlign: 'center', boxShadow: '0 0 600px 0 #5A3733', borderRadius: '20px', py: 2 }}>
 
 			<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 				Complete Purchase
 			</Typography>
 
-			<form sx={{ textAlign: 'center' }}>
-				<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif"}}>
+			<form onSubmit={handlePurchaseProduct}>
+				<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif" }}>
 
 
 					{/* Left Side */}
@@ -125,10 +129,6 @@ const Purchase = () => {
 									<Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontWeight: 700 }}>
 										{singleHoney?.name}
 									</Typography>
-
-									{/* <Typography variant="body2" color="text.secondary" sx={{ fontFamily: "'Signika', sans-serif", my: 2 }}>
-									{singleHoney?.description}
-								</Typography> */}
 
 									<Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', my: -2 }}>
 										<Typography variant="h6" sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 700, color: 'silver', textDecoration: 'line-through' }}>
@@ -194,6 +194,7 @@ const Purchase = () => {
 									name="city"
 									type="text"
 									label="City"
+									required
 									onBlur={handleOnBlur}
 								/>
 
@@ -204,6 +205,7 @@ const Purchase = () => {
 									name="street"
 									type="text"
 									label="Street"
+									required
 									onBlur={handleOnBlur}
 								/>
 
