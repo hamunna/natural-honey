@@ -35,10 +35,11 @@ const Review = () => {
 	const initialReviewInfo = {
 		userName: user?.displayName,
 		userEmail: user?.email,
+		image: user?.image,
 		dateTime: new Date(),
-		reviewText: '',
+		profession: '',
+		comment: '',
 		rating: 0
-
 	}
 
 	const [reviewData, setReviewData] = useState(initialReviewInfo);
@@ -48,7 +49,11 @@ const Review = () => {
 		const field = e.target.name;
 		const value = e.target.value;
 
-		const newOrderData = { ...reviewData };
+		const newOrderData = { userName: user?.displayName,
+			userEmail: user?.email,
+			image: user?.image,
+			dateTime: new Date(),
+		};
 		newOrderData[field] = value;
 
 		setReviewData(newOrderData);
@@ -83,11 +88,11 @@ const Review = () => {
 	// Styles
 	//==========================
 	const inputStyle = {
-		mb: 3
+		mb: 2
 	}
 
 	const inlineInputStyle = {
-		mb: 3,
+		mb: 2,
 		width: '100%'
 	}
 
@@ -121,37 +126,41 @@ const Review = () => {
 				{/* Right Side */}
 				<Grid item xs={6} sx={{ fontFamily: "'Signika', sans-serif", mx: 'auto', width: '100%' }}>
 
-					<Box sx={{}}>
+					<Box>
 						<Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
+
 							{/* User Name Field */}
 							<TextField
 								sx={inlineInputStyle}
+								fullWidth
 								id="userName"
 								name="userName"
-								label="Name"
+								// label="Name"
 								value={user?.displayName}
 								readOnly
 								onBlur={handleOnBlur}
 							/>
 
-							{/* User Email Field */}
+							{/* User Name Field */}
 							<TextField
 								sx={inlineInputStyle}
+								fullWidth
 								id="userEmail"
 								name="userEmail"
-								label="Email"
+								// label="Email"
 								value={user?.email}
 								readOnly
 								onBlur={handleOnBlur}
 							/>
+
 						</Box>
 
 						{/* Review Box */}
 						<TextField
 							sx={inputStyle}
 							fullWidth
-							id="reviewText"
-							name="reviewText"
+							id="comment"
+							name="comment"
 							label="Write Your Review"
 							multiline
 							required
@@ -159,29 +168,49 @@ const Review = () => {
 							onBlur={handleOnBlur}
 						/>
 
-						{/* Rating Box */}
+						<Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
 
-						<TextField
-							sx={inputStyle}
-							id="rating"
-							required
-							select
-							label="Select Rating Point"
-							// value={rating}
-							name="rating"
-							onBlur={handleOnBlur}
-							helperText="Please select your rating number"
-						>
-							{ratingNumbers.map((option) => (
-								<MenuItem
-									sx={{ display: 'flex', justifyContent: 'space-evenly' }}
-									key={option.value} value={option.value}
-								>
-									{option.label} / 5 <StarIcon sx={{ fontSize: 20, color: '#EB6D2F' }} />
-								</MenuItem>
-							))}
-						</TextField>
+							{/* Rating Box */}
+							<TextField
+								sx={inlineInputStyle}
+								id="rating"
+								required
+								select
+								label="Select Rating Point"
+								name="rating"
+								onBlur={handleOnBlur}
+							// helperText="Please select rating number"
+							>
+								{ratingNumbers.map((option) => (
+									<MenuItem
+										sx={{ display: 'flex', justifyContent: 'space-evenly' }}
+										key={option.value} value={option.value}
+									>
+										{option.label} / 5 <StarIcon sx={{ fontSize: 20, color: '#EB6D2F' }} />
+									</MenuItem>
+								))}
+							</TextField>
 
+							{/* Profession Field */}
+							<TextField
+								sx={inlineInputStyle}
+								id="profession"
+								name="profession"
+								label="Profession"
+								onBlur={handleOnBlur}
+								required
+							/>
+
+							{/* Image Field */}
+							<TextField
+								sx={inlineInputStyle}
+								type="url"
+								id="image"
+								name="image"
+								label="Image URL"
+								onBlur={handleOnBlur}
+							/>
+						</Box>
 					</Box>
 
 				</Grid>

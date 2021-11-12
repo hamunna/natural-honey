@@ -57,14 +57,6 @@ const Navigation = () => {
 	};
 	//=========================================================
 
-	// const navHashLinkStyle = {
-	// 	color: 'white',
-	// 	fontWeight: 700,
-	// 	fontFamily: "'Signika', sans-serif",
-	// 	margin: 'auto 10px',
-	// 	textDecoration: 'none'
-	// }
-
 	const navLinkStyle = {
 		color: 'gray',
 		fontWeight: 700,
@@ -79,17 +71,12 @@ const Navigation = () => {
 					<Toolbar sx={{}}>
 
 						<Box sx={{ mr: 'auto' }}>
-							<NavLink style={{ color: 'pink', textDecoration: 'none' }} to="/">
+							<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/">
 								<Typography variant="h5" component="div" sx={{ fontFamily: "'Raleway', sans-serif", fontWeight: 800 }}>
-									Natural-Honey
+									Natural Honey
 								</Typography>
 							</NavLink>
 						</Box>
-						{/* <Box>
-							<NavLink style={navHashLinkStyle} as={HashLink} to="/home#products">Products</NavLink>
-							<NavLink style={navHashLinkStyle} as={HashLink} to="/home#about">About</NavLink>
-							<NavLink style={navHashLinkStyle} as={HashLink} to="/home#testimonials">Testimonials</NavLink>
-						</Box> */}
 
 						<Box sx={{ ml: 'auto' }}>
 
@@ -128,11 +115,11 @@ const Navigation = () => {
 						{theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 					</IconButton>
 
-					
-				{user?.email &&
-					<p>{user?.displayName}</p>
-					// <img style={{ width: '40px', borderRadius: '50%' }} src={user.image} alt="" />
-				}
+
+					{user?.email &&
+						<p>{user?.displayName}</p>
+						// <img style={{ width: '40px', borderRadius: '50%' }} src={user.image} alt="" />
+					}
 
 				</DrawerHeader>
 

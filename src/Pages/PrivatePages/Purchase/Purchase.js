@@ -9,11 +9,13 @@ import useAuth from '../../../hooks/useAuth';
 const Purchase = () => {
 	
 	const { user } = useAuth();
+	
+	const dateTime = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
 
 	const initialInfo = {
 		userName: user?.displayName,
 		userEmail: user?.email,
-		dateTime: new Date(),
+		dateTime: dateTime,
 		city: '',
 		street: '',
 	}
@@ -183,7 +185,7 @@ const Purchase = () => {
 									id="dateTime"
 									name="dateTime"
 									label="Date &amp; Time"
-									value={new Date()}
+									value={dateTime}
 									readOnly
 									onBlur={handleOnBlur}
 								/>

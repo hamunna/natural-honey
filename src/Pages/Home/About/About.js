@@ -24,7 +24,7 @@ const About = () => {
 	}
 
 	return (
-		<Box id="about" sx={{ flexGrow: 1, my: 14, height: '450px' }}>
+		<Box id="about" sx={{ flexGrow: 1, py: 10, height: '450px' }}>
 
 			<Container>
 				<Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>

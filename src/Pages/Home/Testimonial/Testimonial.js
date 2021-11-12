@@ -12,7 +12,7 @@ export default class Testimonial extends Component {
     // this.click = this.click.bind(this);
   }
   // click() {
-    // const { reviews } = this.state;
+  // const { reviews } = this.state;
   //   this.setState({
   //     reviews:
   //       reviews.length === 6 ? [1, 2, 3, 4, 5, 6, 7, 8, 9] : [1, 2, 3, 4, 5, 6]
@@ -36,28 +36,28 @@ export default class Testimonial extends Component {
 
                   <div style={{ width: 600, padding: '30px', backgroundColor: 'white', borderRadius: '20px' }}>
 
-                      <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
 
-                        <div style={{ width: '60px' }}>
-                          <img style={{ width: '100%', borderRadius: '50%', border: '3px solid #EB6D2F' }} src={review.image} alt="" />
-                        </div>
-
-                        <div>
-                          <Typography>Rating: {review.rating}</Typography>
-
-                          <Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733'}} variant="h5" component="div">
-                            {review.name}
-                          </Typography>
-
-                          <Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 600, color: '#EB6D2F'}} variant="h6" component="div">
-                            {review.profession}
-                          </Typography>
-                        </div>
-
+                      <div style={{ width: '60px' }}>
+                        <img style={{ width: '100%', borderRadius: '50%', border: '3px solid #EB6D2F' }} src={review.image} alt="" />
                       </div>
-                      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {review.comment}
-                      </Typography>
+
+                      <div>
+                        <Typography>Rating: {review.rating}</Typography>
+
+                        <Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h5" component="div">
+                          {review.user?.Name}
+                        </Typography>
+
+                        <Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 600, color: '#EB6D2F' }} variant="h6" component="div">
+                          {review.profession}
+                        </Typography>
+                      </div>
+
+                    </div>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                      {review.comment}
+                    </Typography>
 
 
                   </div>

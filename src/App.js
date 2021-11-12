@@ -42,7 +42,7 @@ function App() {
 
           {/* Default Home Page */}
           <Route exact path="/">
-            <HomePage />
+            <Dashboard />
           </Route>
 
           {/* Home Page */}

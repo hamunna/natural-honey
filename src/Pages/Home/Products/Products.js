@@ -23,7 +23,7 @@ const Products = () => {
 	return (
 
 		<Box id="products" sx={{ my: 14 }}>
-			<Box sx={{ textAlign: 'center', mb: -6}}>
+			<Box sx={{ textAlign: 'center', mb: -6 }}>
 				<Typography variant="h6" sx={{ fontFamily: "'Raleway', sans-serif", color: '#EB6D2F', fontWeight: 700 }}>
 					Products
 				</Typography>
@@ -32,17 +32,13 @@ const Products = () => {
 					Online Store
 				</Typography>
 
-				<img style={{width: '20vw'}} src={wave} alt="" />
+				<img style={{ width: '20vw' }} src={wave} alt="" />
 
 			</Box>
 
 			<Box sx={bg}>
 				<Container>
-
-
 					<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
-
 						{
 							products.map(product => <Product
 								key={product._id}

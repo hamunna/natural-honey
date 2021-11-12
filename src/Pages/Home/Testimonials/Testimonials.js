@@ -16,7 +16,6 @@ const Testimonials = () => {
 
 	const testimonialBg = {
 		backgroundImage: `url(${bg})`,
-		// backgroundSize: 'contain',
 		backgroundPosition: 'top right',
 		height: '500px',
 		mb: 10
