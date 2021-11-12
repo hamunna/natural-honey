@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { Box } from '@mui/system';
+import { Link, NavLink } from 'react-router-dom';
 
 const Product = ({ product }) => {
 
@@ -24,12 +25,12 @@ const Product = ({ product }) => {
 		}
 	}
 
-	const { image, name, description, basicPrice, discountPrice, ratings, rated } = product;
+	const { _id, image, name, description, basicPrice, discountPrice, ratings, rated } = product;
 
 	return (
 		<Grid item xs={4}>
 
-			<Card variant="outlined" sx={{pb: 3}}>
+			<Card variant="outlined" sx={{ pb: 3 }}>
 				<CardMedia
 					component="img"
 					image={image}
@@ -43,7 +44,7 @@ const Product = ({ product }) => {
 					</Typography>
 
 					<Typography variant="body2" color="text.secondary" sx={{ fontFamily: "'Signika', sans-serif", my: 2 }}>
-						{description.split(' ').slice(0, 6).toString().replace(/,/g,' ')}...
+						{description.split(' ').slice(0, 6).toString().replace(/,/g, ' ')}...
 					</Typography>
 
 					<Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', my: -2 }}>
@@ -60,8 +61,11 @@ const Product = ({ product }) => {
 
 				<CardActions>
 
-					<Button sx={productBtn} variant="contained">Shop Now</Button>
-
+					<NavLink style={{ color: 'white', textDecoration: 'none', margin: '0 auto' }} to={`purchase/${_id}`}>
+						<Button sx={productBtn} variant="contained">
+							Shop Now
+						</Button>
+					</NavLink>
 				</CardActions>
 
 			</Card>

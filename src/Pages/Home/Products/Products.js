@@ -45,7 +45,7 @@ const Products = () => {
 
 						{
 							products.map(product => <Product
-								key={product.name}
+								key={product._id}
 								product={product}
 							/>)
 						}

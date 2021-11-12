@@ -7,11 +7,13 @@ import LockRoundedIcon from '@mui/icons-material/LockRounded';
 
 import googleLogin from '../../images/login-systems/google.png';
 import fbLogin from '../../images/login-systems/facebook.png';
-import bee1 from '../../images/bee-1.gif';
-import bee2 from '../../images/bee-2.gif';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import useFirebase from '../../hooks/useFirebase';
+import bee1 from '../../images/bee-1.gif';
+import bee2 from '../../images/bee-2.gif';
+import formBg from '../../images/signup-form-bg.jpg';
+import welcomeBg from '../../images/signup-welcome-bg.jpg';
+
 
 
 const Signup = () => {
@@ -136,7 +138,7 @@ const Signup = () => {
 
 	// Left Side bg
 	const leftBg = {
-		backgroundImage: `url('https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-simple-honeycomb-honey-food-psd-layered-master-map-background-material-image_149656.jpg')`,
+		backgroundImage: `url(${welcomeBg})`,
 		backgroundSize: 'cover',
 		height: '700px'
 	}
@@ -156,14 +158,13 @@ const Signup = () => {
 	
 		// Right Side bg
 		const rightBg = {
-			backgroundImage: `url('https://i.pinimg.com/1200x/f2/97/28/f297286a3a4cc0a8010ae1cbfa9a079d.jpg')`,
+			backgroundImage: `url(${formBg})`,
 			backgroundSize: 'cover',
 			height: '700px'
 		}
 	
 	return (
 		<>
-
 			<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif" }}>
 
 				{/* Left Side */}
@@ -286,10 +287,6 @@ const Signup = () => {
 
 				</Grid>
 			</Grid>
-
-
-
-
 		</>
 	);
 };

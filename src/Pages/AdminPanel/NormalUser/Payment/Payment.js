@@ -8,4 +8,4 @@ const Payment = () => {
 	);
 };
 
-export default Payment;c
+export default Payment;

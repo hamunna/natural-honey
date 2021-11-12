@@ -14,6 +14,15 @@ import Blogs from './Pages/BlogPage/Blogs/Blogs';
 import Shop from './Pages/Shop/Shop';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './Private/PrivateRoute';
+import Purchase from './Pages/PrivatePages/Purchase/Purchase';
+import MyOrders from './Pages/AdminPanel/NormalUser/MyOrders/MyOrders';
+import Review from './Pages/AdminPanel/NormalUser/Review/Review';
+import Payment from './Pages/AdminPanel/NormalUser/Payment/Payment';
+import ManageAllOrders from './Pages/AdminPanel/Admin/ManageAllOrders/ManageAllOrders';
+import Dashboard from './Pages/AdminPanel/Dashboard/Dashboard';
+import AddNewProduct from './Pages/AdminPanel/Admin/AddNewProduct/AddNewProduct';
+import MakeAdmin from './Pages/AdminPanel/Admin/MakeAdmin/MakeAdmin';
+import ManageProducts from './Pages/AdminPanel/Admin/ManageProducts/ManageProducts';
 
 
 
@@ -24,6 +33,12 @@ function App() {
       <Router>
         <Navigation />
         <Switch>
+
+          {/* 
+          ==================================
+          Public Routes
+          ==================================
+         */}
 
           {/* Default Home Page */}
           <Route exact path="/">
@@ -46,20 +61,85 @@ function App() {
           </Route>
 
           {/* Shop Page */}
-          <PrivateRoute path="/shop">
+          <Route path="/shop">
             <Shop />
-          </PrivateRoute>
+          </Route>
 
           {/* Blog Page */}
           <Route path="/blog">
             <Blogs />
           </Route>
 
-          {/* 404 */}
-          <Route path="*">
-            <NotFound />
+
+          {/* 
+          ==================================
+          Private Routes
+          ==================================
+         */}
+
+          {/* Purchase */}
+          {/* <PrivateRoute path="/purchase">
+            <Purchase />
+          </PrivateRoute> */}
+
+          {/* MyOrders */}
+          <PrivateRoute path="/myOrders">
+            <MyOrders />
+          </PrivateRoute>
+
+          {/* Payment */}
+          <PrivateRoute path="/payment">
+            <Payment />
+          </PrivateRoute>
+
+          {/* Review */}
+          <PrivateRoute path="/review">
+            <Review />
+          </PrivateRoute>
+
+          {/* Review */}
+          <PrivateRoute path="/dashboard">
+            <Dashboard />
+          </PrivateRoute>
+
+          {/* Dynamic Data Load to Purchase Page */}
+          <PrivateRoute path="/purchase/:productId">
+            <Purchase />
+          </PrivateRoute>
+
+
+
+          {/* 
+          ==================================
+          Admin Routes
+          ==================================
+         */}
+
+          {/* Manage All Orders */}
+          <Route path="/manageAllOrders">
+            <ManageAllOrders />
           </Route>
 
+          {/* Manage All Orders */}
+          <Route path="/addNewProduct">
+            <AddNewProduct />
+          </Route>
+
+          {/* Make Admin */}
+          <Route path="/makeAdmin">
+            <MakeAdmin />
+          </Route>
+
+          {/* Manage Products */}
+          <Route path="/manageProducts">
+            <ManageProducts />
+          </Route>
+
+
+          {/* 404 */}
+          <Route exact path="*">
+            <NotFound />
+          </Route>
 
         </Switch>
         <Footer />

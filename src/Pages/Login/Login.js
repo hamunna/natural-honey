@@ -6,18 +6,18 @@ import LockRoundedIcon from '@mui/icons-material/LockRounded';
 
 import googleLogin from '../../images/login-systems/google.png';
 import fbLogin from '../../images/login-systems/facebook.png';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import bee1 from '../../images/bee-1.gif';
 import bee2 from '../../images/bee-2.gif';
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
-import useAuth from '../../hooks/useAuth';
+import formBg from '../../images/login-form-bg.jpg';
+import welcomeBg from '../../images/login-welcome-bg.jpg';
 
 
 const Login = () => {
 
 	const [loginData, setLoginData] = useState([]);
 	const { user, loginUser, isLoading, signInWithGoogle, error } = useAuth();
-	// const { user, loginUser, isLoading, signInWithGoogle, error } = useFirebase();
 
 	const location = useLocation();
 	const history = useHistory();
@@ -81,14 +81,15 @@ const Login = () => {
 	}
 
 	// Left Side bg
-	const leftBg = {
-		backgroundImage: `url('https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-simple-honeycomb-honey-food-psd-layered-master-map-background-material-image_149656.jpg')`,
+	const rightSideBg = {
+		backgroundImage: `url(${welcomeBg})`,
 		backgroundSize: 'cover',
+		backgroundPosition: 'right',
 		height: '700px'
 	}
 
 	// Left Bee
-	const leftBee = {
+	const leftSideBee = {
 		mt: 25,
 		textAlign: 'center',
 		height: '150px',
@@ -101,8 +102,8 @@ const Login = () => {
 
 
 	// Right Side bg
-	const rightBg = {
-		backgroundImage: `url('https://i.pinimg.com/1200x/f2/97/28/f297286a3a4cc0a8010ae1cbfa9a079d.jpg')`,
+	const leftSideBg = {
+		backgroundImage: `url(${formBg})`,
 		backgroundSize: 'cover',
 		height: '700px'
 	}
@@ -113,7 +114,7 @@ const Login = () => {
 			<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif" }}>
 
 				{/* Left Side */}
-				<Grid item xs={6} md={7} sx={rightBg}>
+				<Grid item xs={6} md={7} sx={leftSideBg}>
 
 					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
 
@@ -178,9 +179,9 @@ const Login = () => {
 				</Grid>
 
 				{/* Right Side */}
-				<Grid item xs={6} md={5} sx={leftBg}>
+				<Grid item xs={6} md={5} sx={rightSideBg}>
 
-					<Box sx={leftBee}>
+					<Box sx={leftSideBee}>
 						<Typography sx={{ fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 							Welcome Back!
 						</Typography>
