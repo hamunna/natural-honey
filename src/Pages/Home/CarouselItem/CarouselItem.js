@@ -1,7 +1,7 @@
-import { Container, Typography } from '@mui/material';
+import { Container, Rating, Typography } from '@mui/material';
 import React from 'react';
 
-const CarouselItem = ({review}) => {
+const CarouselItem = ({ review }) => {
 	return (
 		<Container>
 			<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
@@ -15,7 +15,7 @@ const CarouselItem = ({review}) => {
 						</div>
 
 						<div>
-							<Typography>Rating: {review.rating}</Typography>
+							<Rating name="read-only" value={review.rating} readOnly />
 
 							<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h5" component="div">
 								{review.user?.Name}

@@ -33,7 +33,7 @@ const Review = () => {
 	const { user } = useAuth();
 
 	const initialReviewInfo = {
-		username: user?.displayName,
+		userName: user?.displayName,
 		userEmail: user?.email,
 		image: user?.photoURL,
 		dateTime: new Date(),
@@ -130,7 +130,7 @@ const Review = () => {
 								sx={inlineInputStyle}
 								fullWidth
 								id="userName"
-								name="username"
+								name="userName"
 								label="Name"
 								value={user?.displayName}
 								readOnly
