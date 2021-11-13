@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
-import { Button, Typography } from '@mui/material';
+import { Alert, Button, Typography } from '@mui/material';
 import useAuth from '../../../../hooks/useAuth';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -36,22 +36,25 @@ export default function MangeAllOrders() {
 
 	const [orders, setOrders] = React.useState([]);
 	React.useEffect(() => {
-		fetch('http://localhost:5000/allOrders')
+		fetch('http://localhost:5000/allOrders/list?list=listed')
 			.then(res => res.json())
 			.then(data => setOrders(data))
 			.finally(() => setIsLoading(false));
 	}, []);
 
+	let sl = 1;
+	
 	return (
 		<Box>
 			<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h3" gutterBottom component="div">
-				Manage All Orders
+				Manage All Orders: {orders.length}
 			</Typography>
 
 			<TableContainer component={Paper}>
 				<Table sx={{ minWidth: 700 }} aria-label="customized table">
 					<TableHead sx={{ backgroundColor: '#5A3733' }}>
 						<TableRow>
+							<StyledTableCell align="left">SL#</StyledTableCell>
 							<StyledTableCell>Product Name</StyledTableCell>
 							<StyledTableCell align="left">Price &#36;</StyledTableCell>
 							<StyledTableCell align="left">Order Time</StyledTableCell>
@@ -65,6 +68,8 @@ export default function MangeAllOrders() {
 						{orders.map((order) => (
 							<StyledTableRow key={order._id}>
 
+								<StyledTableCell align="left">{sl++}</StyledTableCell>
+
 								<StyledTableCell component="th" scope="row">
 									{order.productName}
 								</StyledTableCell>
@@ -72,13 +77,14 @@ export default function MangeAllOrders() {
 								<StyledTableCell align="left">&#36;{order.price}</StyledTableCell>
 								<StyledTableCell align="left">{order.dateTime}</StyledTableCell>
 								<StyledTableCell align="left">{order.userEmail}</StyledTableCell>
-								<StyledTableCell sx={{ color: 'olive' }} align="left">Pending</StyledTableCell>
+								<StyledTableCell sx={{ color: 'olive' }} align="left">{order.status}</StyledTableCell>
 
 								<StyledTableCell align="center" sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
 									<Button variant="contained" color="error" size="small" sx={{ fontSize: 12 }}>Delete</Button>
 									<Button variant="contained" color="success" size="small" sx={{ fontSize: 12 }}>Accept</Button>
 								</StyledTableCell>
 							</StyledTableRow>
+							// <Alert severity="error">No Order Available!</Alert>
 						))}
 					</TableBody>
 				</Table>

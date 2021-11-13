@@ -39,6 +39,9 @@ export default function MyOrders() {
 	const { user, isLoading, setIsLoading } = useAuth();
 
 	const [orders, setOrders] = React.useState([]);
+	// const [orderId, setOrderId] = React.useState([]);
+
+	// Getting Data by Query
 	React.useEffect(() => {
 		const url = `http://localhost:5000/allOrders?userEmail=${user?.email}`;
 		fetch(url)
@@ -46,6 +49,30 @@ export default function MyOrders() {
 			.then(data => setOrders(data))
 			.finally(() => setIsLoading(false));
 	}, []);
+
+	// Deleting Data
+	const handleDeleteOrder = id => {
+		const proceed = window.confirm('Are you sure?');
+
+		if (proceed) {
+			const url = `http://localhost:5000/allOrders/${id}`;
+			fetch(url, {
+				method: 'DELETE'
+			})
+				.then(res => res.json())
+				.then(data => {
+					console.log(data)
+					if (data.deletedCount > 0) {
+						alert('deleted successfully!');
+						const remainingOrders = orders.filter(order => order._id !== id)
+						setOrders(remainingOrders);
+					}
+				})
+		}
+
+	}
+
+	let sl = 1;
 
 	return (
 		<Box>
@@ -57,6 +84,7 @@ export default function MyOrders() {
 				<Table sx={{ minWidth: 700 }} aria-label="customized table">
 					<TableHead sx={{ backgroundColor: '#5A3733' }}>
 						<TableRow>
+							<StyledTableCell align="left">SL#</StyledTableCell>
 							<StyledTableCell>Product Name</StyledTableCell>
 							<StyledTableCell align="left">Price &#36;</StyledTableCell>
 							<StyledTableCell align="left">Order Time</StyledTableCell>
@@ -69,16 +97,24 @@ export default function MyOrders() {
 						{orders.map((order) => (
 							<StyledTableRow key={order._id}>
 
+								<StyledTableCell align="left">{sl++}</StyledTableCell>
+
 								<StyledTableCell component="th" scope="row">
 									{order.productName}
 								</StyledTableCell>
 
 								<StyledTableCell align="left">&#36;{order.price}</StyledTableCell>
 								<StyledTableCell align="left">{order.dateTime}</StyledTableCell>
-								<StyledTableCell sx={{ color: 'olive' }} align="left">Pending</StyledTableCell>
+								<StyledTableCell sx={{ color: 'olive' }} align="left">{order.status}</StyledTableCell>
 
 								<StyledTableCell align="left">
-									<Button variant="contained" color="error" size="small" sx={{ fontSize: 12 }}>Delete</Button>
+									<Button
+										variant="contained"
+										color="error"
+										size="small"
+										sx={{ fontSize: 12 }}
+										onClick={() => handleDeleteOrder(order._id)}
+									>Delete</Button>
 								</StyledTableCell>
 
 							</StyledTableRow>

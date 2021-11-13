@@ -41,7 +41,7 @@ const Purchase = () => {
 
 	const handlePurchaseProduct = e => {
 
-		const newOrder = { ...purchaseData, productName: singleHoney?.name, price: singleHoney?.discountPrice, status: { pending: "Pending", approved: "Approved" } }
+		const newOrder = { ...purchaseData, productName: singleHoney?.name, price: singleHoney?.discountPrice, status: "pending", list: "listed" }
 
 		fetch('http://localhost:5000/allOrders', {
 			method: 'POST',
