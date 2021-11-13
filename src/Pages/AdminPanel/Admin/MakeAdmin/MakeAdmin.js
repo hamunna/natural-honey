@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Alert, Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 
 
 const MakeAdmin = () => {
 	const [email, setEmail] = useState('');
+	const [success, setSuccess] = useState(false);
 
 	const handleOnBlur = e => {
 		setEmail(e.target.value);
@@ -21,7 +22,10 @@ const MakeAdmin = () => {
 			body: JSON.stringify(user)
 		})
 			.then(res => res.json())
-			.then(data => {});
+			.then(data => {
+				// setEmail('');
+				setSuccess(true);
+			});
 
 		e.preventDefault();
 	}
@@ -29,6 +33,9 @@ const MakeAdmin = () => {
 	return (
 		<Box sx={{ textAlign: 'center' }}>
 			<h1>Make Admin</h1>
+
+			{success && <Alert severity="success">Made Admin Successfully!</Alert>}
+
 			<form onSubmit={handleAdminSubmit}>
 				<TextField
 					// fullWidth

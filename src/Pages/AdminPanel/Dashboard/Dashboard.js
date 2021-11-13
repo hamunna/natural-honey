@@ -48,7 +48,7 @@ const iconStyle = {
 	color: 'white',
 }
 export default function Dashboard() {
-	const { user, logOut } = useAuth();
+	const { user, logOut, admin } = useAuth();
 	let { path, url } = useRouteMatch();
 
 	return (
@@ -98,63 +98,65 @@ export default function Dashboard() {
 							</NavLink>
 						</List>
 
-						<List>
-							<NavLink style={navLinkStyle} to={`${url}/manageProducts`}>
+						{admin && <Box>
+							<List>
+								<NavLink style={navLinkStyle} to={`${url}/manageProducts`}>
 
-								<ListItem button>
+									<ListItem button>
 
-									<ListItemIcon sx={iconStyle}>
-										<StorefrontIcon />
-									</ListItemIcon>
+										<ListItemIcon sx={iconStyle}>
+											<StorefrontIcon />
+										</ListItemIcon>
 
-									<ListItemText>Manage Products</ListItemText>
-								</ListItem>
-							</NavLink>
-						</List>
+										<ListItemText>Manage Products</ListItemText>
+									</ListItem>
+								</NavLink>
+							</List>
 
-						<List>
-							<NavLink style={navLinkStyle} to={`${url}/manageAllOrders`}>
+							<List>
+								<NavLink style={navLinkStyle} to={`${url}/manageAllOrders`}>
 
-								<ListItem button>
+									<ListItem button>
 
-									<ListItemIcon sx={iconStyle}>
-										<StorefrontIcon />
-									</ListItemIcon>
+										<ListItemIcon sx={iconStyle}>
+											<StorefrontIcon />
+										</ListItemIcon>
 
-									<ListItemText>Manage All Orders</ListItemText>
-								</ListItem>
-							</NavLink>
-						</List>
+										<ListItemText>Manage All Orders</ListItemText>
+									</ListItem>
+								</NavLink>
+							</List>
 
-						<List>
-							<NavLink style={navLinkStyle} to={`${url}/addNewProduct`}>
-								<ListItem button>
-
-
-									<ListItemIcon sx={iconStyle}>
-										<MenuBookIcon />
-									</ListItemIcon>
-
-									<ListItemText>Add New Product</ListItemText>
-								</ListItem>
-							</NavLink>
-						</List>
-
-						<List>
-							<NavLink style={navLinkStyle} to={`${url}/makeAdmin`}>
-								<ListItem button>
+							<List>
+								<NavLink style={navLinkStyle} to={`${url}/addNewProduct`}>
+									<ListItem button>
 
 
-									<ListItemIcon sx={iconStyle}>
-										<MenuBookIcon />
-									</ListItemIcon>
+										<ListItemIcon sx={iconStyle}>
+											<MenuBookIcon />
+										</ListItemIcon>
 
-									<ListItemText>Make Admin</ListItemText>
-								</ListItem>
-							</NavLink>
-						</List>
+										<ListItemText>Add New Product</ListItemText>
+									</ListItem>
+								</NavLink>
+							</List>
 
-						<Divider />
+							<List>
+								<NavLink style={navLinkStyle} to={`${url}/makeAdmin`}>
+									<ListItem button>
+
+
+										<ListItemIcon sx={iconStyle}>
+											<MenuBookIcon />
+										</ListItemIcon>
+
+										<ListItemText>Make Admin</ListItemText>
+									</ListItem>
+								</NavLink>
+							</List>
+
+							<Divider />
+						</Box>}
 
 						<List>
 							<NavLink style={navLinkStyle} to={`${url}/myOrders`}>
@@ -200,7 +202,7 @@ export default function Dashboard() {
 
 						{user?.email &&
 							<>
-								<Divider sx={{backgroundColor: 'white'}} />
+								<Divider sx={{ backgroundColor: 'white' }} />
 
 								<List sx={{ mt: 'auto' }}>
 									<NavLink style={navLinkStyle} to="/login">
