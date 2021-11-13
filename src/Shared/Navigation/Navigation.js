@@ -7,7 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Container } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
 
 import { styled, useTheme } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
@@ -26,6 +25,8 @@ import LoginIcon from '@mui/icons-material/Login';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import useAuth from '../../hooks/useAuth';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 //==================================================================================
 const drawerWidth = 240;
@@ -212,7 +213,7 @@ const Navigation = () => {
 							<NavLink style={navLinkStyle} to="/login">
 								<ListItem button>
 									<ListItemIcon>
-										<LoginIcon />
+										<LogoutIcon />
 									</ListItemIcon>
 
 									<ListItemText onClick={logOut}>LogOut</ListItemText>

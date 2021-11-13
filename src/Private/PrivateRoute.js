@@ -17,7 +17,7 @@ if(isLoading) {return <CircularProgress />}
 				) : (
 					<Redirect
 						to={{
-							pathname: "/",
+							pathname: "/signup",
 							state: { from: location }
 						}}
 					/>
