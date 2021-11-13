@@ -3,15 +3,18 @@ import Testimonial from '../Testimonial/Testimonial';
 import bg from '../../../images/testimonials-bg.jpg';
 import bgBee from '../../../images/bee-1.gif';
 import { Container } from '@mui/material';
+import useAuth from '../../../hooks/useAuth';
 
 const Testimonials = () => {
 	const [reviews, setReviews] = useState([]);
+	const {isLoading, setIsLoading} = useAuth();
 
 
 	useEffect(() => {
 		fetch('http://localhost:5000/reviews')
 			.then(res => res.json())
-			.then(data => setReviews(data));
+			.then(data => setReviews(data))
+			// .finally(() => setIsLoading(false));
 	}, []);
 
 	const testimonialBg = {
@@ -34,7 +37,7 @@ const Testimonials = () => {
 
 			<Container>
 				<div style={testimonialBgBee}>
-					<Testimonial reviews={reviews} />
+					<Testimonial key={reviews.length.toString()} reviews={reviews} />
 				</div>
 			</Container>
 

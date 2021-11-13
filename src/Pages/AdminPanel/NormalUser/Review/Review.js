@@ -33,9 +33,9 @@ const Review = () => {
 	const { user } = useAuth();
 
 	const initialReviewInfo = {
-		userName: user?.displayName,
+		username: user?.displayName,
 		userEmail: user?.email,
-		image: user?.image,
+		image: user?.photoURL,
 		dateTime: new Date(),
 		profession: '',
 		comment: '',
@@ -49,14 +49,10 @@ const Review = () => {
 		const field = e.target.name;
 		const value = e.target.value;
 
-		const newOrderData = { userName: user?.displayName,
-			userEmail: user?.email,
-			image: user?.image,
-			dateTime: new Date(),
-		};
-		newOrderData[field] = value;
+		const newReviewData = { ...reviewData };
+		newReviewData[field] = value;
 
-		setReviewData(newOrderData);
+		setReviewData(newReviewData);
 	}
 
 	const handlePurchaseProduct = e => {
@@ -134,8 +130,8 @@ const Review = () => {
 								sx={inlineInputStyle}
 								fullWidth
 								id="userName"
-								name="userName"
-								// label="Name"
+								name="username"
+								label="Name"
 								value={user?.displayName}
 								readOnly
 								onBlur={handleOnBlur}
@@ -147,7 +143,7 @@ const Review = () => {
 								fullWidth
 								id="userEmail"
 								name="userEmail"
-								// label="Email"
+								label="Email"
 								value={user?.email}
 								readOnly
 								onBlur={handleOnBlur}
@@ -207,6 +203,7 @@ const Review = () => {
 								type="url"
 								id="image"
 								name="image"
+								value={user?.photoURL}
 								label="Image URL"
 								onBlur={handleOnBlur}
 							/>

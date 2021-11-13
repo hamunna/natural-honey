@@ -35,6 +35,9 @@ export default function MangeAllOrders() {
 	const { user, isLoading, setIsLoading } = useAuth();
 
 	const [orders, setOrders] = React.useState([]);
+	// const [orderComplete, setOrderComplete] = React.useState({});
+
+	// Getting Data by Query
 	React.useEffect(() => {
 		fetch('http://localhost:5000/allOrders/list?list=listed')
 			.then(res => res.json())
@@ -42,8 +45,58 @@ export default function MangeAllOrders() {
 			.finally(() => setIsLoading(false));
 	}, []);
 
+	// Update Order to Complete
+	const handleOrderComplete = id => {
+
+		const update = window.confirm('Are you sure?');
+
+		if(update){
+
+			const url = `http://localhost:5000/allOrders/${id}`;
+			fetch(url, {
+				method: 'PUT',
+				headers: {
+					'content-type': 'application/json'
+				},
+				body: JSON.stringify({status: 'Complete'})
+			})
+				.then(res => res.json())
+				.then(data => {
+					console.log(data)
+					// setEmail('');
+					// setOrderComplete('Complete');
+					alert('Updated Successfully!');
+					// const remainingPending = orders.filter(order => order._id !== id)
+					// setOrderComplete(remainingPending);
+				});
+		}
+
+	}
+
+	// Deleting Data
+	const handleDeleteOrder = id => {
+		const proceed = window.confirm('Are you sure?');
+
+		if (proceed) {
+			const url = `http://localhost:5000/allOrders/${id}`;
+			fetch(url, {
+				method: 'DELETE'
+			})
+				.then(res => res.json())
+				.then(data => {
+					console.log(data)
+					if (data.deletedCount > 0) {
+						alert('deleted successfully!');
+						const remainingOrders = orders.filter(order => order._id !== id)
+						setOrders(remainingOrders);
+					}
+				})
+		}
+
+	}
+
 	let sl = 1;
-	
+
 	return (
 		<Box>
 			<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h3" gutterBottom component="div">
@@ -80,8 +133,21 @@ export default function MangeAllOrders() {
 								<StyledTableCell sx={{ color: 'olive' }} align="left">{order.status}</StyledTableCell>
 
 								<StyledTableCell align="center" sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
-									<Button variant="contained" color="error" size="small" sx={{ fontSize: 12 }}>Delete</Button>
-									<Button variant="contained" color="success" size="small" sx={{ fontSize: 12 }}>Accept</Button>
+									<Button
+										variant="contained"
+										color="error"
+										size="small"
+										sx={{ fontSize: 12 }}
+										onClick={() => handleDeleteOrder(order._id)}
+									>Delete</Button>
+
+									<Button
+										variant="contained"
+										color="success"
+										size="small"
+										sx={{ fontSize: 12 }}
+										onClick={() => handleOrderComplete(order._id)}
+									>Complete</Button>
 								</StyledTableCell>
 							</StyledTableRow>
 							// <Alert severity="error">No Order Available!</Alert>

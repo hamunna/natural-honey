@@ -1,7 +1,7 @@
 [
 	{
 		"id": 1001,
-		"username": "Florence Pugh",
+		"userName": "Florence Pugh",
 		"profession": "Tennis Player",
 		"comment": "Bisnakandi is a village situated in Rustompur Union under Guainghat Upazilla. This is where many layers of the Khasi mountain meet at a single point from both sides. Flowing from above is a high fall. Adding to its charm are dark clouds.",
 		"rating": "5",
@@ -9,7 +9,7 @@
 	},
 	{
 		"id": 1002,
-		"username": "Toney Stark",
+		"userName": "Toney Stark",
 		"profession": "Mechanic",
 		"comment": "Ratargul Swamp Forest is a freshwater swamp forest located in Gowain River, Fatehpur Union, Gowainghat, Sylhet, Bangladesh. It is the only swamp forest located in Bangladesh and one of the few freshwater swamp forests in the world.",
 		"rating": "5",
@@ -17,7 +17,7 @@
 	},
 	{
 		"id": 1003,
-		"username": "Arya Stark",
+		"userName": "Arya Stark",
 		"profession": "Swords Fighter",
 		"comment": "Khadim Nagar National Park is a major national park and nature reserve in Bangladesh. The park is located at Sylhet Sadar Upazila, Sylhet District in the North-East region of the country. It is located mainly on the Hills and is surrounded by Kalagool, Bhurjan and Goolni tea estates.",
 		"rating": "4",
@@ -25,7 +25,7 @@
 	},
 	{
 		"id": 1004,
-		"username": "John Snow",
+		"userName": "John Snow",
 		"profession": "Knights watch",
 		"comment": "Madhabkunda waterfall is one of the highest waterfalls in Bangladesh. It is situated in Barlekha Upazila in Moulvibazar District. The waterfall is a popular tourist spot in Bangladesh. Big boulders, surrounding forest, and the adjoining streams attracts many tourists for picnic parties and day trips.",
 		"rating": "5",
