@@ -114,7 +114,7 @@ const Review = () => {
 
 
 	return (
-		<Container sx={{ textAlign: 'center', my: 6, mx: 'auto', textAlign: 'center', boxShadow: '0 0 600px 0 #5A3733', borderRadius: '20px', py: 2 }}>
+		<Container sx={{ textAlign: 'center', mx: 'auto', textAlign: 'center', boxShadow: '0 0 4px 0 #5A3733', borderRadius: '20px', py: 2 }}>
 
 			<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 				Write Your Valuable Review
