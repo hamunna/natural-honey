@@ -126,18 +126,20 @@ const Navigation = () => {
 
 				<Divider />
 
-				<List>
-					<NavLink style={navLinkStyle} to="/dashboard">
-						<ListItem button>
+				{
+					user?.email && <List>
+						<NavLink style={navLinkStyle} to="/dashboard">
+							<ListItem button>
 
-							<ListItemIcon>
-								<DashboardIcon />
-							</ListItemIcon>
+								<ListItemIcon>
+									<DashboardIcon />
+								</ListItemIcon>
 
-							<ListItemText>Dashboard</ListItemText>
-						</ListItem>
-					</NavLink>
-				</List>
+								<ListItemText>Dashboard</ListItemText>
+							</ListItem>
+						</NavLink>
+					</List>
+				}
 
 				<List>
 					<NavLink style={navLinkStyle} to="/home">
@@ -184,7 +186,7 @@ const Navigation = () => {
 
 				{
 					!user?.email ?
-						<List sx={{mt: 26}}>
+						<List sx={{ mt: 'auto' }}>
 
 							<NavLink style={navLinkStyle} to="/login">
 								<ListItem button>
@@ -206,7 +208,7 @@ const Navigation = () => {
 							</NavLink>
 						</List>
 						:
-						<List sx={{mt: 32}}>
+						<List sx={{ mt: 'auto' }}>
 							<NavLink style={navLinkStyle} to="/login">
 								<ListItem button>
 									<ListItemIcon>
@@ -216,7 +218,6 @@ const Navigation = () => {
 									<ListItemText onClick={logOut}>LogOut</ListItemText>
 								</ListItem>
 							</NavLink>
-
 						</List>
 				}
 

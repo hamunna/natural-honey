@@ -35,6 +35,7 @@ import AddNewProduct from '../Admin/AddNewProduct/AddNewProduct';
 import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
 import Payment from '../NormalUser/Payment/Payment';
 import ManageProducts from '../Admin/ManageProducts/ManageProducts';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 240;
 const navLinkStyle = {
@@ -47,6 +48,7 @@ const iconStyle = {
 	color: 'white',
 }
 export default function Dashboard() {
+	const { user, logOut } = useAuth();
 	let { path, url } = useRouteMatch();
 
 	return (
@@ -195,6 +197,24 @@ export default function Dashboard() {
 								</ListItem>
 							</NavLink>
 						</List>
+
+						{user?.email &&
+							<>
+								<Divider sx={{backgroundColor: 'white'}} />
+
+								<List sx={{ mt: 'auto' }}>
+									<NavLink style={navLinkStyle} to="/login">
+										<ListItem button>
+											<ListItemIcon>
+												<LoginIcon sx={iconStyle} />
+											</ListItemIcon>
+
+											<ListItemText onClick={logOut}>LogOut</ListItemText>
+										</ListItem>
+									</NavLink>
+								</List>
+							</>
+						}
 					</Box>
 				</Box>
 			</Drawer>
@@ -236,7 +256,7 @@ export default function Dashboard() {
 					<Route path={`${path}/payment`}>
 						<Payment />
 					</Route>
-					
+
 				</Switch>
 
 			</Box>
