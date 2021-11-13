@@ -36,6 +36,7 @@ import MakeAdmin from '../Admin/MakeAdmin/MakeAdmin';
 import Payment from '../NormalUser/Payment/Payment';
 import ManageProducts from '../Admin/ManageProducts/ManageProducts';
 import useAuth from '../../../hooks/useAuth';
+import AdminRoute from '../../../Private/AdminRoute';
 
 const drawerWidth = 240;
 const navLinkStyle = {
@@ -231,21 +232,21 @@ export default function Dashboard() {
 						<DashboardHome />
 					</Route>
 
-					<Route path={`${path}/manageProducts`}>
+					<AdminRoute path={`${path}/manageProducts`}>
 						<ManageProducts />
-					</Route>
+					</AdminRoute>
 
-					<Route path={`${path}/manageAllOrders`}>
+					<AdminRoute path={`${path}/manageAllOrders`}>
 						<ManageAllOrders />
-					</Route>
+					</AdminRoute>
 
-					<Route path={`${path}/addNewProduct`}>
+					<AdminRoute path={`${path}/addNewProduct`}>
 						<AddNewProduct />
-					</Route>
+					</AdminRoute>
 
-					<Route path={`${path}/makeAdmin`}>
+					<AdminRoute path={`${path}/makeAdmin`}>
 						<MakeAdmin />
-					</Route>
+					</AdminRoute>
 
 					<Route path={`${path}/myOrders`}>
 						<MyOrders />
