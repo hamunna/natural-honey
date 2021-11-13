@@ -5,6 +5,7 @@ import { Button, Container, IconButton, List, ListItem, ListItemText, Typography
 import tick from '../../../images/tick-icon.png';
 import aboutImg from '../../../images/about-img.jpg';
 import { typography } from '@mui/system';
+import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
 
 
 
@@ -61,25 +62,31 @@ const About = () => {
 							Useful properties <span style={{ color: '#EB6D2F' }}>of honey</span>
 						</Typography>
 
-						<List sx={{fontFamily: "'Signika', sans-serif", color: '#5A3733', fontSize: '14px'}}>
+						<List sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontSize: '14px' }}>
 
 							<ListItem>
-								<ListItemText sx={{ display: 'flex', alignItems: 'center' }}><strong>Regulates</strong> metabolic processes</ListItemText>
+								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
+								<ListItemText>
+									<strong>Regulates</strong> metabolic processes</ListItemText>
 							</ListItem>
 
 							<ListItem>
+								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText><strong>Increases</strong> immunity</ListItemText>
 							</ListItem>
 
 							<ListItem>
+								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText>Honey <strong>improves</strong> blood composition</ListItemText>
 							</ListItem>
 
 							<ListItem>
+								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText><strong>Helps</strong> to cope with insomnia</ListItemText>
 							</ListItem>
 
 							<ListItem>
+								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText><strong>Gives</strong> energy to the body, restores strength</ListItemText>
 							</ListItem>
 

@@ -4,9 +4,9 @@ import React from 'react';
 const CarouselItem = ({ review }) => {
 	return (
 		<Container>
-			<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
+			<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '420px' }}>
 
-				<div style={{ width: 600, padding: '30px', backgroundColor: 'white', borderRadius: '20px' }}>
+				<div style={{ maxWidth: 500,  height: '200px', padding: '30px', backgroundColor: 'white', borderRadius: '20px'}}>
 
 					<div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
 
