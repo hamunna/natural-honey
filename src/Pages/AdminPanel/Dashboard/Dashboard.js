@@ -20,6 +20,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import MangeAllOrders from '../Admin/ManageAllOrders/ManageAllOrders';
 import MyOrders from '../NormalUser/MyOrders/MyOrders';
+import Review from '../NormalUser/Review/Review';
 
 const drawerWidth = 240;
 const navLinkStyle = {
@@ -35,9 +36,9 @@ export default function Dashboard() {
 	return (
 		<Box sx={{ display: 'flex' }}>
 			<CssBaseline />
-			<AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: '#EB6D2F' }}>
+			<AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, backgroundColor: '#5A3733' }}>
 				<Toolbar>
-					<Typography variant="h5" noWrap component="div" sx={{fontWeight: 700, fontFamily: "'Signika', sans-serif", color: '#5A3733', textShadow: '0 0 1px white'}}>
+					<Typography variant="h6" noWrap component="div" sx={{fontWeight: 600, fontFamily: "'Raleway', sans-serif", color: '#fff', textShadow: '0 0 1px white'}}>
 						Dashboard
 					</Typography>
 				</Toolbar>
@@ -56,7 +57,7 @@ export default function Dashboard() {
 				<Box sx={{ overflow: 'auto' }}>
 
 					<Box sx={{ mx: 2, my: 2 }}>
-						<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/">
+						<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/home">
 							<Typography variant="h5" component="div" sx={{ fontFamily: "'Raleway', sans-serif", fontWeight: 800 }}>
 								Natural Honey
 							</Typography>
@@ -67,20 +68,20 @@ export default function Dashboard() {
 
 					<Box>
 						<List>
-							<NavLink style={navLinkStyle} to="/home">
+							<NavLink style={navLinkStyle} to="/manageProducts">
 								<ListItem button>
 
 									<ListItemIcon sx={iconStyle}>
 										<HomeIcon />
 									</ListItemIcon>
 
-									<ListItemText>Home</ListItemText>
+									<ListItemText>Manage Products</ListItemText>
 								</ListItem>
 							</NavLink>
 						</List>
 
 						<List>
-							<NavLink style={navLinkStyle} to="/shop">
+							<NavLink style={navLinkStyle} to="/manageAllOrders">
 
 								<ListItem button>
 
@@ -88,13 +89,13 @@ export default function Dashboard() {
 										<StorefrontIcon />
 									</ListItemIcon>
 
-									<ListItemText>Shop</ListItemText>
+									<ListItemText>Manage All Orders</ListItemText>
 								</ListItem>
 							</NavLink>
 						</List>
 
 						<List>
-							<NavLink style={navLinkStyle} to="/blog">
+							<NavLink style={navLinkStyle} to="/addNewProduct">
 								<ListItem button>
 
 
@@ -102,20 +103,67 @@ export default function Dashboard() {
 										<MenuBookIcon />
 									</ListItemIcon>
 
-									<ListItemText>Blog</ListItemText>
+									<ListItemText>Add New Product</ListItemText>
 								</ListItem>
 							</NavLink>
 						</List>
-						<Divider />
+
 						<List>
-							{['All mail', 'Trash', 'Spam'].map((text, index) => (
-								<ListItem button key={text}>
+							<NavLink style={navLinkStyle} to="/makeAdmin">
+								<ListItem button>
+
+
 									<ListItemIcon sx={iconStyle}>
-										{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+										<MenuBookIcon />
 									</ListItemIcon>
-									<ListItemText primary={text} />
+
+									<ListItemText>Make Admin</ListItemText>
 								</ListItem>
-							))}
+							</NavLink>
+						</List>
+
+						<Divider />
+						
+						<List>
+							<NavLink style={navLinkStyle} to="/myOrders">
+								<ListItem button>
+
+
+									<ListItemIcon sx={iconStyle}>
+										<MenuBookIcon />
+									</ListItemIcon>
+
+									<ListItemText>My Orders</ListItemText>
+								</ListItem>
+							</NavLink>
+						</List>
+
+						<List>
+							<NavLink style={navLinkStyle} to="/review">
+								<ListItem button>
+
+
+									<ListItemIcon sx={iconStyle}>
+										<MenuBookIcon />
+									</ListItemIcon>
+
+									<ListItemText>Review</ListItemText>
+								</ListItem>
+							</NavLink>
+						</List>
+
+						<List>
+							<NavLink style={navLinkStyle} to="/payment">
+								<ListItem button>
+
+
+									<ListItemIcon sx={iconStyle}>
+										<MenuBookIcon />
+									</ListItemIcon>
+
+									<ListItemText>Payment</ListItemText>
+								</ListItem>
+							</NavLink>
 						</List>
 					</Box>
 				</Box>
@@ -127,7 +175,9 @@ export default function Dashboard() {
 				
 				<MangeAllOrders />
 
-				{/* <MyOrders /> */}
+				<Review />
+
+				<MyOrders />
 			</Box>
 		</Box>
 	);

@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
 import { Button, Typography } from '@mui/material';
+import useAuth from '../../../../hooks/useAuth';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -30,25 +31,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	},
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-	return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-	createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-	createData('Eclair', 262, 16.0, 24, 6.0),
-	createData('Cupcake', 305, 3.7, 67, 4.3),
-	createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 export default function MangeAllOrders() {
+	const { user, isLoading, setIsLoading } = useAuth();
 
 	const [orders, setOrders] = React.useState([]);
 	React.useEffect(() => {
 		fetch('http://localhost:5000/allOrders')
 			.then(res => res.json())
-			.then(data => setOrders(data));
+			.then(data => setOrders(data))
+			.finally(() => setIsLoading(false));
 	}, []);
 
 	return (
@@ -81,11 +72,11 @@ export default function MangeAllOrders() {
 								<StyledTableCell align="left">&#36;{order.price}</StyledTableCell>
 								<StyledTableCell align="left">{order.dateTime}</StyledTableCell>
 								<StyledTableCell align="left">{order.userEmail}</StyledTableCell>
-								<StyledTableCell  sx={{color: 'olive'}} align="left">Pending</StyledTableCell>
+								<StyledTableCell sx={{ color: 'olive' }} align="left">Pending</StyledTableCell>
 
-								<StyledTableCell align="center" sx={{display: 'flex', gap: 1, justifyContent: 'center'}}>
-									<Button variant="contained" color="error" size="small" sx={{fontSize: 12}}>Delete</Button>
-									<Button variant="contained" color="success" size="small" sx={{fontSize: 12}}>Accept</Button>
+								<StyledTableCell align="center" sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
+									<Button variant="contained" color="error" size="small" sx={{ fontSize: 12 }}>Delete</Button>
+									<Button variant="contained" color="success" size="small" sx={{ fontSize: 12 }}>Accept</Button>
 								</StyledTableCell>
 							</StyledTableRow>
 						))}

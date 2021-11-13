@@ -9,8 +9,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
 import { Button, Typography } from '@mui/material';
+import useAuth from '../../../../hooks/useAuth';
 
+//=================================================================
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
+
 	[`&.${tableCellClasses.head}`]: {
 		backgroundColor: theme.palette.common.black,
 		color: theme.palette.common.white,
@@ -29,32 +32,25 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 		border: 0,
 	},
 }));
-
-function createData(name, calories, fat, carbs, protein) {
-	return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-	createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-	createData('Eclair', 262, 16.0, 24, 6.0),
-	createData('Cupcake', 305, 3.7, 67, 4.3),
-	createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+//================================================================
 
 export default function MyOrders() {
 
+	const { user, isLoading, setIsLoading } = useAuth();
+
 	const [orders, setOrders] = React.useState([]);
 	React.useEffect(() => {
-		fetch('http://localhost:5000/allOrders')
+		const url = `http://localhost:5000/allOrders?userEmail=${user?.email}`;
+		fetch(url)
 			.then(res => res.json())
-			.then(data => setOrders(data));
+			.then(data => setOrders(data))
+			.finally(() => setIsLoading(false));
 	}, []);
 
 	return (
 		<Box>
 			<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h3" gutterBottom component="div">
-				My Orders
+				My Orders: {orders.length}
 			</Typography>
 
 			<TableContainer component={Paper}>
@@ -79,12 +75,12 @@ export default function MyOrders() {
 
 								<StyledTableCell align="left">&#36;{order.price}</StyledTableCell>
 								<StyledTableCell align="left">{order.dateTime}</StyledTableCell>
-								<StyledTableCell  sx={{color: 'olive'}} align="left">Pending</StyledTableCell>
+								<StyledTableCell sx={{ color: 'olive' }} align="left">Pending</StyledTableCell>
 
 								<StyledTableCell align="left">
-									<Button variant="contained" color="error" size="small" sx={{fontSize: 12}}>Delete</Button>
+									<Button variant="contained" color="error" size="small" sx={{ fontSize: 12 }}>Delete</Button>
 								</StyledTableCell>
-								
+
 							</StyledTableRow>
 						))}
 					</TableBody>

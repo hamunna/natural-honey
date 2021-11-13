@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Box as div } from '@mui/system';
 import Testimonial from '../Testimonial/Testimonial';
 import bg from '../../../images/testimonials-bg.jpg';
 import bgBee from '../../../images/bee-1.gif';
@@ -8,8 +7,9 @@ import { Container } from '@mui/material';
 const Testimonials = () => {
 	const [reviews, setReviews] = useState([]);
 
+
 	useEffect(() => {
-		fetch('/reviews.json')
+		fetch('http://localhost:5000/reviews')
 			.then(res => res.json())
 			.then(data => setReviews(data));
 	}, []);
@@ -18,7 +18,7 @@ const Testimonials = () => {
 		backgroundImage: `url(${bg})`,
 		backgroundPosition: 'top right',
 		height: '500px',
-		mb: 10
+		mb: 10,
 	}
 
 	const testimonialBgBee = {
@@ -26,7 +26,7 @@ const Testimonials = () => {
 		backgroundPosition: 'top left',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: '160px',
-		height: '500px',
+		height: '400px',
 	}
 
 	return (

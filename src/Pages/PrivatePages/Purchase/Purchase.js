@@ -73,7 +73,7 @@ const Purchase = () => {
 
 	useEffect(() => {
 		const findOrder = order.find(
-			(tour) => tour._id === productId
+			(product) => product._id === productId
 		);
 		setSingleHoney(findOrder);
 	}, [order]);

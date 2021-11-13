@@ -22,6 +22,9 @@ const useFirebase = () => {
 				const newUser = { email, displayName: name };
 				setUser(newUser);
 
+				// Save User to the Database
+				saveUser(email, name, 'POST');
+
 				// Send Name to Firebase after Creation
 				updateProfile(auth.currentUser, {
 					displayName: name
@@ -81,17 +84,23 @@ const useFirebase = () => {
 
 
 	// Google SignIn Process
-	const signInWithGoogle = () => {
+	const signInWithGoogle = (location, history) => {
+		setIsLoading(true);
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
-
 				const user = result.user;
+
+				saveUser(user.email, user.displayName, 'PUT');
+				const destination = location?.state?.from || '/';
+				history.replace(destination);
+				setError('');
 
 			}).catch((error) => {
 				// const errorCode = error.code;
 				// const errorMessage = error.message;
 
-			});
+			})
+			.finally(() => setIsLoading(false));
 	}
 
 	// SignOut Process
@@ -104,8 +113,23 @@ const useFirebase = () => {
 		});
 	}
 
+	// Save User Data
+	const saveUser = (email, displayName, method) => {
+		const user = { email, displayName };
+		fetch('http://localhost:5000/users', {
+			method: method,
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(user)
+		})
+		.then()
+	}
+
 	return {
 		user,
+		isLoading,
+		setIsLoading,
 		registerUser,
 		loginUser,
 		signInWithGoogle,

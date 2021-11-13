@@ -25,7 +25,7 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LoginIcon from '@mui/icons-material/Login';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import useAuth from '../../hooks/useAuth';
-import useFirebase from '../../hooks/useFirebase';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 //==================================================================================
 const drawerWidth = 240;
@@ -105,6 +105,7 @@ const Navigation = () => {
 					'& .MuiDrawer-paper': {
 						width: drawerWidth,
 					},
+					zIndex: (theme) => theme.zIndex.drawer + 2
 				}}
 				variant="persistent"
 				anchor="right"
@@ -124,6 +125,19 @@ const Navigation = () => {
 				</DrawerHeader>
 
 				<Divider />
+
+				<List>
+					<NavLink style={navLinkStyle} to="/dashboard">
+						<ListItem button>
+
+							<ListItemIcon>
+								<DashboardIcon />
+							</ListItemIcon>
+
+							<ListItemText>Dashboard</ListItemText>
+						</ListItem>
+					</NavLink>
+				</List>
 
 				<List>
 					<NavLink style={navLinkStyle} to="/home">
@@ -170,7 +184,7 @@ const Navigation = () => {
 
 				{
 					!user?.email ?
-						<List>
+						<List sx={{mt: 26}}>
 
 							<NavLink style={navLinkStyle} to="/login">
 								<ListItem button>
@@ -192,7 +206,7 @@ const Navigation = () => {
 							</NavLink>
 						</List>
 						:
-						<List>
+						<List sx={{mt: 32}}>
 							<NavLink style={navLinkStyle} to="/login">
 								<ListItem button>
 									<ListItemIcon>

@@ -22,7 +22,7 @@ export default class Testimonial extends Component {
     const settings = {
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 1000,
       reviewsToShow: 1,
       reviewsToScroll: 1
     };
@@ -32,7 +32,7 @@ export default class Testimonial extends Component {
           {this.state.reviews.map(function (review) {
             return (
               <Container>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '550px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
 
                   <div style={{ width: 600, padding: '30px', backgroundColor: 'white', borderRadius: '20px' }}>
 

@@ -124,7 +124,7 @@ const Review = () => {
 				{/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} > */}
 
 				{/* Right Side */}
-				<Grid item xs={6} sx={{ fontFamily: "'Signika', sans-serif", mx: 'auto', width: '100%' }}>
+				<Grid item xs={8} sx={{ fontFamily: "'Signika', sans-serif", mx: 'auto', width: '100%' }}>
 
 					<Box>
 						<Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
@@ -183,10 +183,10 @@ const Review = () => {
 							>
 								{ratingNumbers.map((option) => (
 									<MenuItem
-										sx={{ display: 'flex', justifyContent: 'space-evenly' }}
+										sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}
 										key={option.value} value={option.value}
 									>
-										{option.label} / 5 <StarIcon sx={{ fontSize: 20, color: '#EB6D2F' }} />
+										{option.label} <StarIcon sx={{ fontSize: 20, color: '#EB6D2F' }} />
 									</MenuItem>
 								))}
 							</TextField>
