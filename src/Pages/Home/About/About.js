@@ -65,28 +65,28 @@ const About = () => {
 						<List sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontSize: '14px' }}>
 
 							<ListItem>
-								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
+								<OfflineBoltIcon sx={{ mr: 1, ml: -1, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText>
 									<strong>Regulates</strong> metabolic processes</ListItemText>
 							</ListItem>
 
 							<ListItem>
-								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
+								<OfflineBoltIcon sx={{ mr: 1, ml: -1, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText><strong>Increases</strong> immunity</ListItemText>
 							</ListItem>
 
 							<ListItem>
-								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
+								<OfflineBoltIcon sx={{ mr: 1, ml: -1, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText>Honey <strong>improves</strong> blood composition</ListItemText>
 							</ListItem>
 
 							<ListItem>
-								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
+								<OfflineBoltIcon sx={{ mr: 1, ml: -1, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText><strong>Helps</strong> to cope with insomnia</ListItemText>
 							</ListItem>
 
 							<ListItem>
-								<OfflineBoltIcon sx={{ mr: 1, ml: -2, color: '#EB6D2F', fontSize: 20 }} />
+								<OfflineBoltIcon sx={{ mr: 1, ml: -1, color: '#EB6D2F', fontSize: 20 }} />
 								<ListItemText><strong>Gives</strong> energy to the body, restores strength</ListItemText>
 							</ListItem>
 

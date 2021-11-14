@@ -1,7 +1,6 @@
-import { Button, Card, CardContent, CardMedia, Container, Grid, MenuItem, TextField, Typography } from '@mui/material';
+import { Button, Container, Grid, MenuItem, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-// import { Card } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import StarIcon from '@mui/icons-material/Star';
 
