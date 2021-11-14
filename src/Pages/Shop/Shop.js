@@ -8,7 +8,7 @@ import Product from '../../Shared/Product/Product';
 import LoadingBee from '../../Shared/LoadingBee/LoadingBee';
 
 const Shop = () => {
-	const [isLoading, setIsLoading] = useState(true)
+	const [isLoading, setIsLoading] = useState(true);
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
 		fetch('http://localhost:5000/products')
@@ -50,7 +50,7 @@ const Shop = () => {
 				</Stack>
 			</Box>
 
-			<Box sx={{my: 5}}>
+			<Box sx={{my: 10}}>
 				<Container>
 					<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 						{

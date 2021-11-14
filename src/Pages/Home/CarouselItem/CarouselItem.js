@@ -30,7 +30,7 @@ const CarouselItem = ({ review }) => {
 
 					</div>
 					<Typography sx={{ fontSize: 16, fontStyle: 'italic', fontWeight: 100, textAlign: 'center' }} color="text.secondary" gutterBottom>
-						{comment}
+						{comment.split(' ').slice(0, 36).toString().replace(/,/g, ' ')}
 					</Typography>
 
 					<div style={{textAlign: 'right'}}>

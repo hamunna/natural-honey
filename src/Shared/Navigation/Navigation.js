@@ -26,6 +26,8 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import useAuth from '../../hooks/useAuth';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+
 
 
 //==================================================================================
@@ -182,6 +184,22 @@ const Navigation = () => {
 						</ListItem>
 					</NavLink>
 				</List>
+
+				{
+					user?.email && <List>
+						<NavLink style={navLinkStyle} to="/dashboard/review">
+							<ListItem button>
+
+
+								<ListItemIcon>
+									<RateReviewIcon />
+								</ListItemIcon>
+
+								<ListItemText>Review</ListItemText>
+							</ListItem>
+						</NavLink>
+					</List>
+				}
 
 				<Divider />
 

@@ -3,8 +3,13 @@ import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import StarIcon from '@mui/icons-material/Star';
+import { useHistory, useLocation } from 'react-router';
 
 const Review = () => {
+	const { user } = useAuth();
+	
+	const location = useLocation();
+	const history = useHistory();
 
 	const ratingNumbers = [
 		{
@@ -29,7 +34,6 @@ const Review = () => {
 		},
 	];
 
-	const { user } = useAuth();
 
 	const initialReviewInfo = {
 		userName: user?.displayName,
@@ -54,7 +58,7 @@ const Review = () => {
 		setReviewData(newReviewData);
 	}
 
-	const handlePurchaseProduct = e => {
+	const handleReviewSubmit = e => {
 
 		const newReview = { ...reviewData, status: { pending: "Pending", approved: "Approved" } };
 
@@ -73,6 +77,8 @@ const Review = () => {
 
 					const addedReview = data;
 					setReviewData(addedReview);
+					const destination = location?.state?.from || '/dashboard';
+					history.replace(destination);
 				}
 			})
 
@@ -115,7 +121,7 @@ const Review = () => {
 				Write Your Valuable Review
 			</Typography>
 
-			<form onSubmit={handlePurchaseProduct}>
+			<form onSubmit={handleReviewSubmit}>
 				{/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} > */}
 
 				{/* Right Side */}

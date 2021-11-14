@@ -6,15 +6,19 @@ import Product from '../../../Shared/Product/Product';
 import productBg from '../../../images/login-form-bg.jpg';
 import wave1 from '../../../images/wave-1.png';
 import { NavLink } from 'react-router-dom';
+import LoadingBee from '../../../Shared/LoadingBee/LoadingBee';
 
 
 const Products = () => {
 	const [products, setProducts] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+	
 	useEffect(() => {
 		fetch('http://localhost:5000/products')
 			// fetch('/products.json')
 			.then(res => res.json())
-			.then(data => setProducts(data));
+			.then(data => setProducts(data))
+			.finally(()=> setIsLoading(false));
 	}, []);
 
 	const bg = {
@@ -43,6 +47,7 @@ const Products = () => {
 		}
 	}
 
+	if (isLoading) { return <LoadingBee /> }
 	return (
 
 		<Box id="products" sx={bg}>

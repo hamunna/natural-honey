@@ -5,11 +5,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import LoadingBee from '../../../Shared/LoadingBee/LoadingBee';
 
 const Purchase = () => {
-	
+
 	const { user } = useAuth();
-	
+	const [isLoading, setIsLoading] = useState(true);
+
+
 	const dateTime = `${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
 
 	const initialInfo = {
@@ -55,7 +58,7 @@ const Purchase = () => {
 				if (data.insertedId) {
 					alert('Order Placed Successfully!');
 					e.target.reset();
-					const destination = location?.state?.from || '/';
+					const destination = location?.state?.from || '/shop';
 					history.replace(destination);
 				}
 				const addedService = data;
@@ -68,7 +71,8 @@ const Purchase = () => {
 		const url = `http://localhost:5000/products`;
 		fetch(url)
 			.then(res => res.json())
-			.then(data => setOrder(data));
+			.then(data => setOrder(data))
+			.finally(() => setIsLoading(false))
 	}, []);
 
 	useEffect(() => {
@@ -101,6 +105,7 @@ const Purchase = () => {
 		}
 	}
 
+	if (isLoading) { return <LoadingBee /> }
 	return (
 		<Container sx={{ textAlign: 'center', my: 5, mx: 'auto', textAlign: 'center', boxShadow: '0 0 600px 0 #5A3733', borderRadius: '20px', py: 2 }}>
 

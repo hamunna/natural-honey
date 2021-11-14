@@ -6,19 +6,21 @@ import { Container, Typography } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 import { Box } from '@mui/system';
 import wave2 from '../../../images/wave-2.png';
+import LoadingBee from '../../../Shared/LoadingBee/LoadingBee';
 
 
 const Testimonials = () => {
 	const [reviews, setReviews] = useState([]);
-	const { isLoading, setIsLoading } = useAuth();
-
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		fetch('http://localhost:5000/reviews')
 			.then(res => res.json())
 			.then(data => setReviews(data))
-		// .finally(() => setIsLoading(false));
+		.finally(() => setIsLoading(false));
 	}, []);
+
+	if (isLoading) { return <LoadingBee /> }
 
 	const testimonialBg = {
 		// backgroundImage: `url(${bg})`,
