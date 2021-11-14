@@ -7,14 +7,14 @@ import useAuth from '../../../hooks/useAuth';
 
 const Testimonials = () => {
 	const [reviews, setReviews] = useState([]);
-	const {isLoading, setIsLoading} = useAuth();
+	const { isLoading, setIsLoading } = useAuth();
 
 
 	useEffect(() => {
 		fetch('http://localhost:5000/reviews')
 			.then(res => res.json())
 			.then(data => setReviews(data))
-			// .finally(() => setIsLoading(false));
+		// .finally(() => setIsLoading(false));
 	}, []);
 
 	const testimonialBg = {
@@ -35,11 +35,11 @@ const Testimonials = () => {
 	return (
 		<div style={testimonialBg} id="testimonials">
 
-			<Container>
-				<div style={testimonialBgBee}>
+			<div style={testimonialBgBee}>
+				<Container>
 					<Testimonial key={reviews.length.toString()} reviews={reviews} />
-				</div>
-			</Container>
+				</Container>
+			</div>
 
 		</div>
 	);

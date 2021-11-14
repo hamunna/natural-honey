@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
 import { Button, Typography } from '@mui/material';
 import useAuth from '../../../../hooks/useAuth';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 //=================================================================
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -108,13 +110,12 @@ export default function MyOrders() {
 								<StyledTableCell sx={{ color: 'olive' }} align="left">{order.status}</StyledTableCell>
 
 								<StyledTableCell align="left">
-									<Button
+								<DeleteIcon
 										variant="contained"
 										color="error"
-										size="small"
-										sx={{ fontSize: 12 }}
+										sx={{cursor: 'pointer'}}
 										onClick={() => handleDeleteOrder(order._id)}
-									>Delete</Button>
+									/>
 								</StyledTableCell>
 
 							</StyledTableRow>

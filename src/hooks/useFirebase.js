@@ -90,7 +90,6 @@ const useFirebase = () => {
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
 				const user = result.user;
-console.log(user)
 				saveUser(user.email, user.displayName, 'PUT');
 				const destination = location?.state?.from || '/';
 				history.replace(destination);
@@ -110,7 +109,7 @@ console.log(user)
 		fetch(url)
 			.then(res => res.json())
 			.then(data => setAdmin(data.admin));
-		
+
 	}, [user?.email]);
 
 	// SignOut Process
@@ -133,7 +132,7 @@ console.log(user)
 			},
 			body: JSON.stringify(user)
 		})
-		.then()
+			.then()
 	}
 
 	return {

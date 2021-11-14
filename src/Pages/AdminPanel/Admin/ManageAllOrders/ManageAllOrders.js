@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
 import { Alert, Button, Typography } from '@mui/material';
 import useAuth from '../../../../hooks/useAuth';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -47,24 +49,26 @@ export default function MangeAllOrders() {
 
 	// Update Order to Complete
 	const handleOrderComplete = id => {
+		// const status = 'Complete';
 
 		const update = window.confirm('Are you sure?');
 
-		if(update){
+		if (update) {
 
 			const url = `http://localhost:5000/allOrders/${id}`;
+			console.log(url)
 			fetch(url, {
 				method: 'PUT',
 				headers: {
 					'content-type': 'application/json'
 				},
-				body: JSON.stringify({status: 'Complete'})
+				body: JSON.stringify({})
 			})
 				.then(res => res.json())
 				.then(data => {
 					console.log(data)
 					// setEmail('');
-					// setOrderComplete('Complete');
+					setOrders(orders);
 					alert('Updated Successfully!');
 					// const remainingPending = orders.filter(order => order._id !== id)
 					// setOrderComplete(remainingPending);
@@ -119,35 +123,33 @@ export default function MangeAllOrders() {
 
 					<TableBody>
 						{orders.map((order) => (
-							<StyledTableRow key={order._id}>
+							<StyledTableRow key={order?._id}>
 
 								<StyledTableCell align="left">{sl++}</StyledTableCell>
 
 								<StyledTableCell component="th" scope="row">
-									{order.productName}
+									{order?.productName}
 								</StyledTableCell>
 
-								<StyledTableCell align="left">&#36;{order.price}</StyledTableCell>
-								<StyledTableCell align="left">{order.dateTime}</StyledTableCell>
-								<StyledTableCell align="left">{order.userEmail}</StyledTableCell>
-								<StyledTableCell sx={{ color: 'olive' }} align="left">{order.status}</StyledTableCell>
+								<StyledTableCell align="left">&#36;{order?.price}</StyledTableCell>
+								<StyledTableCell align="left">{order?.dateTime}</StyledTableCell>
+								<StyledTableCell align="left">{order?.userEmail}</StyledTableCell>
+								<StyledTableCell sx={{ color: 'olive' }} align="left">{order?.status}</StyledTableCell>
 
-								<StyledTableCell align="center" sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
-									<Button
+								<StyledTableCell align="center" sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+									<DeleteIcon
 										variant="contained"
 										color="error"
-										size="small"
-										sx={{ fontSize: 12 }}
+										sx={{cursor: 'pointer'}}
 										onClick={() => handleDeleteOrder(order._id)}
-									>Delete</Button>
+									/>
 
-									<Button
+									<AssignmentTurnedInIcon
 										variant="contained"
 										color="success"
-										size="small"
-										sx={{ fontSize: 12 }}
+										sx={{cursor: 'pointer'}}
 										onClick={() => handleOrderComplete(order._id)}
-									>Complete</Button>
+									/>
 								</StyledTableCell>
 							</StyledTableRow>
 							// <Alert severity="error">No Order Available!</Alert>
