@@ -69,7 +69,7 @@ const Navigation = () => {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar sx={{ backgroundColor: '#5A3733' }} position="fixed">
 				<Container>
-					<Toolbar sx={{}}>
+					<Toolbar>
 
 						<Box sx={{ mr: 'auto' }}>
 							<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/">

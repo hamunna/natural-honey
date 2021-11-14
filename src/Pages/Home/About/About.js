@@ -6,7 +6,7 @@ import tick from '../../../images/tick-icon.png';
 import aboutImg from '../../../images/about-img.jpg';
 import { typography } from '@mui/system';
 import OfflineBoltIcon from '@mui/icons-material/OfflineBolt';
-
+import wave1 from '../../../images/wave-1.png';
 
 
 const About = () => {
@@ -40,6 +40,9 @@ const About = () => {
 						<Typography variant="h3" sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontWeight: 700 }}>
 							About Honey
 						</Typography>
+
+						<img style={{ width: '6vw', marginTop: '10px' }} src={wave1} alt="" />
+
 
 						<Typography variant="body2" color="text.secondary" sx={{ fontFamily: "'Raleway', sans-serif", my: 5 }}>
 							Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great

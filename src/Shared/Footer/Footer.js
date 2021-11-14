@@ -15,9 +15,9 @@ const Footer = () => {
 		fontFamily: "'Signika', sans-serif"
 	}
 	return (
-		<footer style={{ color: 'white' }}>
+		<footer style={{ backgroundColor: '#F7EFCB', backgroundSize: 'cover', borderTop: '1px solid #EB6D2F' }}>
 			<Container>
-				<Box sx={{ display: 'flex' }}>
+				<Box sx={{ display: 'flex', my: 5 }}>
 
 
 					{/* Services */}
@@ -63,23 +63,23 @@ const Footer = () => {
 						<div>
 
 							<Typography variant="h5">
-								<Link to="/home" style={{ textDecoration: 'none', fontFamily: "'Signika', sans-serif"}}>
+								<Link to="/home" style={{ textDecoration: 'none', fontFamily: "'Signika', sans-serif" }}>
 									<span style={{ color: '#5A3733', fontWeight: 800, fontFamily: "'Raleway', sans-serif" }}>Natural</span>
 									<span style={{ color: '#EB6D2F', fontWeight: 800, fontFamily: "'Raleway', sans-serif" }}>Honey</span>
 								</Link>
 							</Typography>
 
-							<Typography sx={{color: '#5A3733', fontFamily: "'Signika', sans-serif", my: 1}}>
+							<Typography sx={{ color: '#5A3733', fontFamily: "'Signika', sans-serif", my: 1 }}>
 								<small><strong>Location: </strong>South Surma, Sylhet</small>
 							</Typography>
 
-							<Typography sx={{color: '#5A3733', fontFamily: "'Signika', sans-serif", my: 1}}>
+							<Typography sx={{ color: '#5A3733', fontFamily: "'Signika', sans-serif", my: 1 }}>
 								<small><strong>Phone-1: </strong>+8801787654321</small>
 								<br />
 								<small><strong>Phone-2: </strong>+8801943218765</small>
 							</Typography>
 
-							<Typography sx={{color: '#5A3733', fontFamily: "'Signika', sans-serif", my: 1}}><small><strong>Email: </strong>info@naturalhoney.com</small></Typography>
+							<Typography sx={{ color: '#5A3733', fontFamily: "'Signika', sans-serif", my: 1 }}><small><strong>Email: </strong>info@naturalhoney.com</small></Typography>
 
 							<Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
 								<SocialIcon bgColor="#5A3733" url="https://www.facebook.com" style={{ height: 30, width: 30 }} />
@@ -96,9 +96,9 @@ const Footer = () => {
 			</Container>
 
 			<Container>
-				<Box sx={{py: 2, borderTop: '1px solid gray', textAlign: 'center', fontFamily: "'Signika', sans-serif", color: '#5A3733'}}>
+				<Box sx={{ py: 2, borderTop: '1px dashed #5A3733', textAlign: 'center', fontFamily: "'Signika', sans-serif", color: '#5A3733' }}>
 					<p>Copyright &copy; 2021 &bull; <span style={{ color: '#5A3733', fontWeight: 800, fontFamily: "'Raleway', sans-serif" }}>Natural</span>
-									<span style={{ color: '#EB6D2F', fontWeight: 800, fontFamily: "'Raleway', sans-serif" }}>Honey</span> &bull; all rights reserved.</p>
+						<span style={{ color: '#EB6D2F', fontWeight: 800, fontFamily: "'Raleway', sans-serif" }}>Honey</span> &bull; all rights reserved.</p>
 				</Box>
 			</Container>
 		</footer>

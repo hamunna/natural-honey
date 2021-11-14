@@ -29,7 +29,7 @@ const CarouselItem = ({ review }) => {
 						</div>
 
 					</div>
-					<Typography sx={{ fontSize: 16, fontStyle: 'italic', fontWeight: 100 }} color="text.secondary" gutterBottom>
+					<Typography sx={{ fontSize: 16, fontStyle: 'italic', fontWeight: 100, textAlign: 'center' }} color="text.secondary" gutterBottom>
 						{comment}
 					</Typography>
 
