@@ -43,31 +43,37 @@ function App() {
           {/* Default Home Page */}
           <Route exact path="/">
             <HomePage />
+            <Footer />
           </Route>
 
           {/* Home Page */}
           <Route path="/home">
             <HomePage />
+            <Footer />
           </Route>
 
           {/* Sign Up Page */}
           <Route path="/signup">
             <Signup />
+            <Footer />
           </Route>
 
           {/* Login Page */}
           <Route path="/login">
             <Login />
+            <Footer />
           </Route>
 
           {/* Shop Page */}
           <Route path="/shop">
             <Shop />
+            <Footer />
           </Route>
 
           {/* Blog Page */}
           <Route path="/blog">
             <Blogs />
+            <Footer />
           </Route>
 
 
@@ -76,10 +82,11 @@ function App() {
           Private Routes
           ==================================
          */}
-          
+
           {/* Dynamic Data Load to Purchase Page */}
           <PrivateRoute path="/purchase/:productId">
             <Purchase />
+            <Footer />
           </PrivateRoute>
 
           <PrivateRoute path="/dashboard">
@@ -89,10 +96,10 @@ function App() {
           {/* 404 */}
           <Route exact path="*">
             <NotFound />
+            <Footer />
           </Route>
 
         </Switch>
-        <Footer />
       </Router>
     </AuthProvider>
 
