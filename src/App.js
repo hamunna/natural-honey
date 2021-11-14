@@ -2,7 +2,7 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
 import HomePage from './Pages/Home/HomePage/HomePage';
 import Signup from './Pages/Signup/Signup';
@@ -15,14 +15,8 @@ import Shop from './Pages/Shop/Shop';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './Private/PrivateRoute';
 import Purchase from './Pages/PrivatePages/Purchase/Purchase';
-import MyOrders from './Pages/AdminPanel/NormalUser/MyOrders/MyOrders';
-import Review from './Pages/AdminPanel/NormalUser/Review/Review';
-import Payment from './Pages/AdminPanel/NormalUser/Payment/Payment';
-import ManageAllOrders from './Pages/AdminPanel/Admin/ManageAllOrders/ManageAllOrders';
 import Dashboard from './Pages/AdminPanel/Dashboard/Dashboard';
-import AddNewProduct from './Pages/AdminPanel/Admin/AddNewProduct/AddNewProduct';
-import MakeAdmin from './Pages/AdminPanel/Admin/MakeAdmin/MakeAdmin';
-import ManageProducts from './Pages/AdminPanel/Admin/ManageProducts/ManageProducts';
+import ScrollToTop from './hooks/ScrollToTop';
 
 
 
@@ -31,6 +25,7 @@ function App() {
 
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <Navigation />
         <Switch>
 

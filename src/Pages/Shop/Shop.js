@@ -5,14 +5,17 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Product from '../../Shared/Product/Product';
+import LoadingBee from '../../Shared/LoadingBee/LoadingBee';
 
 const Shop = () => {
+	const [isLoading, setIsLoading] = useState(true)
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
 		fetch('http://localhost:5000/products')
 			// fetch('/products.json')
 			.then(res => res.json())
-			.then(data => setProducts(data));
+			.then(data => setProducts(data))
+			.finally(()=> setIsLoading(false));
 	}, []);
 
 	const productBanner = {
@@ -23,6 +26,9 @@ const Shop = () => {
 		backgroundBlendMode: 'overlay',
 		width: '100%',
 	}
+
+	if (isLoading) { return <LoadingBee /> }
+
 	return (
 		<Box>
 			<Box sx={productBanner}>
