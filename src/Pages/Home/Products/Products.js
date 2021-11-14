@@ -10,6 +10,7 @@ const Products = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
 		fetch('http://localhost:5000/products')
+		// fetch('/products.json')
 			.then(res => res.json())
 			.then(data => setProducts(data));
 	}, []);
@@ -43,7 +44,7 @@ const Products = () => {
 							products.map(product => <Product
 								key={product._id}
 								product={product}
-							/>)
+							/>).slice(0, 6)
 						}
 					</Grid>
 				</Container>
