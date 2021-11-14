@@ -8,10 +8,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
-import { Alert, Button, Typography } from '@mui/material';
+import { Alert, Button, CircularProgress, Typography } from '@mui/material';
 import useAuth from '../../../../hooks/useAuth';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useHistory } from 'react-router';
+import LoadingBee from '../../../../Shared/LoadingBee/LoadingBee';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -35,28 +37,24 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function MangeAllOrders() {
 	const { user, isLoading, setIsLoading } = useAuth();
-
 	const [orders, setOrders] = React.useState([]);
-	// const [orderComplete, setOrderComplete] = React.useState({});
+	const history = useHistory();
 
 	// Getting Data by Query
 	React.useEffect(() => {
 		fetch('http://localhost:5000/allOrders/list?list=listed')
 			.then(res => res.json())
 			.then(data => setOrders(data))
-			.finally(() => setIsLoading(false));
 	}, []);
 
 	// Update Order to Complete
 	const handleOrderComplete = id => {
-		// const status = 'Complete';
 
 		const update = window.confirm('Are you sure?');
 
 		if (update) {
 
 			const url = `http://localhost:5000/allOrders/${id}`;
-			console.log(url)
 			fetch(url, {
 				method: 'PUT',
 				headers: {
@@ -67,12 +65,10 @@ export default function MangeAllOrders() {
 				.then(res => res.json())
 				.then(data => {
 					console.log(data)
-					// setEmail('');
 					setOrders(orders);
 					alert('Updated Successfully!');
-					// const remainingPending = orders.filter(order => order._id !== id)
-					// setOrderComplete(remainingPending);
 				});
+			window.location.reload();
 		}
 
 	}
@@ -100,6 +96,8 @@ export default function MangeAllOrders() {
 	}
 
 	let sl = 1;
+
+	// if (isLoading) { return <LoadingBee /> }
 
 	return (
 		<Box>
@@ -140,14 +138,14 @@ export default function MangeAllOrders() {
 									<DeleteIcon
 										variant="contained"
 										color="error"
-										sx={{cursor: 'pointer'}}
+										sx={{ cursor: 'pointer' }}
 										onClick={() => handleDeleteOrder(order._id)}
 									/>
 
 									<AssignmentTurnedInIcon
 										variant="contained"
 										color="success"
-										sx={{cursor: 'pointer'}}
+										sx={{ cursor: 'pointer' }}
 										onClick={() => handleOrderComplete(order._id)}
 									/>
 								</StyledTableCell>

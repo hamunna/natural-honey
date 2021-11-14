@@ -8,9 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
-import { Button, Typography } from '@mui/material';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import useAuth from '../../../../hooks/useAuth';
 import DeleteIcon from '@mui/icons-material/Delete';
+import LoadingBee from '../../../../Shared/LoadingBee/LoadingBee';
 
 
 //=================================================================
@@ -49,7 +50,6 @@ export default function MyOrders() {
 		fetch(url)
 			.then(res => res.json())
 			.then(data => setOrders(data))
-			.finally(() => setIsLoading(false));
 	}, []);
 
 	// Deleting Data
@@ -75,6 +75,8 @@ export default function MyOrders() {
 	}
 
 	let sl = 1;
+
+	// if (isLoading) { return <LoadingBee /> }
 
 	return (
 		<Box>

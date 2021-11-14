@@ -96,6 +96,17 @@ export default function Dashboard() {
 
 					<Box>
 						<List>
+							<NavLink style={navLinkStyle} to="/">
+								<ListItem button>
+
+									<ListItemIcon sx={iconStyle}>
+										<HomeIcon />
+									</ListItemIcon>
+
+									<ListItemText>Home</ListItemText>
+								</ListItem>
+							</NavLink>
+							{/* </List> */}
 							<NavLink style={navLinkStyle} to={`${url}`}>
 								<ListItem button>
 
@@ -106,10 +117,10 @@ export default function Dashboard() {
 									<ListItemText>Dashboard</ListItemText>
 								</ListItem>
 							</NavLink>
-						{/* </List> */}
+							{/* </List> */}
 
-						{admin && <Box>
-							{/* <List> */}
+							{admin && <Box>
+								{/* <List> */}
 								<NavLink style={navLinkStyle} to={`${url}/manageProducts`}>
 
 									<ListItem button>
@@ -121,9 +132,9 @@ export default function Dashboard() {
 										<ListItemText>Manage Products</ListItemText>
 									</ListItem>
 								</NavLink>
-							{/* </List> */}
+								{/* </List> */}
 
-							{/* <List> */}
+								{/* <List> */}
 								<NavLink style={navLinkStyle} to={`${url}/manageAllOrders`}>
 
 									<ListItem button>
@@ -135,9 +146,9 @@ export default function Dashboard() {
 										<ListItemText>Manage All Orders</ListItemText>
 									</ListItem>
 								</NavLink>
-							{/* </List> */}
+								{/* </List> */}
 
-							{/* <List> */}
+								{/* <List> */}
 								<NavLink style={navLinkStyle} to={`${url}/addNewProduct`}>
 									<ListItem button>
 
@@ -149,9 +160,9 @@ export default function Dashboard() {
 										<ListItemText>Add New Product</ListItemText>
 									</ListItem>
 								</NavLink>
-							{/* </List> */}
+								{/* </List> */}
 
-							{/* <List> */}
+								{/* <List> */}
 								<NavLink style={navLinkStyle} to={`${url}/makeAdmin`}>
 									<ListItem button>
 
@@ -163,13 +174,13 @@ export default function Dashboard() {
 										<ListItemText>Make Admin</ListItemText>
 									</ListItem>
 								</NavLink>
-							{/* </List> */}
+								{/* </List> */}
 
 								<Divider sx={{ backgroundColor: 'white' }} />
-							<Divider  />
-						</Box>}
+								<Divider />
+							</Box>}
 
-						{/* <List> */}
+							{/* <List> */}
 							<NavLink style={navLinkStyle} to={`${url}/myOrders`}>
 								<ListItem button>
 
@@ -181,9 +192,9 @@ export default function Dashboard() {
 									<ListItemText>My Orders</ListItemText>
 								</ListItem>
 							</NavLink>
-						{/* </List> */}
+							{/* </List> */}
 
-						{/* <List> */}
+							{/* <List> */}
 							<NavLink style={navLinkStyle} to={`${url}/review`}>
 								<ListItem button>
 
@@ -195,9 +206,9 @@ export default function Dashboard() {
 									<ListItemText>Review</ListItemText>
 								</ListItem>
 							</NavLink>
-						{/* </List> */}
+							{/* </List> */}
 
-						{/* <List> */}
+							{/* <List> */}
 							<NavLink style={navLinkStyle} to={`${url}/payment`}>
 								<ListItem button>
 
@@ -212,7 +223,7 @@ export default function Dashboard() {
 						</List>
 
 						{user?.email &&
-							<Box sx={{mt: 'auto'}}>
+							<Box sx={{ mt: 'auto' }}>
 								<Divider sx={{ backgroundColor: 'white' }} />
 
 								<List sx={{ display: 'block', mt: 'auto' }}>
