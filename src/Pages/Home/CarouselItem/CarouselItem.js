@@ -1,8 +1,10 @@
 import { Container, Rating, Typography } from '@mui/material';
 import React from 'react';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import dummyUserImg from '../../../images/dummy-user-img.png';
 
 const CarouselItem = ({ review }) => {
+
 	const { image, rating, userName, profession, comment } = review;
 	return (
 		<Container>
@@ -13,7 +15,10 @@ const CarouselItem = ({ review }) => {
 					<div style={{ display: 'flex', gap: '30px', alignItems: 'start', marginBottom: '20px' }}>
 
 						<div style={{ width: '40px', height: '40px' }}>
-							<img style={{ width: '100%', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '2px' }} src={image} alt="" />
+							{image !== null ?
+								<img style={{ width: '100%', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '2px' }} src={image} alt="" />
+								:
+								<img style={{ width: '100%', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '2px' }} src={dummyUserImg} alt="" />}
 						</div>
 
 						<div>
@@ -30,10 +35,10 @@ const CarouselItem = ({ review }) => {
 
 					</div>
 					<Typography sx={{ fontSize: 16, fontStyle: 'italic', fontWeight: 100, textAlign: 'center' }} color="text.secondary" gutterBottom>
-						{comment.split(' ').slice(0, 36).toString().replace(/,/g, ' ')}
+						{comment.split(' ').slice(0, 36).toString().replace(/,/g, ' ')}...
 					</Typography>
 
-					<div style={{textAlign: 'right'}}>
+					<div style={{ textAlign: 'right' }}>
 						<FormatQuoteIcon sx={{ fontSize: 90, color: 'orange' }} />
 					</div>
 

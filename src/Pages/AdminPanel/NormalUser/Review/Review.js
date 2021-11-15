@@ -85,6 +85,28 @@ const Review = () => {
 		e.preventDefault();
 	}
 
+	// Minimum characters to write
+	const minCharactersOnChange = () => {
+		// Selecting Related Elements
+		const commentBox = document.getElementById('comment');
+		const charRemain = document.getElementById('char-remain');
+		// const charExceedMsg = document.getElementById('char-exceed-msg');
+		// const charRemainingMsg = document.getElementById('char-remaining-msg');
+	
+		if (commentBox.length > 100) {
+			// charExceedMsg.style.display = 'block';
+			// charRemainingMsg.style.display = 'none';
+			
+			charRemain.color = 'green';
+			
+		}
+		else {
+			// charExceedMsg.style.display = 'none';
+			// charRemainingMsg.style.display = 'block';
+			charRemain.innerText = 255 - commentBox.length;
+		}
+	}
+
 	//==========================
 	// Styles
 	//==========================
@@ -167,7 +189,11 @@ const Review = () => {
 							required
 							rows={6}
 							onBlur={handleOnBlur}
+							onChange={minCharactersOnChange}
 						/>
+
+						{/* Alert msg */}
+						<Typography id="char-remain" color="red">Text must be 100 characters</Typography>
 
 						<Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
 
@@ -202,7 +228,7 @@ const Review = () => {
 								required
 							/>
 
-							{/* Image Field */}
+							{/* Image Field
 							<TextField
 								sx={inlineInputStyle}
 								type="url"
@@ -211,7 +237,7 @@ const Review = () => {
 								value={user?.photoURL}
 								label="Image URL"
 								onBlur={handleOnBlur}
-							/>
+							/> */}
 						</Box>
 					</Box>
 
