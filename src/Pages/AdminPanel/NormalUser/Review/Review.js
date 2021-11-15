@@ -85,27 +85,27 @@ const Review = () => {
 		e.preventDefault();
 	}
 
-	// Minimum characters to write
-	const minCharactersOnChange = () => {
-		// Selecting Related Elements
-		const commentBox = document.getElementById('comment');
-		const charRemain = document.getElementById('char-remain');
-		// const charExceedMsg = document.getElementById('char-exceed-msg');
-		// const charRemainingMsg = document.getElementById('char-remaining-msg');
+	// // Minimum characters to write
+	// const minCharactersOnChange = () => {
+	// 	// Selecting Related Elements
+	// 	const commentBox = document.getElementById('comment');
+	// 	const charRemain = document.getElementById('char-remain');
+	// 	// const charExceedMsg = document.getElementById('char-exceed-msg');
+	// 	// const charRemainingMsg = document.getElementById('char-remaining-msg');
 	
-		if (commentBox.length > 100) {
-			// charExceedMsg.style.display = 'block';
-			// charRemainingMsg.style.display = 'none';
+	// 	if (commentBox.length > 100) {
+	// 		// charExceedMsg.style.display = 'block';
+	// 		// charRemainingMsg.style.display = 'none';
 			
-			charRemain.color = 'green';
+	// 		charRemain.color = 'green';
 			
-		}
-		else {
+	// 	}
+		// else {
 			// charExceedMsg.style.display = 'none';
 			// charRemainingMsg.style.display = 'block';
-			charRemain.innerText = 255 - commentBox.length;
-		}
-	}
+			// charRemain.innerText = 255 - commentBox.length;
+		// }
+	// }
 
 	//==========================
 	// Styles
@@ -164,7 +164,7 @@ const Review = () => {
 								onBlur={handleOnBlur}
 							/>
 
-							{/* User Name Field */}
+							{/* User Email Field */}
 							<TextField
 								sx={inlineInputStyle}
 								fullWidth
@@ -189,7 +189,7 @@ const Review = () => {
 							required
 							rows={6}
 							onBlur={handleOnBlur}
-							onChange={minCharactersOnChange}
+							// onChange={minCharactersOnChange}
 						/>
 
 						{/* Alert msg */}

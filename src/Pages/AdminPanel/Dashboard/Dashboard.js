@@ -46,6 +46,7 @@ import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import EventIcon from '@mui/icons-material/Event';
 import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
 import LogoutIcon from '@mui/icons-material/Logout';
+import dummyUserImg from '../../../images/dummy-user-img.png';
 
 const drawerWidth = 240;
 const navLinkStyle = {
@@ -69,6 +70,17 @@ export default function Dashboard() {
 					<Typography variant="h6" noWrap component="div" sx={{ fontWeight: 600, fontFamily: "'Raleway', sans-serif", color: '#fff', textShadow: '0 0 1px white' }}>
 						Dashboard
 					</Typography>
+
+					<Box sx={{ml: 'auto', display: 'flex', gap: 3, alignItems: 'center'}}>
+						<Typography sx={{ color: 'white' }}><span style={{ fontWeight: 800 }}>Hey,</span> {user?.displayName}</Typography>
+						{user?.image ?
+							<img style={{width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px'}} src={user?.image} alt="" />
+							:
+							<img style={{width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px'}} src={dummyUserImg} alt="" />
+						}
+					</Box>
+
+
 				</Toolbar>
 			</AppBar>
 
