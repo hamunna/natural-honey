@@ -1,10 +1,12 @@
 import React from 'react';
+import comingSoon from '../../../images/coming-soon.gif';
 
 const Blogs = () => {
 	return (
-		<div>
-			<h1>Blog Page</h1>
-			<h1>Blog Page-2</h1>
+		<div style={{ margin: '100px' }}>
+			<h1>Our Best Blogs Coming Soon...</h1>
+
+			<img src={comingSoon} alt="" />
 		</div>
 	);
 };

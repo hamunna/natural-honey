@@ -161,7 +161,11 @@ const Signup = () => {
 			backgroundImage: `url(${formBg})`,
 			backgroundSize: 'cover',
 			height: '700px'
-		}
+	}
+	
+	const comingSoon = () => {
+		alert('Facebook Authentication coming soon...');
+	}
 	
 	return (
 		<>
@@ -201,11 +205,11 @@ const Signup = () => {
 
 						<Box>
 							<Button onClick={handleGoogleSignIn}>
-								<img style={{ height: '30px' }} src={googleLogin} alt="" />
+								<img style={{ height: '36px' }} src={googleLogin} alt="" />
 							</Button>
 
-							<Button>
-								<img style={{ height: '30px' }} src={fbLogin} alt="" />
+							<Button onClick={comingSoon}>
+								<img style={{ height: '36px' }} src={fbLogin} alt="" />
 							</Button>
 
 						</Box>

@@ -1,4 +1,3 @@
-import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +16,8 @@ import PrivateRoute from './Private/PrivateRoute';
 import Purchase from './Pages/PrivatePages/Purchase/Purchase';
 import Dashboard from './Pages/AdminPanel/Dashboard/Dashboard';
 import ScrollToTop from './hooks/ScrollToTop';
+import './App.css';
+
 
 
 

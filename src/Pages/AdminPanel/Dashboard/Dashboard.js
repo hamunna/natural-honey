@@ -229,7 +229,7 @@ export default function Dashboard() {
 										<PaymentIcon />
 									</ListItemIcon>
 
-									<ListItemText>Make Payment</ListItemText>
+									<ListItemText>Payment</ListItemText>
 								</ListItem>
 							</NavLink>
 						</List>

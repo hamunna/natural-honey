@@ -8,7 +8,7 @@ const CarouselItem = ({ review }) => {
 	const { image, rating, userName, profession, comment } = review;
 	return (
 		<Container>
-			<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '500px' }}>
+			<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center', height: '500px' }}>
 
 				<div style={{ maxWidth: 500, height: '260px', padding: '50px', backgroundColor: 'white', borderRadius: '20px' }}>
 

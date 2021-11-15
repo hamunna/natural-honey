@@ -7,17 +7,26 @@ import useAuth from '../../../hooks/useAuth';
 import { Box } from '@mui/system';
 import wave2 from '../../../images/wave-2.png';
 import LoadingBee from '../../../Shared/LoadingBee/LoadingBee';
+import './Testimonials.css';
 
 
 const Testimonials = () => {
 	const [reviews, setReviews] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
+	// For Conditional Showing Responsiveness
+	const [matches, setMatches] = useState(window.matchMedia("(min-width: 768px)").matches)
+
+	useEffect(() => {
+		const handler = (e) => setMatches(e.matches);
+		window.matchMedia("(min-width: 768px)").addListener(handler);
+	}, []);
+
 	useEffect(() => {
 		fetch('http://localhost:5000/reviews')
 			.then(res => res.json())
 			.then(data => setReviews(data))
-		.finally(() => setIsLoading(false));
+			.finally(() => setIsLoading(false));
 	}, []);
 
 	if (isLoading) { return <LoadingBee /> }
@@ -30,28 +39,30 @@ const Testimonials = () => {
 		backgroundPosition: 'top right',
 		backgroundAttachment: 'fixed',
 		height: '700px',
-		mb: 10,
+		my: 10,
 	}
 
 	return (
-		<div style={testimonialBg} id="testimonials">
-			<Box sx={{ textAlign: 'center', mb: -6, pt: 10 }}>
-				<Typography variant="h6" sx={{ fontFamily: "'Raleway', sans-serif", color: '#EB6D2F', fontWeight: 700 }}>
-					Testimonial
-				</Typography>
+		<>
+			{matches && <div id="testimonials" style={testimonialBg}>
+				<Box sx={{ textAlign: 'center', mb: -6, pt: 10 }}>
+					<Typography variant="h6" sx={{ fontFamily: "'Raleway', sans-serif", color: '#EB6D2F', fontWeight: 700 }}>
+						Testimonial
+					</Typography>
 
-				<Typography variant="h3" sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontWeight: 700 }}>
-					What our clients say
-				</Typography>
+					<Typography variant="h3" sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontWeight: 700 }}>
+						What our clients say
+					</Typography>
 
-				<img style={{ width: '4vw', marginTop: '10px' }} src={wave2} alt="" />
-			</Box>
+					<img style={{ width: '4vw', marginTop: '10px' }} src={wave2} alt="" />
+				</Box>
 
-			<Container>
-				<Testimonial key={reviews.length.toString()} reviews={reviews} />
-			</Container>
+				<Container>
+					<Testimonial key={reviews.length.toString()} reviews={reviews} />
+				</Container>
 
-		</div>
+			</div>}
+		</>
 	);
 };
 

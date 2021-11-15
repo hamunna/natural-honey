@@ -12,7 +12,7 @@ const Clients = () => {
 	return (
 		<Box sx={{ height: '180px', backgroundColor: '#5A3733' }}>
 			<Container>
-				<Box sx={{ height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+				<Box sx={{ height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' }}>
 					<Box>
 						<Typography variant="h5" sx={{ fontWeight: 800, fontFamily: "'Signika', Sans-serif", color: 'white' }}>Our sweet clients</Typography>
 						<Typography variant="h4" sx={{ fontWeight: 800, fontFamily: "'Signika', Sans-serif", color: '#EB6D2F' }}>and partners</Typography>

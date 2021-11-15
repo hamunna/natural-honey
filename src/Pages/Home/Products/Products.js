@@ -2,7 +2,6 @@ import { Button, Container, Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import Product from '../../../Shared/Product/Product';
-// import productBg from '../../../images/products-bg.jpg';
 import productBg from '../../../images/login-form-bg.jpg';
 import wave1 from '../../../images/wave-1.png';
 import { NavLink } from 'react-router-dom';

@@ -47,7 +47,7 @@ const Navigation = () => {
 
 	const { user, logOut } = useAuth();
 
-	//======================================================
+	// ======================================================
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 
@@ -58,7 +58,7 @@ const Navigation = () => {
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
-	//=========================================================
+	// =========================================================
 
 	const navLinkStyle = {
 		color: 'gray',
@@ -69,7 +69,7 @@ const Navigation = () => {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar sx={{ backgroundColor: '#5A3733' }} position="fixed">
+			<AppBar sx={{ backgroundColor: '#5A3733' }} position="">
 				<Container>
 					<Toolbar>
 
@@ -100,7 +100,7 @@ const Navigation = () => {
 				</Container>
 			</AppBar>
 
-			//====================================================================
+			{/* //==================================================================== */}
 			<Drawer
 				sx={{
 					width: drawerWidth,
@@ -241,7 +241,7 @@ const Navigation = () => {
 				}
 
 			</Drawer>
-			//================================================================
+			{/* //================================================================ */}
 		</Box >
 	);
 };

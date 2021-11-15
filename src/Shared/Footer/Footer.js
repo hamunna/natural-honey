@@ -3,6 +3,7 @@ import { Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { SocialIcon } from 'react-social-icons';
 import { Box } from '@mui/system';
+import Grid from '@mui/material/Grid';
 import Partners from '../Partners/Partners';
 // import './Footer.css';
 
@@ -20,12 +21,12 @@ const Footer = () => {
 			<Partners />
 			<footer style={{ backgroundColor: '#F7EFCB', backgroundSize: 'cover', borderTop: '1px solid #EB6D2F' }}>
 				<Container>
-					<Box sx={{ display: 'flex', my: 5 }}>
+					{/* <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}> */}
+						<Grid sx={{ my: 5, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
 
 
-						{/* Services */}
-						<Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-around', mt: 3, fontFamily: "'Raleway', sans-serif" }} >
-							<div>
+							{/* Services */}
+							<Box sx={{ mt: 3, fontFamily: "'Raleway', sans-serif",  }} >
 
 								<Typography variant="h6" sx={{ fontWeight: 700, color: '#5A3733' }}>Services</Typography>
 								<p><small><a href="#" style={linkStyle}>Honey Production</a></small></p>
@@ -33,10 +34,11 @@ const Footer = () => {
 								<p><small><a href="#" style={linkStyle}>Honey Shop</a></small></p>
 								<p><small><a href="#" style={linkStyle}>Beekeeping Classes</a></small></p>
 
-							</div>
+							</Box>
 
 							{/* Useful Links */}
-							<div>
+							<Box sx={{ mt: 3, fontFamily: "'Raleway', sans-serif",  }} >
+
 
 								<Typography variant="h6" sx={{ fontWeight: 700, color: '#5A3733', fontFamily: "'Raleway', sans-serif" }}>Useful Links</Typography>
 								<p><small><a href="#" style={linkStyle}>About Us</a></small></p>
@@ -45,14 +47,14 @@ const Footer = () => {
 								<p><small><a href="#" style={linkStyle}>Contact Us</a></small></p>
 								<p><small><a href="#" style={linkStyle}>Affiliation</a></small></p>
 
-							</div>
-						</Box>
+							</Box>
 
-						{/* Address and Social Icons */}
-						<Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-around', mt: 3 }}>
+							{/* Address and Social Icons */}
+							{/* <Grid sx={{ display: 'flex', width: '100%', justifyContent: 'space-around', mt: 3 }}> */}
 
 							{/* Health Support */}
-							<div>
+							<Box sx={{ mt: 3, fontFamily: "'Raleway', sans-serif",  }} >
+
 
 								<Typography variant="h6" sx={{ fontWeight: 700, color: '#5A3733', fontFamily: "'Raleway', sans-serif" }}>Support</Typography>
 								<p><small><a href="#" style={linkStyle}>Help</a></small></p>
@@ -61,9 +63,10 @@ const Footer = () => {
 								<p><small><a href="#" style={linkStyle}>Our Pricing</a></small></p>
 								<p><small><a href="#" style={linkStyle}>Testimonials</a></small></p>
 
-							</div>
+							</Box>
 
-							<div>
+							<Box sx={{ mt: 3, fontFamily: "'Raleway', sans-serif",  }} >
+
 
 								<Typography variant="h5">
 									<Link to="/home" style={{ textDecoration: 'none', fontFamily: "'Signika', sans-serif" }}>
@@ -84,27 +87,26 @@ const Footer = () => {
 
 								<Typography sx={{ color: '#5A3733', fontFamily: "'Signika', sans-serif", my: 1 }}><small><strong>Email: </strong>info@naturalhoney.com</small></Typography>
 
-								<Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+								<Grid sx={{ display: 'flex', gap: 2, mt: 2 }}>
 									<SocialIcon bgColor="#5A3733" url="https://www.facebook.com" style={{ height: 30, width: 30 }} />
 									<SocialIcon bgColor="#5A3733" url="https://www.twitter.com" style={{ height: 30, width: 30 }} />
 									<SocialIcon bgColor="#5A3733" url="https://www.linkedin.com" style={{ height: 30, width: 30 }} />
 									<SocialIcon bgColor="#5A3733" url="https://www.pinterest.com" style={{ height: 30, width: 30 }} />
-								</Box>
+								</Grid>
 
-							</div>
-						</Box>
+							</Box>
 
-					</Box>
-
+						</Grid>
+					{/* </Grid> */}
 				</Container>
 
 				<Container>
-					<Box sx={{ py: 2, borderTop: '1px dashed #5A3733', textAlign: 'center', fontFamily: "'Signika', sans-serif", color: '#5A3733' }}>
+					<Grid sx={{ py: 2, borderTop: '1px dashed #5A3733', textAlign: 'center', fontFamily: "'Signika', sans-serif", color: '#5A3733' }}>
 						<p>Copyright &copy; 2021 &bull; <span style={{ color: '#5A3733', fontWeight: 800, fontFamily: "'Raleway', sans-serif" }}>Natural</span>
 							<span style={{ color: '#EB6D2F', fontWeight: 800, fontFamily: "'Raleway', sans-serif" }}>Honey</span> &bull; all rights reserved.</p>
-					</Box>
+					</Grid>
 				</Container>
-			</footer>
+			</footer >
 		</>
 	);
 };

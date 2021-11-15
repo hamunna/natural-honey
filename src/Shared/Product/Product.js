@@ -28,7 +28,7 @@ const Product = ({ product }) => {
 	const { _id, image, name, description, basicPrice, discountPrice, ratings, rated } = product;
 
 	return (
-		<Grid item xs={4}>
+		<Grid item xs={12} sm={12} md={4}>
 
 			<Card variant="outlined" sx={{ pb: 3, height: 550 }}>
 				<CardMedia

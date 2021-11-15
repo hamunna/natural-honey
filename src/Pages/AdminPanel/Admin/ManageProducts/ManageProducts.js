@@ -96,8 +96,11 @@ export default function MangeProducts() {
 	}
 
 	let sl = 1;
+	const comingSoon = () => {
+		alert('Edit option coming soon...');
+	}
 
-	// if (isLoading) { return <LoadingBee /> }
+	if (isLoading) { return <LoadingBee /> }
 
 	return (
 		<Box>
@@ -128,7 +131,7 @@ export default function MangeProducts() {
 									{product?.name}
 								</StyledTableCell>
 
-								<StyledTableCell align="left"><img style={{width: '60px'}} src={ product?.image} alt="" /></StyledTableCell>
+								<StyledTableCell align="left"><img style={{ width: '60px' }} src={product?.image} alt="" /></StyledTableCell>
 
 								<StyledTableCell align="left">&#36;{product?.basicPrice}</StyledTableCell>
 								<StyledTableCell align="left">&#36;{product?.discountPrice}</StyledTableCell>
@@ -145,7 +148,8 @@ export default function MangeProducts() {
 										variant="contained"
 										color="success"
 										sx={{ cursor: 'pointer' }}
-										onClick={() => handleOrderComplete(product._id)}
+										// onClick={() => handleOrderComplete(product._id)}
+										onClick={comingSoon}
 									/>
 								</StyledTableCell>
 							</StyledTableRow>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, TextField } from '@mui/material';
+import { Alert, Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
 
@@ -30,13 +30,25 @@ const MakeAdmin = () => {
 		e.preventDefault();
 	}
 
+	// Submit Review Style
+	const makeAdminBtn = {
+		backgroundColor: '#EB6D2F',
+		fontWeight: 700,
+		fontFamily: "'Signika', sans-serif",
+		'&:hover': {
+			backgroundColor: '#5A3733',
+			boxShadow: 'none',
+		}
+	}
+
 	return (
 		<Box sx={{ textAlign: 'center' }}>
-			<h1>Make Admin</h1>
+			<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
+				Make Admin
+			</Typography>
 
-			{success && <Alert severity="success">Made Admin Successfully!</Alert>}
 
-			<form onSubmit={handleAdminSubmit}>
+			<form onSubmit={handleAdminSubmit} style={{ display: 'flex', justifyContent: 'center' }}>
 				<TextField
 					// fullWidth
 					name="admin"
@@ -46,8 +58,9 @@ const MakeAdmin = () => {
 					onBlur={handleOnBlur}
 				/>
 				<br />
-				<Button type="submit" variant="contained">Make Admin</Button>
+				<Button type="submit" variant="contained" sx={makeAdminBtn}>Make Admin</Button>
 			</form>
+				{success && <Alert sx={{ width: '40%', mx: 'auto', my: 4 }} severity="success">Made Admin Successfully!</Alert>}
 		</Box>
 	);
 };

@@ -37,12 +37,12 @@ class HeroBanner extends Component {
 
 					{/* Slider-1 */}
 					<div>
-						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '550px' }}>
+						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', height: '550px' }}>
 
 
 							<div style={{ fontFamily: "'Signika', sans-serif" }}>
-								<h1 style={{ color: '#EB6D2F', fontSize: '72px', lineHeight: '14px' }}>Natural Honey</h1>
-								<h2 style={{ color: '#5A3733', fontSize: '66px', lineHeight: '30px' }}>and beekeeping</h2>
+								<h1 style={{ color: '#EB6D2F', fontSize: '5vw', lineHeight: '14px' }}>Natural Honey</h1>
+								<h2 style={{ color: '#5A3733', fontSize: '5vw', lineHeight: '30px' }}>and beekeeping</h2>
 								<p>But I must explain to you how all this mistaken idea of denouncing pleasure and
 									<br />
 									praising pain was born and I will give you a complete the system</p>
@@ -50,19 +50,19 @@ class HeroBanner extends Component {
 								<Button sx={heroBtn} variant="contained">Buy Now</Button>
 							</div>
 
-							<img src={slider1} alt="" />
+							<img /* style={{width: '40vw'}} */ src={slider1} alt="" />
 
 						</div>
 					</div>
 
 					{/* Slider-2 */}
 					<div>
-						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '550px' }}>
+						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', height: '550px' }}>
 
 
 							<div style={{ fontFamily: "'Signika', sans-serif" }}>
-								<h1 style={{ color: '#EB6D2F', fontSize: '72px', lineHeight: '14px' }}>Natural Honey</h1>
-								<h2 style={{ color: '#5A3733', fontSize: '66px', lineHeight: '30px' }}>and beekeeping</h2>
+								<h1 style={{ color: '#EB6D2F', fontSize: '5vw', lineHeight: '14px' }}>Natural Honey</h1>
+								<h2 style={{ color: '#5A3733', fontSize: '5vw', lineHeight: '30px' }}>and beekeeping</h2>
 								<p>But I must explain to you how all this mistaken idea of denouncing pleasure and
 									<br />
 									praising pain was born and I will give you a complete the system</p>
@@ -77,12 +77,12 @@ class HeroBanner extends Component {
 
 					{/* Slider-3 */}
 					<div>
-						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '500px' }}>
+						<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', height: '500px' }}>
 
 
 							<div style={{ fontFamily: "'Signika', sans-serif" }}>
-								<h1 style={{ color: '#EB6D2F', fontSize: '72px', lineHeight: '14px' }}>Natural Honey</h1>
-								<h2 style={{ color: '#5A3733', fontSize: '66px', lineHeight: '30px' }}>and beekeeping</h2>
+								<h1 style={{ color: '#EB6D2F', fontSize: '5vw', lineHeight: '14px' }}>Natural Honey</h1>
+								<h2 style={{ color: '#5A3733', fontSize: '5vw', lineHeight: '30px' }}>and beekeeping</h2>
 								<p>But I must explain to you how all this mistaken idea of denouncing pleasure and
 									<br />
 									praising pain was born and I will give you a complete the system</p>

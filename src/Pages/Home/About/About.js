@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Button, Container, IconButton, List, ListItem, ListItemText, Typography, } from '@mui/material';
@@ -10,6 +10,14 @@ import wave1 from '../../../images/wave-1.png';
 
 
 const About = () => {
+
+	// For Conditional Showing Responsiveness
+	const [matches, setMatches] = useState(window.matchMedia("(min-width: 768px)").matches)
+
+	useEffect(() => {
+		const handler = (e) => setMatches(e.matches);
+		window.matchMedia("(min-width: 768px)").addListener(handler);
+	}, []);
 
 	const aboutBtn = {
 		backgroundColor: '#EB6D2F',
@@ -31,7 +39,7 @@ const About = () => {
 				<Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
 
 
-					<Grid item xs={2} sm={4} md={4}>
+					<Grid item xs={12} sm={12} md={4}>
 
 						<Typography variant="h6" sx={{ fontFamily: "'Raleway', sans-serif", color: '#EB6D2F', fontWeight: 700 }}>
 							Information
@@ -53,13 +61,15 @@ const About = () => {
 
 					</Grid>
 
-					<Grid item xs={2} sm={4} md={4}>
+					<Grid item xs={12} sm={12} md={4}>
 
-						<img style={{ width: '100%' }} src={aboutImg} alt="" />
+
+						<img style={{ width: '40vw' }} src={aboutImg} alt="" />
 
 					</Grid>
 
-					<Grid item xs={2} sm={4} md={4}>
+					{matches && <Grid item xs={12} sm={12} md={4} >
+
 
 						<Typography variant="h5" sx={{ fontFamily: "'Signika', sans-serif", color: '#5A3733', fontWeight: 700 }}>
 							Useful properties <span style={{ color: '#EB6D2F' }}>of honey</span>
@@ -95,7 +105,7 @@ const About = () => {
 
 						</List>
 
-					</Grid>
+					</Grid>}
 
 				</Grid>
 			</Container>
