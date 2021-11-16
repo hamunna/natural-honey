@@ -42,7 +42,7 @@ export default function MangeAllOrders() {
 
 	// Getting Data by Query
 	React.useEffect(() => {
-		fetch('http://localhost:5000/allOrders/list?list=listed')
+		fetch('https://natural-honey.herokuapp.com/allOrders/list?list=listed')
 			.then(res => res.json())
 			.then(data => setOrders(data))
 	}, []);
@@ -54,7 +54,7 @@ export default function MangeAllOrders() {
 
 		if (update) {
 
-			const url = `http://localhost:5000/allOrders/${id}`;
+			const url = `https://natural-honey.herokuapp.com/allOrders/${id}`;
 			fetch(url, {
 				method: 'PUT',
 				headers: {
@@ -78,7 +78,7 @@ export default function MangeAllOrders() {
 		const proceed = window.confirm('Are you sure?');
 
 		if (proceed) {
-			const url = `http://localhost:5000/allOrders/${id}`;
+			const url = `https://natural-honey.herokuapp.com/allOrders/${id}`;
 			fetch(url, {
 				method: 'DELETE'
 			})

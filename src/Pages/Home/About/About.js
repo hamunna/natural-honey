@@ -64,7 +64,7 @@ const About = () => {
 					<Grid item xs={12} sm={12} md={4}>
 
 
-						<img style={{ width: '40vw' }} src={aboutImg} alt="" />
+						<img style={{ width: '26vw' }} src={aboutImg} alt="" />
 
 					</Grid>
 

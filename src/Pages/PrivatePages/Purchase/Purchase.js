@@ -46,7 +46,7 @@ const Purchase = () => {
 
 		const newOrder = { ...purchaseData, productName: singleHoney?.name, price: singleHoney?.discountPrice, status: "Pending", list: "listed" }
 
-		fetch('http://localhost:5000/allOrders', {
+		fetch('https://natural-honey.herokuapp.com/allOrders', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'
@@ -68,7 +68,7 @@ const Purchase = () => {
 	}
 
 	useEffect(() => {
-		const url = `http://localhost:5000/products`;
+		const url = `https://natural-honey.herokuapp.com/products`;
 		fetch(url)
 			.then(res => res.json())
 			.then(data => setOrder(data))

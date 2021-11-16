@@ -71,12 +71,12 @@ export default function Dashboard() {
 						Dashboard
 					</Typography>
 
-					<Box sx={{ml: 'auto', display: 'flex', gap: 3, alignItems: 'center'}}>
+					<Box sx={{ ml: 'auto', display: 'flex', gap: 3, alignItems: 'center' }}>
 						<Typography sx={{ color: 'white' }}><span style={{ fontWeight: 800 }}>Hey,</span> {user?.displayName}</Typography>
 						{user?.image ?
-							<img style={{width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px'}} src={user?.image} alt="" />
+							<img style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px' }} src={user?.image} alt="" />
 							:
-							<img style={{width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px'}} src={dummyUserImg} alt="" />
+							<img style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px' }} src={dummyUserImg} alt="" />
 						}
 					</Box>
 
@@ -131,107 +131,117 @@ export default function Dashboard() {
 							</NavLink>
 							{/* </List> */}
 
-							{admin && <Box>
-								{/* <List> */}
-								<NavLink style={navLinkStyle} to={`${url}/manageProducts`}>
+							{admin ?
+								<Box>
+									<>
+										{/* <List> */}
+										<NavLink style={navLinkStyle} to={`${url}/manageProducts`}>
 
-									<ListItem button>
+											<ListItem button>
 
-										<ListItemIcon sx={iconStyle}>
-											<PivotTableChartIcon />
-										</ListItemIcon>
+												<ListItemIcon sx={iconStyle}>
+													<PivotTableChartIcon />
+												</ListItemIcon>
 
-										<ListItemText>Manage Products</ListItemText>
-									</ListItem>
-								</NavLink>
-								{/* </List> */}
+												<ListItemText>Manage Products</ListItemText>
+											</ListItem>
+										</NavLink>
+										{/* </List> */}
 
-								{/* <List> */}
-								<NavLink style={navLinkStyle} to={`${url}/manageAllOrders`}>
+										{/* <List> */}
+										<NavLink style={navLinkStyle} to={`${url}/manageAllOrders`}>
 
-									<ListItem button>
+											<ListItem button>
 
-										<ListItemIcon sx={iconStyle}>
-											<EventIcon />
-										</ListItemIcon>
+												<ListItemIcon sx={iconStyle}>
+													<EventIcon />
+												</ListItemIcon>
 
-										<ListItemText>Manage All Orders</ListItemText>
-									</ListItem>
-								</NavLink>
-								{/* </List> */}
+												<ListItemText>Manage All Orders</ListItemText>
+											</ListItem>
+										</NavLink>
+										{/* </List> */}
 
-								{/* <List> */}
-								<NavLink style={navLinkStyle} to={`${url}/addNewProduct`}>
-									<ListItem button>
-
-
-										<ListItemIcon sx={iconStyle}>
-											<AddShoppingCartIcon />
-										</ListItemIcon>
-
-										<ListItemText>Add New Product</ListItemText>
-									</ListItem>
-								</NavLink>
-								{/* </List> */}
-
-								{/* <List> */}
-								<NavLink style={navLinkStyle} to={`${url}/makeAdmin`}>
-									<ListItem button>
+										{/* <List> */}
+										<NavLink style={navLinkStyle} to={`${url}/addNewProduct`}>
+											<ListItem button>
 
 
-										<ListItemIcon sx={iconStyle}>
-											<PersonAddAlt1Icon />
-										</ListItemIcon>
+												<ListItemIcon sx={iconStyle}>
+													<AddShoppingCartIcon />
+												</ListItemIcon>
 
-										<ListItemText>Make Admin</ListItemText>
-									</ListItem>
-								</NavLink>
-								{/* </List> */}
+												<ListItemText>Add New Product</ListItemText>
+											</ListItem>
+										</NavLink>
+										{/* </List> */}
 
-								<Divider sx={{ backgroundColor: 'white' }} />
-								<Divider />
-							</Box>}
-
-							{/* <List> */}
-							<NavLink style={navLinkStyle} to={`${url}/myOrders`}>
-								<ListItem button>
+										{/* <List> */}
+										<NavLink style={navLinkStyle} to={`${url}/makeAdmin`}>
+											<ListItem button>
 
 
-									<ListItemIcon sx={iconStyle}>
-										<ShoppingBasketIcon />
-									</ListItemIcon>
+												<ListItemIcon sx={iconStyle}>
+													<PersonAddAlt1Icon />
+												</ListItemIcon>
 
-									<ListItemText>My Orders</ListItemText>
-								</ListItem>
-							</NavLink>
-							{/* </List> */}
+												<ListItemText>Make Admin</ListItemText>
+											</ListItem>
+										</NavLink>
+										{/* </List> */}
 
-							{/* <List> */}
-							<NavLink style={navLinkStyle} to={`${url}/review`}>
-								<ListItem button>
+										{/* <Divider sx={{ backgroundColor: 'white' }} /> */}
+										{/* <Divider /> */}
+									</>
+								</Box>
 
-
-									<ListItemIcon sx={iconStyle}>
-										<RateReviewIcon />
-									</ListItemIcon>
-
-									<ListItemText>Review</ListItemText>
-								</ListItem>
-							</NavLink>
-							{/* </List> */}
-
-							{/* <List> */}
-							<NavLink style={navLinkStyle} to={`${url}/payment`}>
-								<ListItem button>
+								:
+								<>
+									{/* <List> */}
+									<NavLink style={navLinkStyle} to={`${url}/myOrders`}>
+										<ListItem button>
 
 
-									<ListItemIcon sx={iconStyle}>
-										<PaymentIcon />
-									</ListItemIcon>
+											<ListItemIcon sx={iconStyle}>
+												<ShoppingBasketIcon />
+											</ListItemIcon>
 
-									<ListItemText>Payment</ListItemText>
-								</ListItem>
-							</NavLink>
+											<ListItemText>My Orders</ListItemText>
+										</ListItem>
+									</NavLink>
+									{/* </List> */}
+
+									{/* <List> */}
+									<NavLink style={navLinkStyle} to={`${url}/review`}>
+										<ListItem button>
+
+
+											<ListItemIcon sx={iconStyle}>
+												<RateReviewIcon />
+											</ListItemIcon>
+
+											<ListItemText>Review</ListItemText>
+										</ListItem>
+									</NavLink>
+									{/* </List> */}
+
+									{/* <List> */}
+									<NavLink style={navLinkStyle} to={`${url}/payment`}>
+										<ListItem button>
+
+
+											<ListItemIcon sx={iconStyle}>
+												<PaymentIcon />
+											</ListItemIcon>
+
+											<ListItemText>Payment</ListItemText>
+										</ListItem>
+									</NavLink>
+								</>
+
+							}
+
+
 						</List>
 
 						{user?.email &&

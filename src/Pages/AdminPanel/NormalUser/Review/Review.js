@@ -62,7 +62,7 @@ const Review = () => {
 
 		const newReview = { ...reviewData, status: { pending: "Pending", approved: "Approved" } };
 
-		fetch('http://localhost:5000/reviews', {
+		fetch('https://natural-honey.herokuapp.com/reviews', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

@@ -27,7 +27,7 @@ const AddNewProduct = () => {
 
 		const newProduct = { ...productData, ratings: 0, rated: 0 };
 
-		fetch('http://localhost:5000/products', {
+		fetch('https://natural-honey.herokuapp.com/products', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

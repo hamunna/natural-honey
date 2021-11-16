@@ -42,7 +42,7 @@ export default function MangeProducts() {
 
 	// Getting Data by Query
 	React.useEffect(() => {
-		fetch('http://localhost:5000/products')
+		fetch('https://natural-honey.herokuapp.com/products')
 			.then(res => res.json())
 			.then(data => setProducts(data))
 	}, []);
@@ -54,7 +54,7 @@ export default function MangeProducts() {
 
 		if (update) {
 
-			const url = `http://localhost:5000/products/${id}`;
+			const url = `https://natural-honey.herokuapp.com/products/${id}`;
 			fetch(url, {
 				method: 'PUT',
 				headers: {
@@ -78,7 +78,7 @@ export default function MangeProducts() {
 		const proceed = window.confirm('Are you sure?');
 
 		if (proceed) {
-			const url = `http://localhost:5000/products/${id}`;
+			const url = `https://natural-honey.herokuapp.com/products/${id}`;
 			fetch(url, {
 				method: 'DELETE'
 			})

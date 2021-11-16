@@ -46,7 +46,7 @@ export default function MyOrders() {
 
 	// Getting Data by Query
 	React.useEffect(() => {
-		const url = `http://localhost:5000/allOrders?userEmail=${user?.email}`;
+		const url = `https://natural-honey.herokuapp.com/allOrders?userEmail=${user?.email}`;
 		fetch(url)
 			.then(res => res.json())
 			.then(data => setOrders(data))
@@ -57,7 +57,7 @@ export default function MyOrders() {
 		const proceed = window.confirm('Are you sure?');
 
 		if (proceed) {
-			const url = `http://localhost:5000/allOrders/${id}`;
+			const url = `https://natural-honey.herokuapp.com/allOrders/${id}`;
 			fetch(url, {
 				method: 'DELETE'
 			})

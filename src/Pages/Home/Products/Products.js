@@ -13,7 +13,7 @@ const Products = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	
 	useEffect(() => {
-		fetch('http://localhost:5000/products')
+		fetch('https://natural-honey.herokuapp.com/products')
 			// fetch('/products.json')
 			.then(res => res.json())
 			.then(data => setProducts(data))
