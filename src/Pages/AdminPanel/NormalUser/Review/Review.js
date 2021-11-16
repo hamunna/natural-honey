@@ -7,7 +7,7 @@ import { useHistory, useLocation } from 'react-router';
 
 const Review = () => {
 	const { user } = useAuth();
-	
+
 	const location = useLocation();
 	const history = useHistory();
 
@@ -92,19 +92,19 @@ const Review = () => {
 	// 	const charRemain = document.getElementById('char-remain');
 	// 	// const charExceedMsg = document.getElementById('char-exceed-msg');
 	// 	// const charRemainingMsg = document.getElementById('char-remaining-msg');
-	
+
 	// 	if (commentBox.length > 100) {
 	// 		// charExceedMsg.style.display = 'block';
 	// 		// charRemainingMsg.style.display = 'none';
-			
+
 	// 		charRemain.color = 'green';
-			
+
 	// 	}
-		// else {
-			// charExceedMsg.style.display = 'none';
-			// charRemainingMsg.style.display = 'block';
-			// charRemain.innerText = 255 - commentBox.length;
-		// }
+	// else {
+	// charExceedMsg.style.display = 'none';
+	// charRemainingMsg.style.display = 'block';
+	// charRemain.innerText = 255 - commentBox.length;
+	// }
 	// }
 
 	//==========================
@@ -189,13 +189,23 @@ const Review = () => {
 							required
 							rows={6}
 							onBlur={handleOnBlur}
-							// onChange={minCharactersOnChange}
+						// onChange={minCharactersOnChange}
 						/>
 
 						{/* Alert msg */}
 						<Typography id="char-remain" color="red">Text must be 100 characters</Typography>
 
 						<Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
+
+							{/* Profession Field */}
+							<TextField
+								sx={inlineInputStyle}
+								id="profession"
+								name="profession"
+								label="Profession"
+								onBlur={handleOnBlur}
+								required
+							/>
 
 							{/* Rating Box */}
 							<TextField
@@ -217,16 +227,6 @@ const Review = () => {
 									</MenuItem>
 								))}
 							</TextField>
-
-							{/* Profession Field */}
-							<TextField
-								sx={inlineInputStyle}
-								id="profession"
-								name="profession"
-								label="Profession"
-								onBlur={handleOnBlur}
-								required
-							/>
 
 							{/* Image Field
 							<TextField

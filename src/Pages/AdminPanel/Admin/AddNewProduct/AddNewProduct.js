@@ -172,7 +172,7 @@ const AddNewProduct = () => {
 								sx={inlineInputStyle}
 								id="discountPrice"
 								name="discountPrice"
-								label="Basic Price"
+								label="Discount Price"
 								// type="number"
 								onBlur={handleOnBlur}
 								required
