@@ -39,8 +39,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function MyOrders() {
 
-	const { user, isLoading, setIsLoading } = useAuth();
-
+	const { user } = useAuth();
+	const [isLoading, setIsLoading] = React.useState(true);
 	const [orders, setOrders] = React.useState([]);
 	// const [orderId, setOrderId] = React.useState([]);
 
@@ -50,6 +50,7 @@ export default function MyOrders() {
 		fetch(url)
 			.then(res => res.json())
 			.then(data => setOrders(data))
+			.finally(() => setIsLoading(false));
 	}, []);
 
 	// Deleting Data
@@ -76,7 +77,7 @@ export default function MyOrders() {
 
 	let sl = 1;
 
-	// if (isLoading) { return <LoadingBee /> }
+	if (isLoading) { return <LoadingBee /> }
 
 	return (
 		<Box>
@@ -112,10 +113,10 @@ export default function MyOrders() {
 								<StyledTableCell sx={{ color: 'olive' }} align="left">{order.status}</StyledTableCell>
 
 								<StyledTableCell align="left">
-								<DeleteIcon
+									<DeleteIcon
 										variant="contained"
 										color="error"
-										sx={{cursor: 'pointer'}}
+										sx={{ cursor: 'pointer' }}
 										onClick={() => handleDeleteOrder(order._id)}
 									/>
 								</StyledTableCell>

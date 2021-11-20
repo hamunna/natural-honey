@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, Collapse, Grid, IconButton, TextField, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 
@@ -17,7 +18,8 @@ import welcomeBg from '../../images/login-welcome-bg.jpg';
 const Login = () => {
 
 	const [loginData, setLoginData] = useState([]);
-	const { user, loginUser, isLoading, signInWithGoogle, error } = useAuth();
+	const { user, loginUser, isLoading, signInWithGoogle, authError } = useAuth();
+	const [open, setOpen] = React.useState(true);
 
 	const location = useLocation();
 	const history = useHistory();
@@ -36,7 +38,6 @@ const Login = () => {
 		e.preventDefault();
 		// setSuccessMsg('Logged In Successfully!')
 
-		alert('Login Successfully!');
 		loginUser(loginData.email, loginData.password, location, history);
 
 		e.target.reset();
@@ -122,7 +123,7 @@ const Login = () => {
 
 					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
 
-						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
 							Login to Your Account
 						</Typography>
 
@@ -141,6 +142,21 @@ const Login = () => {
 							or use your email to login
 						</Typography>
 
+						{/* Alert msg Start */}
+						{authError && <Box sx={{ width: '90%', mx: 'auto' }}>
+							<Collapse in={open}>
+								<Alert
+									variant="filled"
+									severity="error"
+									
+									sx={{ my: 2 }}
+								>
+									{authError}
+								</Alert>
+							</Collapse>
+						</Box>}
+						{/* Alert msg END */}
+
 						<form onSubmit={handleLoginSubmit} sx={{ textAlign: 'center' }}>
 
 							<Box sx={{ '& > :not(style)': { m: 1, px: 8 } }}>
@@ -156,6 +172,7 @@ const Login = () => {
 										variant="standard"
 										sx={{ width: '100%' }}
 										onBlur={handleOnBlur}
+										required
 									/>
 								</Box>
 
@@ -170,6 +187,7 @@ const Login = () => {
 										variant="standard"
 										sx={{ width: '100%' }}
 										onBlur={handleOnBlur}
+										required
 									/>
 								</Box>
 
@@ -186,7 +204,7 @@ const Login = () => {
 				<Grid item xs={6} md={5} sx={rightSideBg}>
 
 					<Box sx={leftSideBee}>
-						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 							Welcome Back!
 						</Typography>
 

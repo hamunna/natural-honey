@@ -5,8 +5,8 @@ import initializeFirebase from "../Firebase/firebase.init";
 initializeFirebase();
 const useFirebase = () => {
 	const [user, setUser] = useState({});
-	const [error, setError] = useState('');
-	const [success, setSuccess] = useState('');
+	const [authError, setAuthError] = useState('');
+	const [authSuccess, setAuthSuccess] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
 	const [admin, setAdmin] = useState(false);
 
@@ -19,12 +19,12 @@ const useFirebase = () => {
 
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				setError('');
+				setAuthError('');
 				const newUser = { email, displayName: name };
 				setUser(newUser);
 
 				// Save User to the Database
-				saveUser(email, name, 'POST');
+				saveUser(email, name, "", 'POST');
 
 				// Send Name to Firebase after Creation
 				updateProfile(auth.currentUser, {
@@ -41,8 +41,9 @@ const useFirebase = () => {
 			.catch((error) => {
 				const errorCode = error.code;
 				if (errorCode === 'auth/email-already-in-use') {
-					setError("User already exist!");
+					setAuthError("User already exist!");
 				}
+				setAuthError(errorCode, "useFirebase-line-46");
 			})
 			.finally(() => setIsLoading(false));
 	}
@@ -55,11 +56,17 @@ const useFirebase = () => {
 			.then((user) => {
 				const destination = location?.state?.from || '/';
 				history.replace(destination);
-				setError('');
+				setAuthError('');
 			})
 			.catch((error) => {
-				// const errorCode = error.code;
-				setError(error.message);
+				const errorCode = error.code;
+				if (errorCode === 'auth/wrong-password') {
+					setAuthError("Wrong Password!");
+					return
+				} else if (password === '') {
+					setAuthError("Please Input Password!");
+					return					
+				}
 			})
 			.finally(() => setIsLoading(false));
 
@@ -90,14 +97,22 @@ const useFirebase = () => {
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
 				const user = result.user;
-				saveUser(user.email, user.displayName, 'PUT');
+				console.log(user);
+				saveUser(user.email, user.displayName, user?.photoURL, 'PUT');
 				const destination = location?.state?.from || '/';
 				history.replace(destination);
-				setError('');
+				setAuthError('');
 
 			}).catch((error) => {
-				// const errorCode = error.code;
-				// const errorMessage = error.message;
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				if (errorCode) {
+
+					setAuthError(errorCode);
+				} else {
+					setAuthError(errorMessage);
+
+				}
 
 			})
 			.finally(() => setIsLoading(false));
@@ -123,8 +138,8 @@ const useFirebase = () => {
 	}
 
 	// Save User Data
-	const saveUser = (email, displayName, method) => {
-		const user = { email, displayName };
+	const saveUser = (email, displayName, image, method) => {
+		const user = { email, displayName, image };
 		fetch('https://natural-honey.herokuapp.com/users', {
 			method: method,
 			headers: {
@@ -138,6 +153,7 @@ const useFirebase = () => {
 	return {
 		user,
 		admin,
+		authError,
 		isLoading,
 		setIsLoading,
 		registerUser,

@@ -27,6 +27,7 @@ import useAuth from '../../hooks/useAuth';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import dummyUserImg from '../../images/dummy-user-img.png';
 
 
 
@@ -69,7 +70,7 @@ const Navigation = () => {
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar sx={{ backgroundColor: '#5A3733' }} position="">
+			<AppBar sx={{ backgroundColor: '#5A3733' }} position="relative">
 				<Container>
 					<Toolbar>
 
@@ -82,7 +83,6 @@ const Navigation = () => {
 						</Box>
 
 						<Box sx={{ ml: 'auto' }}>
-
 
 							<IconButton
 								size="large"

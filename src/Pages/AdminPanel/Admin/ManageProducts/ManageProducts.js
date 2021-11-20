@@ -36,8 +36,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function MangeProducts() {
-	const { user, isLoading, setIsLoading } = useAuth();
+	const { user } = useAuth();
 	const [products, setProducts] = React.useState([]);
+	const [isLoading, setIsLoading] = React.useState(true);
 	const history = useHistory();
 
 	// Getting Data by Query
@@ -45,6 +46,7 @@ export default function MangeProducts() {
 		fetch('https://natural-honey.herokuapp.com/products')
 			.then(res => res.json())
 			.then(data => setProducts(data))
+			.finally(() => setIsLoading(false))
 	}, []);
 
 	// Update Order to Complete

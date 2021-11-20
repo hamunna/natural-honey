@@ -41,7 +41,7 @@ const Product = ({ product }) => {
 
 
 					<Box sx={{ display: 'flex', gap: 1, justifyContent: 'center' }}>
-						<Rating name="read-only" value={ratings} precision={0.5} size="small" readOnly />
+						<Rating name="read-only" value={parseFloat(ratings)} precision={0.5} size="small" readOnly />
 						<Typography variant="body2" sx={{ fontWeight: 700 }}>({rated})</Typography>
 					</Box>
 

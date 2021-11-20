@@ -19,14 +19,8 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { NavLink } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LoginIcon from '@mui/icons-material/Login';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import MyOrders from '../NormalUser/MyOrders/MyOrders';
 import Review from '../NormalUser/Review/Review';
 import DashboardHome from '../DashboardHome/DashboardHome';
@@ -73,11 +67,15 @@ export default function Dashboard() {
 
 					<Box sx={{ ml: 'auto', display: 'flex', gap: 3, alignItems: 'center' }}>
 						<Typography sx={{ color: 'white' }}><span style={{ fontWeight: 800 }}>Hey,</span> {user?.displayName}</Typography>
-						{user?.image ?
+
+						{/* {user?.image ?
 							<img style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px' }} src={user?.image} alt="" />
 							:
 							<img style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px' }} src={dummyUserImg} alt="" />
-						}
+						} */}
+
+						<img style={{ width: '40px', height: '40px', borderRadius: '50%', border: '1px solid #EB6D2F', padding: '1px' }} src={user?.photoURL || dummyUserImg} alt="" />
+
 					</Box>
 
 
@@ -240,7 +238,6 @@ export default function Dashboard() {
 								</>
 
 							}
-
 
 						</List>
 

@@ -36,15 +36,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function MangeAllOrders() {
-	const { user, isLoading, setIsLoading } = useAuth();
+	const { user } = useAuth();
 	const [orders, setOrders] = React.useState([]);
 	const history = useHistory();
+	const [isLoading, setIsLoading] = React.useState(true);
 
 	// Getting Data by Query
 	React.useEffect(() => {
 		fetch('https://natural-honey.herokuapp.com/allOrders/list?list=listed')
 			.then(res => res.json())
 			.then(data => setOrders(data))
+			.finally(() => setIsLoading(false));
 	}, []);
 
 	// Update Order to Complete
@@ -67,10 +69,9 @@ export default function MangeAllOrders() {
 					console.log(data)
 					setOrders(orders);
 					alert('Updated Successfully!');
+					window.location.reload();
 				});
-			window.location.reload();
 		}
-
 	}
 
 	// Deleting Data
@@ -97,7 +98,7 @@ export default function MangeAllOrders() {
 
 	let sl = 1;
 
-	// if (isLoading) { return <LoadingBee /> }
+		if (isLoading) { return <LoadingBee /> }
 
 	return (
 		<Box>
@@ -132,7 +133,12 @@ export default function MangeAllOrders() {
 								<StyledTableCell align="left">&#36;{order?.price}</StyledTableCell>
 								<StyledTableCell align="left">{order?.dateTime}</StyledTableCell>
 								<StyledTableCell align="left">{order?.userEmail}</StyledTableCell>
-								<StyledTableCell sx={{ color: 'olive' }} align="left">{order?.status}</StyledTableCell>
+
+								{order?.status !== "Complete" ? 
+									<StyledTableCell sx={{ color: 'orange', fontWeight: 700 }} align="left">{order?.status}</StyledTableCell>
+									:
+									<StyledTableCell sx={{ color: 'green', fontWeight: 700 }} align="left">{order?.status}</StyledTableCell>
+							}
 
 								<StyledTableCell align="center" sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
 									<DeleteIcon
@@ -142,12 +148,20 @@ export default function MangeAllOrders() {
 										onClick={() => handleDeleteOrder(order._id)}
 									/>
 
-									<AssignmentTurnedInIcon
-										variant="contained"
-										color="success"
-										sx={{ cursor: 'pointer' }}
-										onClick={() => handleOrderComplete(order._id)}
-									/>
+									{order?.status !== "Complete" ?
+										<AssignmentTurnedInIcon
+											variant="contained"
+											color="success"
+											sx={{ cursor: 'pointer' }}
+											onClick={() => handleOrderComplete(order._id)}
+										/>
+										:
+										<AssignmentTurnedInIcon
+											variant="contained"
+											color="warning"
+										/>
+									}
+
 								</StyledTableCell>
 							</StyledTableRow>
 							// <Alert severity="error">No Order Available!</Alert>
