@@ -9,7 +9,6 @@ import Login from './Pages/Login/Login';
 import Navigation from './Shared/Navigation/Navigation';
 import Footer from './Shared/Footer/Footer';
 import NotFound from './Pages/NotFound/NotFound';
-import Blogs from './Pages/BlogPage/Blogs/Blogs';
 import Shop from './Pages/Shop/Shop';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './Private/PrivateRoute';
@@ -17,6 +16,7 @@ import Purchase from './Pages/PrivatePages/Purchase/Purchase';
 import Dashboard from './Pages/AdminPanel/Dashboard/Dashboard';
 import ScrollToTop from './hooks/ScrollToTop';
 import './App.css';
+import BlogPage from "./Pages/BlogPage/BlogPage";
 
 
 
@@ -68,7 +68,7 @@ function App() {
 
           {/* Blog Page */}
           <Route path="/blog">
-            <Blogs />
+            <BlogPage />
             <Footer />
           </Route>
 

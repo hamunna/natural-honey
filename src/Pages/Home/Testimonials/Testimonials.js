@@ -7,8 +7,7 @@ import useAuth from '../../../hooks/useAuth';
 import { Box } from '@mui/system';
 import wave2 from '../../../images/wave-2.png';
 import LoadingBee from '../../../Shared/LoadingBee/LoadingBee';
-import './Testimonials.css';
-
+import testimonialsBg from '../../../images/testimonials-bg.jpg';
 
 const Testimonials = () => {
 	const [reviews, setReviews] = useState([]);
@@ -33,8 +32,8 @@ const Testimonials = () => {
 
 	const testimonialBg = {
 		// backgroundImage: `url(${bg})`,
-		backgroundImage: `url('https://i.ytimg.com/vi/Nex2LKZhMjc/maxresdefault.jpg')`,
-		backgroundColor: `rgba(255, 255, 0, 0.9)`,
+		backgroundImage: `url(${testimonialsBg})`,
+		backgroundColor: `rgba(255, 165, 0, 0.7)`,
 		backgroundBlendMode: "color-dodge",
 		backgroundPosition: 'top right',
 		backgroundAttachment: 'fixed',
