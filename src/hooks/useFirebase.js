@@ -148,10 +148,10 @@ const useFirebase = () => {
 	// SignOut Process
 	const logOut = () => {
 		signOut(auth).then(() => {
-			alert('Are you sure to LogOut?')
-			// Sign-out successful.
+			// window.confirm('Please Confirm Log-Out Request!');
+
 		}).catch((error) => {
-			// An error happened.
+			setAuthGoogleError(error.message);
 		});
 	}
 

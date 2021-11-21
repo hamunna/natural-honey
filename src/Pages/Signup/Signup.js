@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Alert, Button, Grid, TextField, Typography } from '@mui/material';
@@ -20,7 +20,22 @@ const Signup = () => {
 
 	const [loginData, setLoginData] = useState([]);
 	const { registerUser, isLoading, signInWithGoogle, authSignUpError, authGoogleError, setAuthSignUpError, authSuccess, setAuthSuccess } = useAuth();
+	const [isVisible, setIsVisible] = React.useState(false);
 	// const [passwordValidation, setPasswordValidation] = useState('');
+
+	useEffect(() => {
+			// message is empty (meaning no errors). Adjust as needed
+			if(!authSignUpError && !authSuccess){
+			 setIsVisible(false)
+			 return
+			}
+			// error exists. Display the message and hide after 5 secs
+			setIsVisible(true)
+			const timer = setTimeout(() => {
+			  setIsVisible(false)
+			}, 5000);
+			return () => clearTimeout(timer);
+		  }, [authSignUpError, authSuccess]) // executes every time `message` changes. Adjust as needed
 
 	const location = useLocation();
 	const history = useHistory();
@@ -247,7 +262,7 @@ const Signup = () => {
 						</Typography>
 
 						{/* Error Alert msg Start */}
-						{authSignUpError &&
+						{ isVisible && authSignUpError &&
 							<Box sx={{ width: '90%', mx: 'auto' }}>
 								<Alert
 									variant="filled"
@@ -261,7 +276,7 @@ const Signup = () => {
 						{/* Error Alert msg END */}
 						
 						{/* Success Alert msg Start */}
-						{authSuccess &&
+						{ isVisible && authSuccess &&
 							<Box sx={{ width: '90%', mx: 'auto' }}>
 								<Alert
 									variant="filled"

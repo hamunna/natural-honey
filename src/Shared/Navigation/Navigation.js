@@ -119,12 +119,6 @@ const Navigation = () => {
 						{theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
 					</IconButton>
 
-
-					{user?.email &&
-						<p>{user?.displayName}</p>
-						// <img style={{ width: '40px', borderRadius: '50%' }} src={user.image} alt="" />
-					}
-
 				</DrawerHeader>
 
 				<Divider />

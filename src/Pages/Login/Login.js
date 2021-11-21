@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Alert, Button, Collapse, Grid, IconButton, TextField, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -19,11 +19,25 @@ const Login = () => {
 
 	const [loginData, setLoginData] = useState([]);
 	const { user, loginUser, isLoading, signInWithGoogle, authLoginError, setAuthLoginError, authGoogleError, authSuccess, setAuthSuccess } = useAuth();
-	// const [open, setOpen] = React.useState(true);
+	const [isVisible, setIsVisible] = React.useState(false);
 
 	const location = useLocation();
 	const history = useHistory();
 
+	useEffect(() => {
+		// message is empty (meaning no errors). Adjust as needed
+		if(!authLoginError && !authSuccess){
+		 setIsVisible(false)
+		 return
+		}
+		// error exists. Display the message and hide after 5 secs
+		setIsVisible(true)
+		const timer = setTimeout(() => {
+		  setIsVisible(false)
+		}, 5000);
+		return () => clearTimeout(timer);
+	  }, [authLoginError, authSuccess]) // executes every time `message` changes. Adjust as needed
+	
 	const handleOnBlur = e => {
 		const field = e.target.name;
 		const value = e.target.value;
@@ -158,7 +172,7 @@ const Login = () => {
 						</Typography>
 
 						{/* Error Alert msg Start */}
-						{authLoginError && <Box sx={{ width: '90%', mx: 'auto' }}>
+						{isVisible && authLoginError && <Box sx={{ width: '90%', mx: 'auto' }}>
 							<Alert
 								variant="filled"
 								severity="error"
@@ -171,7 +185,7 @@ const Login = () => {
 						{/* Error Alert msg END */}
 
 						{/* Success Alert msg Start */}
-						{authSuccess &&
+						{isVisible && authSuccess &&
 							<Box sx={{ width: '90%', mx: 'auto' }}>
 								<Alert
 									variant="filled"
