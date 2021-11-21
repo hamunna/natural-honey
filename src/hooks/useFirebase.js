@@ -5,7 +5,9 @@ import initializeFirebase from "../Firebase/firebase.init";
 initializeFirebase();
 const useFirebase = () => {
 	const [user, setUser] = useState({});
-	const [authError, setAuthError] = useState('');
+	const [authLoginError, setAuthLoginError] = useState('');
+	const [authSignUpError, setAuthSignUpError] = useState('');
+	const [authGoogleError, setAuthGoogleError] = useState('');
 	const [authSuccess, setAuthSuccess] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
 	const [admin, setAdmin] = useState(false);
@@ -19,7 +21,7 @@ const useFirebase = () => {
 
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
-				setAuthError('');
+				setAuthSignUpError('');
 				const newUser = { email, displayName: name };
 				setUser(newUser);
 
@@ -29,21 +31,30 @@ const useFirebase = () => {
 				// Send Name to Firebase after Creation
 				updateProfile(auth.currentUser, {
 					displayName: name
-				}).then(() => {
+				}).then((user) => {
 
 				})
 					.catch((error) => {
-
 					});
 
 				history.replace("/");
 			})
 			.catch((error) => {
 				const errorCode = error.code;
+				const errorMessage = error.message;
 				if (errorCode === 'auth/email-already-in-use') {
-					setAuthError("User already exist!");
+					setAuthSuccess('');
+					setAuthSignUpError("User already exists!");
+					return;
+				} else if (errorCode === 'auth/internal-error') {
+					setAuthSuccess('');
+					setAuthSignUpError("Something went wrong!");
+					return;
+				} else {
+					setAuthSuccess('');
+					setAuthLoginError(errorMessage);
+					return;
 				}
-				setAuthError(errorCode, "useFirebase-line-46");
 			})
 			.finally(() => setIsLoading(false));
 	}
@@ -56,16 +67,27 @@ const useFirebase = () => {
 			.then((user) => {
 				const destination = location?.state?.from || '/';
 				history.replace(destination);
-				setAuthError('');
+				setAuthLoginError('');
 			})
 			.catch((error) => {
 				const errorCode = error.code;
+				const errorMessage = error.message;
 				if (errorCode === 'auth/wrong-password') {
-					setAuthError("Wrong Password!");
-					return
-				} else if (password === '') {
-					setAuthError("Please Input Password!");
-					return					
+					setAuthSuccess('');
+					setAuthLoginError("Wrong Password!");
+					return;
+				} else if (errorCode === 'auth/user-not-found') {
+					setAuthSuccess('');
+					setAuthLoginError("User not found! Please Sign Up first!");
+					return;
+				} else if (errorCode === 'auth/too-many-requests') {
+					setAuthSuccess('');
+					setAuthLoginError("This user temporarily disabled due to many failed requests!");
+					return;
+				} else {
+					setAuthSuccess('');
+					setAuthLoginError(errorMessage);
+					return;
 				}
 			})
 			.finally(() => setIsLoading(false));
@@ -101,19 +123,15 @@ const useFirebase = () => {
 				saveUser(user.email, user.displayName, user?.photoURL, 'PUT');
 				const destination = location?.state?.from || '/';
 				history.replace(destination);
-				setAuthError('');
+				setAuthGoogleError('');
 
 			}).catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
 				if (errorCode) {
-
-					setAuthError(errorCode);
-				} else {
-					setAuthError(errorMessage);
-
+					setAuthGoogleError(errorMessage);
+					// setAuthGoogleError(errorCode);
 				}
-
 			})
 			.finally(() => setIsLoading(false));
 	}
@@ -153,8 +171,14 @@ const useFirebase = () => {
 	return {
 		user,
 		admin,
-		authError,
+		authLoginError,
+		authSignUpError,
+		authGoogleError,
 		isLoading,
+		authSuccess,
+		setAuthSuccess,
+		setAuthSignUpError,
+		setAuthLoginError,
 		setIsLoading,
 		registerUser,
 		loginUser,

@@ -18,8 +18,8 @@ import welcomeBg from '../../images/login-welcome-bg.jpg';
 const Login = () => {
 
 	const [loginData, setLoginData] = useState([]);
-	const { user, loginUser, isLoading, signInWithGoogle, authError } = useAuth();
-	const [open, setOpen] = React.useState(true);
+	const { user, loginUser, isLoading, signInWithGoogle, authLoginError, setAuthLoginError, authGoogleError, authSuccess, setAuthSuccess } = useAuth();
+	// const [open, setOpen] = React.useState(true);
 
 	const location = useLocation();
 	const history = useHistory();
@@ -35,9 +35,10 @@ const Login = () => {
 	}
 
 	const handleLoginSubmit = e => {
-		e.preventDefault();
-		// setSuccessMsg('Logged In Successfully!')
 
+		e.preventDefault();
+		setAuthLoginError('');
+		setAuthSuccess('Login Successfully!');
 		loginUser(loginData.email, loginData.password, location, history);
 
 		e.target.reset();
@@ -127,6 +128,20 @@ const Login = () => {
 							Login to Your Account
 						</Typography>
 
+						{/* Google Alert msg Start */}
+						{authGoogleError &&
+							<Box sx={{ width: '90%', mx: 'auto' }}>
+								<Alert
+									variant="filled"
+									severity="error"
+									sx={{ my: 2 }}
+								>
+									{authGoogleError}
+								</Alert>
+							</Box>
+						}
+						{/* Google Alert msg END */}
+
 						<Box>
 							<Button onClick={handleGoogleSignIn}>
 								<img style={{ height: '36px' }} src={googleLogin} alt="" />
@@ -142,20 +157,32 @@ const Login = () => {
 							or use your email to login
 						</Typography>
 
-						{/* Alert msg Start */}
-						{authError && <Box sx={{ width: '90%', mx: 'auto' }}>
-							<Collapse in={open}>
+						{/* Error Alert msg Start */}
+						{authLoginError && <Box sx={{ width: '90%', mx: 'auto' }}>
+							<Alert
+								variant="filled"
+								severity="error"
+
+								sx={{ my: 2 }}
+							>
+								{authLoginError}
+							</Alert>
+						</Box>}
+						{/* Error Alert msg END */}
+
+						{/* Success Alert msg Start */}
+						{authSuccess &&
+							<Box sx={{ width: '90%', mx: 'auto' }}>
 								<Alert
 									variant="filled"
-									severity="error"
-									
+									severity="success"
 									sx={{ my: 2 }}
 								>
-									{authError}
+									{authSuccess}
 								</Alert>
-							</Collapse>
-						</Box>}
-						{/* Alert msg END */}
+							</Box>
+						}
+						{/* Success Alert msg END */}
 
 						<form onSubmit={handleLoginSubmit} sx={{ textAlign: 'center' }}>
 

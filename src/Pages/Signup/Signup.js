@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, Grid, TextField, Typography } from '@mui/material';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 
@@ -19,7 +19,8 @@ import welcomeBg from '../../images/signup-welcome-bg.jpg';
 const Signup = () => {
 
 	const [loginData, setLoginData] = useState([]);
-	const { registerUser, isLoading, signInWithGoogle, error } = useAuth();
+	const { registerUser, isLoading, signInWithGoogle, authSignUpError, authGoogleError, setAuthSignUpError, authSuccess, setAuthSuccess } = useAuth();
+	// const [passwordValidation, setPasswordValidation] = useState('');
 
 	const location = useLocation();
 	const history = useHistory();
@@ -38,13 +39,26 @@ const Signup = () => {
 
 	const handleSignUpSubmit = e => {
 		e.preventDefault();
-		// if (loginData.password !== loginData.password2) {
-		// 	// setErrorMsg('Password doesn\'t match!');
-		// 	return
-		// }
-		alert('Sign Up Successfully!');
+		const pass = document.getElementById('password').value;
+		const confirmPass = document.getElementById('confirmPassword').value;
+		const passwordValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+		if (!passwordValidation.test(pass)) {
+			setAuthSuccess('');
+			setAuthSignUpError('Password must be 8 character with letter & number combination');
+			return;
+		}
+		if (pass !== confirmPass) {
+			setAuthSuccess('');
+			setAuthSignUpError('Password doesn\'t match!');
+			return;
+		}
+
+		setAuthSuccess('Sign Up Successfully!');
+		setAuthSignUpError('');
 		registerUser(loginData.email, loginData.password, loginData.name, history, location);
 		e.target.reset();
+
 	}
 
 	// Handle Google Sign In
@@ -142,7 +156,7 @@ const Signup = () => {
 		backgroundSize: 'cover',
 		height: '700px'
 	}
-	
+
 	// Left Bee
 	const leftBee = {
 		mt: 25,
@@ -152,21 +166,21 @@ const Signup = () => {
 		backgroundSize: '120px',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'left center'
-		
+
 	}
 
-	
-		// Right Side bg
-		const rightBg = {
-			backgroundImage: `url(${formBg})`,
-			backgroundSize: 'cover',
-			height: '700px'
+
+	// Right Side bg
+	const rightBg = {
+		backgroundImage: `url(${formBg})`,
+		backgroundSize: 'cover',
+		height: '700px'
 	}
-	
+
 	const comingSoon = () => {
 		alert('Facebook Authentication coming soon...');
 	}
-	
+
 	return (
 		<>
 			<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{ fontFamily: "'Signika', sans-serif" }}>
@@ -175,7 +189,7 @@ const Signup = () => {
 				<Grid item xs={6} md={5} sx={leftBg}>
 
 					<Box sx={leftBee}>
-						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#5A3733' }} variant="h4" gutterBottom component="div">
 							Welcome Back!
 						</Typography>
 
@@ -186,8 +200,8 @@ const Signup = () => {
 						</Typography>
 
 						<NavLink style={{ color: 'white', textDecoration: 'none' }} to="/login">
-						
-						<Button sx={loginBtn} variant="contained">Log in</Button>
+
+							<Button sx={loginBtn} variant="contained">Log in</Button>
 						</NavLink>
 
 					</Box>
@@ -199,9 +213,23 @@ const Signup = () => {
 
 					<Box sx={{ textAlign: 'center', mt: 10, mx: 'auto', width: '60%' }}>
 
-						<Typography sx={{fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
+						<Typography sx={{ fontFamily: "'Signika', sans-serif", fontWeight: 800, color: '#EB6D2F' }} variant="h4" gutterBottom component="div">
 							Create New Account
 						</Typography>
+
+						{/* Google Alert msg Start */}
+						{authGoogleError &&
+							<Box sx={{ width: '90%', mx: 'auto' }}>
+								<Alert
+									variant="filled"
+									severity="error"
+									sx={{ my: 2 }}
+								>
+									{authGoogleError}
+								</Alert>
+							</Box>
+						}
+						{/* Google Alert msg END */}
 
 						<Box>
 							<Button onClick={handleGoogleSignIn}>
@@ -218,6 +246,34 @@ const Signup = () => {
 							or use your email for registration
 						</Typography>
 
+						{/* Error Alert msg Start */}
+						{authSignUpError &&
+							<Box sx={{ width: '90%', mx: 'auto' }}>
+								<Alert
+									variant="filled"
+									severity="error"
+									sx={{ my: 2 }}
+								>
+									{authSignUpError}
+								</Alert>
+							</Box>
+						}
+						{/* Error Alert msg END */}
+						
+						{/* Success Alert msg Start */}
+						{authSuccess &&
+							<Box sx={{ width: '90%', mx: 'auto' }}>
+								<Alert
+									variant="filled"
+									severity="success"
+									sx={{ my: 2 }}
+								>
+									{authSuccess}
+								</Alert>
+							</Box>
+						}
+						{/* Success Alert msg END */}
+
 						<form onSubmit={handleSignUpSubmit} sx={{ textAlign: 'center' }}>
 
 							<Box sx={{ '& > :not(style)': { m: 1, px: 8 } }}>
@@ -233,6 +289,7 @@ const Signup = () => {
 										variant="standard"
 										sx={{ width: '100%' }}
 										onBlur={handleOnBlur}
+										required
 									/>
 								</Box>
 
@@ -248,6 +305,7 @@ const Signup = () => {
 										variant="standard"
 										sx={{ width: '100%' }}
 										onBlur={handleOnBlur}
+										required
 									/>
 								</Box>
 
@@ -263,6 +321,7 @@ const Signup = () => {
 										variant="standard"
 										sx={{ width: '100%' }}
 										onBlur={handleOnBlur}
+										required
 									/>
 								</Box>
 
@@ -278,6 +337,7 @@ const Signup = () => {
 										variant="standard"
 										sx={{ width: '100%' }}
 										onBlur={handleOnBlur}
+										required
 									/>
 								</Box>
 
