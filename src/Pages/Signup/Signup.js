@@ -261,6 +261,8 @@ const Signup = () => {
 							or use your email for registration
 						</Typography>
 
+						{isLoading && <Typography sx={{ color: 'crimson'}}>Loading...</Typography>}
+						
 						{/* Error Alert msg Start */}
 						{ isVisible && authSignUpError &&
 							<Box sx={{ width: '90%', mx: 'auto' }}>
@@ -276,7 +278,7 @@ const Signup = () => {
 						{/* Error Alert msg END */}
 						
 						{/* Success Alert msg Start */}
-						{ isVisible && authSuccess &&
+						{ isVisible && authSuccess && !isLoading &&
 							<Box sx={{ width: '90%', mx: 'auto' }}>
 								<Alert
 									variant="filled"

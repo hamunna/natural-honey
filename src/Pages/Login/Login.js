@@ -26,7 +26,7 @@ const Login = () => {
 
 	useEffect(() => {
 		// message is empty (meaning no errors). Adjust as needed
-		if(!authLoginError && !authSuccess){
+		if(!authLoginError && !authSuccess && !isLoading){
 		 setIsVisible(false)
 		 return
 		}
@@ -171,6 +171,8 @@ const Login = () => {
 							or use your email to login
 						</Typography>
 
+						{isLoading && <Typography sx={{ color: 'crimson'}}>Loading...</Typography>}
+						
 						{/* Error Alert msg Start */}
 						{isVisible && authLoginError && <Box sx={{ width: '90%', mx: 'auto' }}>
 							<Alert
@@ -185,7 +187,7 @@ const Login = () => {
 						{/* Error Alert msg END */}
 
 						{/* Success Alert msg Start */}
-						{isVisible && authSuccess &&
+						{isVisible && authSuccess && !isLoading &&
 							<Box sx={{ width: '90%', mx: 'auto' }}>
 								<Alert
 									variant="filled"
